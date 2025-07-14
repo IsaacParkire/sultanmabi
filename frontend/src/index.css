@@ -1,0 +1,59 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles */
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+  
+  body {
+    @apply bg-snow text-text-dark antialiased; /* Changed from bg-background-light */
+  }
+ 
+}
+
+/* Artcaffe-inspired components */
+@layer components {
+  .artcaffe-card {
+    @apply rounded-artcaffe-lg shadow-artcaffe bg-white overflow-hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .artcaffe-card:hover {
+    @apply shadow-artcaffe-lg;
+    transform: translateY(-10px);
+  }
+  
+  .artcaffe-btn {
+    @apply bg-madder text-snow px-6 py-3 rounded-full font-button 
+           font-medium transition-all duration-300 hover:scale-105;
+    box-shadow: 0 4px 15px rgba(163, 22, 33, 0.3);
+  }
+  
+  .artcaffe-btn:hover {
+    background-color: #8a1220;
+    box-shadow: 0 6px 20px rgba(163, 22, 33, 0.4);
+  }
+}
+
+/* Add gradient animation */
+@layer utilities {
+  .slogan-text {
+    @apply font-accent font-light tracking-tighter;
+    background-image: linear-gradient(45deg, #A31621, #D4AF37, #A31621);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: gradientShift 6s ease infinite;
+  }
+  
+  @keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+}
