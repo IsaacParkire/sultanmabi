@@ -13,7 +13,11 @@ import Testimonials from "./Components/Testimonials";
 import Newsletter from "./Components/Newsletter";
 import Services from "./Components/Services";
 import CommonProducts from "./Components/CommonProducts";
+import FarmersChoice from "./Components/Farmerschoice";
+import ChoiceMeats from "./Components/Choicemeats";
+import About from "./Components/Abouthome";
 import { CartProvider } from "./context/CartContext"; // ✅ Import this
+import Checkout from "./Components/Checkout";
 
 export default function App() {
   return (
@@ -29,6 +33,10 @@ export default function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/farmers-choice" element={<FarmersChoice />} />
+            <Route path="/choice-meats" element={<ChoiceMeats />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/checkout" element={<Checkout />} />
           </Routes>
 
           {/* Shared sections */}

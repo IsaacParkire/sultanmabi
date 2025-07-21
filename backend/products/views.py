@@ -1,8 +1,8 @@
+from .models import Product, Category
 from rest_framework import viewsets, filters, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
 from django_filters.rest_framework import DjangoFilterBackend
-from .models import Product, Category
 from .serializers import ProductSerializer, CategorySerializer
 from .filters import ProductFilter
 

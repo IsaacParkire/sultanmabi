@@ -1,33 +1,76 @@
 import { useState } from "react";
 import axios from "axios";
 import { FcGoogle } from "react-icons/fc";
+import { FaEye, FaEyeSlash, FaCheck } from "react-icons/fa";
 import { motion } from "framer-motion";
 
 export default function Register() {
   const [formData, setFormData] = useState({ 
     username: "", 
     email: "", 
-    password: "" 
+    password: "",
+    confirmPassword: ""
   });
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [passwordStrength, setPasswordStrength] = useState(0);
+  const [acceptedTerms, setAcceptedTerms] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+    
+    // Check password strength when password changes
+    if (name === "password") {
+      const strength = calculatePasswordStrength(value);
+      setPasswordStrength(strength);
+    }
+  };
+
+  const calculatePasswordStrength = (password) => {
+    let strength = 0;
+    if (password.length >= 8) strength += 1;
+    if (/[A-Z]/.test(password)) strength += 1;
+    if (/[0-9]/.test(password)) strength += 1;
+    if (/[^A-Za-z0-9]/.test(password)) strength += 1;
+    return strength;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
+    if (formData.password !== formData.confirmPassword) {
+      setMessage({ text: "Passwords don't match", type: "error" });
+      return;
+    }
+    
+    if (!acceptedTerms) {
+      setMessage({ text: "You must accept the terms and conditions", type: "error" });
+      return;
+    }
+
     setIsLoading(true);
     try {
       const response = await axios.post(
         "http://127.0.0.1:8000/api/users/register/", 
-        formData
+        {
+          username: formData.username,
+          email: formData.email,
+          password: formData.password
+        }
       );
-      setMessage({ text: "Registration successful! You can now log in.", type: "success" });
+      setMessage({ 
+        text: "Registration successful! Please check your email to verify your account.", 
+        type: "success" 
+      });
+      setFormData({ username: "", email: "", password: "", confirmPassword: "" });
     } catch (error) {
       setMessage({ 
-        text: error.response?.data?.message || "Registration failed. Please try again.", 
+        text: error.response?.data?.message || 
+             error.response?.data?.error || 
+             "Registration failed. Please try again.", 
         type: "error" 
       });
     } finally {
@@ -36,96 +79,200 @@ export default function Register() {
   };
 
   const handleGoogleSignIn = () => {
-    // Implement Google OAuth logic here
     window.location.href = "http://127.0.0.1:8000/api/auth/google/";
   };
 
+  const getPasswordStrengthColor = (strength) => {
+    const colors = ["#ef4444", "#f59e0b", "#10b981", "#3b82f6"];
+    return colors[Math.min(strength, 3)] || colors[0];
+  };
+
   return (
-    <div className="min-h-screen bg-[#F8F8F8] flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-[#f8f4e9] to-[#f0e6d2] flex items-center justify-center p-4">
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="w-full max-w-md bg-white rounded-xl shadow-artcaffe-md overflow-hidden"
+        className="w-full max-w-md bg-white rounded-2xl shadow-xl overflow-hidden border border-[#e5e5e5]"
       >
-        {/* Header */}
-        <div className="bg-[#F87060] p-6 text-center">
-          <h2 className="text-2xl font-serif font-medium text-white">Create Account</h2>
-          <p className="text-white/90 mt-1">Join our premium meat community</p>
+        {/* Header with Branding */}
+        <div className="bg-[#102542] p-8 text-center relative overflow-hidden">
+          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/food.png')] opacity-10"></div>
+          <div className="relative">
+            <h2 className="text-3xl font-bold text-white font-serif tracking-wide">Join SultanMabi</h2>
+            <p className="text-white/90 mt-2 text-sm">Create your account to access premium meat selections</p>
+          </div>
         </div>
 
         {/* Form Container */}
         <div className="p-8">
           {message && (
-            <div className={`mb-6 p-3 rounded-md text-center ${
-              message.type === "success" 
-                ? "bg-green-100 text-green-800" 
-                : "bg-red-100 text-red-800"
-            }`}>
-              {message.text}
-            </div>
+            <motion.div 
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className={`mb-6 p-4 rounded-lg text-center flex items-center justify-center ${
+                message.type === "success" 
+                  ? "bg-green-50 text-green-800 border border-green-200" 
+                  : "bg-red-50 text-red-800 border border-red-200"
+              }`}
+            >
+              <div className={`w-5 h-5 rounded-full mr-3 flex items-center justify-center ${
+                message.type === "success" ? "bg-green-100 text-green-500" : "bg-red-100 text-red-500"
+              }`}>
+                <FaCheck size={12} />
+              </div>
+              <span>{message.text}</span>
+            </motion.div>
           )}
 
-          {/* Google Sign-In */}
-          <button
-            onClick={handleGoogleSignIn}
-            className="w-full flex items-center justify-center gap-3 p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors mb-6"
-          >
-            <FcGoogle className="text-xl" />
-            <span>Continue with Google</span>
-          </button>
+          {/* Social Auth */}
+          <div className="space-y-4">
+            <button
+              onClick={handleGoogleSignIn}
+              className="w-full flex items-center justify-center gap-3 p-3.5 border border-gray-200 rounded-xl hover:bg-gray-50 transition-colors text-gray-700 font-medium"
+            >
+              <FcGoogle className="text-xl" />
+              <span>Continue with Google</span>
+            </button>
+          </div>
 
           <div className="flex items-center my-6">
             <div className="flex-1 h-px bg-gray-200"></div>
-            <span className="px-4 text-gray-500">or</span>
+            <span className="px-4 text-gray-500 text-sm">OR REGISTER WITH EMAIL</span>
             <div className="flex-1 h-px bg-gray-200"></div>
           </div>
 
           {/* Registration Form */}
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-2">
                 Username
               </label>
               <input
                 type="text"
                 id="username"
                 name="username"
-                placeholder="Enter your username"
+                value={formData.username}
+                placeholder="e.g. meatlover2023"
                 onChange={handleChange}
-                className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent transition-all"
+                className="w-full p-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#A31621]/50 focus:border-[#A31621] transition-all placeholder-gray-400"
                 required
               />
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                Email
+              <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                Email Address
               </label>
               <input
                 type="email"
                 id="email"
                 name="email"
-                placeholder="Enter your email"
+                value={formData.email}
+                placeholder="your@email.com"
                 onChange={handleChange}
-                className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent transition-all"
+                className="w-full p-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#A31621]/50 focus:border-[#A31621] transition-all placeholder-gray-400"
                 required
               />
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-2">
                 Password
               </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Create a password"
-                onChange={handleChange}
-                className="w-full p-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#D4AF37] focus:border-transparent transition-all"
-                required
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  id="password"
+                  name="password"
+                  value={formData.password}
+                  placeholder="At least 8 characters"
+                  onChange={handleChange}
+                  className="w-full p-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#A31621]/50 focus:border-[#A31621] transition-all placeholder-gray-400 pr-12"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                >
+                  {showPassword ? <FaEyeSlash size={18} /> : <FaEye size={18} />}
+                </button>
+              </div>
+              {formData.password && (
+                <div className="mt-2">
+                  <div className="flex gap-1 mb-1">
+                    {[1, 2, 3, 4].map((i) => (
+                      <div 
+                        key={i}
+                        className={`h-1 flex-1 rounded-full ${
+                          i <= passwordStrength 
+                            ? `bg-[${getPasswordStrengthColor(passwordStrength)}]` 
+                            : "bg-gray-200"
+                        }`}
+                        style={{ backgroundColor: i <= passwordStrength ? getPasswordStrengthColor(passwordStrength) : "#e5e7eb" }}
+                      ></div>
+                    ))}
+                  </div>
+                  <p className="text-xs text-gray-500">
+                    Password strength:{" "}
+                    <span style={{ color: getPasswordStrengthColor(passwordStrength) }}>
+                      {["Weak", "Fair", "Good", "Strong"][Math.min(passwordStrength, 3)]}
+                    </span>
+                  </p>
+                </div>
+              )}
+            </div>
+
+            <div>
+              <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-2">
+                Confirm Password
+              </label>
+              <div className="relative">
+                <input
+                  type={showConfirmPassword ? "text" : "password"}
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  value={formData.confirmPassword}
+                  placeholder="Re-enter your password"
+                  onChange={handleChange}
+                  className="w-full p-3.5 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#A31621]/50 focus:border-[#A31621] transition-all placeholder-gray-400 pr-12"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                >
+                  {showConfirmPassword ? <FaEyeSlash size={18} /> : <FaEye size={18} />}
+                </button>
+              </div>
+            </div>
+
+            <div className="flex items-start">
+              <div className="flex items-center h-5">
+                <input
+                  id="terms"
+                  name="terms"
+                  type="checkbox"
+                  checked={acceptedTerms}
+                  onChange={(e) => setAcceptedTerms(e.target.checked)}
+                  className="w-4 h-4 text-[#A31621] border-gray-300 rounded focus:ring-[#A31621]"
+                  required
+                />
+              </div>
+              <div className="ml-3 text-sm">
+                <label htmlFor="terms" className="text-gray-600">
+                  I agree to the{" "}
+                  <a href="/terms" className="text-[#A31621] hover:underline">
+                    Terms of Service
+                  </a>{" "}
+                  and{" "}
+                  <a href="/privacy" className="text-[#A31621] hover:underline">
+                    Privacy Policy
+                  </a>
+                </label>
+              </div>
             </div>
 
             <motion.button
@@ -133,20 +280,32 @@ export default function Register() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               disabled={isLoading}
-              className={`w-full p-3 rounded-lg font-medium transition-colors ${
+              className={`w-full p-4 rounded-xl font-medium text-lg transition-colors relative ${
                 isLoading
-                  ? "bg-gray-300 cursor-not-allowed"
-                  : "bg-[#A31621] hover:bg-[#8a1220] text-white"
+                  ? "bg-[#A31621]/80 cursor-not-allowed"
+                  : "bg-[#A31621] hover:bg-[#8a1220] text-white shadow-md"
               }`}
             >
-              {isLoading ? "Processing..." : "Register"}
+              {isLoading ? (
+                <>
+                  <span className="absolute left-4 top-1/2 transform -translate-y-1/2">
+                    <svg className="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                  </span>
+                  Creating Account...
+                </>
+              ) : (
+                "Create Account"
+              )}
             </motion.button>
           </form>
 
           <div className="mt-6 text-center text-sm text-gray-600">
             Already have an account?{" "}
-            <a href="/login" className="text-[#D4AF37] hover:underline">
-              Sign in
+            <a href="/login" className="text-[#A31621] font-medium hover:underline">
+              Sign In
             </a>
           </div>
         </div>

@@ -1,5 +1,3 @@
-// src/Components/Footer.jsx
-
 import { Facebook, Instagram, Twitter, Mail } from "lucide-react";
 import { Link } from "react-scroll";
 import visa from "../assets/payments/visa.png";

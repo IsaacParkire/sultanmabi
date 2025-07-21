@@ -1,20 +1,29 @@
 from django.urls import path
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
+from .views import (
+    UserRegistrationView,
+    UserLoginView,
+    UserLogoutView,
+    UserProfileView,
+    CustomerProfileView,
+    VendorProfileView,
+    PasswordChangeView,
+    PasswordResetRequestView,
+    PasswordResetConfirmView
 )
-from . import views
 
 urlpatterns = [
-    # Registration endpoint
-    path('register/', views.RegisterView.as_view(), name='register'),
-
-    # JWT login endpoint
-    path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-
-    # JWT refresh endpoint
-    path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-
-    # Example: Protected user profile endpoint
-    path('profile/', views.UserProfileView.as_view(), name='user_profile'),
+    # Authentication
+    path('register/', UserRegistrationView.as_view(), name='user-register'),
+    path('login/', UserLoginView.as_view(), name='user-login'),
+    path('logout/', UserLogoutView.as_view(), name='user-logout'),
+    
+    # Profile Management
+    path('profile/', UserProfileView.as_view(), name='user-profile'),
+    path('profile/customer/', CustomerProfileView.as_view(), name='customer-profile'),
+    path('profile/vendor/', VendorProfileView.as_view(), name='vendor-profile'),
+    
+    # Password Management
+    path('password/change/', PasswordChangeView.as_view(), name='password-change'),
+    path('password/reset/request/', PasswordResetRequestView.as_view(), name='password-reset-request'),
+    path('password/reset/confirm/', PasswordResetConfirmView.as_view(), name='password-reset-confirm'),
 ]
