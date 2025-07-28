@@ -5,7 +5,6 @@ import Products from "./Products";
 import CommonProducts from "./CommonProducts";
 import Categories from "./Categories";
 import Services from "./Services";           // New
-import Newsletter from "./Newsletter";     // New
 
 export default function Home() {
   return (
@@ -16,7 +15,6 @@ export default function Home() {
       <section id="products"><Products /></section>
       <section id="common-products"><CommonProducts /></section>
       <section id="categories"><Categories /></section>
-      <Newsletter />            {/* Sign-up CTA */}
     </div>
   );
 }

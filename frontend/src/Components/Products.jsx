@@ -1,51 +1,998 @@
 import { useRef, useContext, useState } from "react";
 import { CartContext } from "../context/CartContext";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Star, Heart } from "lucide-react";
-
-// Sample data generator for 15 products per category
-const generateProducts = (category, count = 15) => {
-  const products = [];
-  const categoryPrefixes = {
-    "Farmer's Choice Range": ["Premium", "Organic", "Heritage"],
-    "Sultanmabi Select": ["Sultanmabi", "Exclusive", "Signature"],
-    "Choice Meats": ["Choice", "Select", "Prime"],
-    "Pork": ["Pork", "Bacon", "Ham"],
-    "Beef": ["Beef", "Steak", "Ribeye"],
-    "Processed": ["Gourmet", "Artisan", "Smoked"],
-    "Seafood": ["Wild", "Fresh", "Ocean"],
-    "Poultry": ["Free-Range", "Jumbo", "Organic"]
-  };
-
-  const prefixes = categoryPrefixes[category] || ["Premium"];
-  
-  for (let i = 1; i <= count; i++) {
-    products.push({
-      id: `${category}-${i}`,
-      name: `${prefixes[Math.floor(Math.random() * prefixes.length)]} ${category.split(' ')[0]} Product ${i}`,
-      price: Math.floor(Math.random() * 2000) + 500,
-      image: `/images/${category.toLowerCase().replace(/\s+/g, '-')}-${i}.jpg`,
-      rating: (Math.random() * 0.5 + 4.5).toFixed(1),
-      description: `High-quality ${category} product with exceptional flavor`,
-      weight: `${Math.floor(Math.random() * 1000) + 200}g`
-    });
-  }
-  return products;
-};
+import { ChevronLeft, ChevronRight, Heart } from "lucide-react";
 
 const categories = [
-  { id: "farmers-choice", name: "Farmer's Choice Range" },
-  { id: "sultanmabi-select", name: "Sultanmabi Select" },
-  { id: "choice-meats", name: "Choice Meats" },
-  { id: "pork", name: "Pork Specialties" },
-  { id: "beef", name: "Beef Selection" },
-  { id: "processed", name: "Processed Meats" },
-  { id: "seafood", name: "Fresh Seafood" },
-  { id: "poultry", name: "Poultry Selection" }
-].map(category => ({
-  ...category,
-  products: generateProducts(category.name)
-}));
+  {
+    id: "continentals",
+    name: "Continentals",
+    products: [
+      {
+        id: "continental-1",
+        name: "Beef continental salami",
+        description: "Assorted premium Italian cured meats",
+        image: "/images/continentals/Beefcontinentalsalami.png",
+        price: 2400,
+        weight: "200gms",
+      },
+      {
+        id: "continental-2",
+        name: "BEEF GARLIC SALAMI",
+        description: "Luxurious duck and chicken liver pâtés",
+        image: "/images/continentals/Beefgarlicsalami.png",
+        price: 1800,
+        weight: "200g",
+      },
+      {
+        id: "continental-3",
+        name: "German Bratwurst",
+        description: "Traditional German sausage",
+        image: "/images/continentals/BeefViennas500g.png",
+        price: 1500,
+        weight: "600g",
+      },
+      {
+        id: "continental-4",
+        name: "Beef Viennas 500gms",
+        description: "Premium acorn-fed ham",
+        image: "/images/continentals/BeefViennas500gms.png",
+        price: 3500,
+        weight: "300g",
+      },
+      {
+        id: "continental-5",
+        name: "FCL Poultry Viennas",
+        description: "Assorted Swiss cheeses",
+        image: "/images/continentals/FCLPoultryViennas.png",
+        price: 2200,
+        weight: "500g",
+      },
+      {
+        id: "continental-6",
+        name: "Garlic Salami ",
+        description: "Kalamata and green olives",
+        image: "/images/continentals/GarlicSalami.png",
+        price: 950,
+        weight: "400g",
+      },
+      {
+        id: "continental-7",
+        name: "Italian Salami ",
+        description: "Cured meats, cheeses and vegetables",
+        image: "/images/continentals/ItalianSalami.png",
+        price: 2800,
+        weight: "750g",
+      },
+      {
+        id: "continental-8",
+        name: "Polony 200g",
+        description: "Creamy French brie cheese",
+        image: "/images/continentals/Polony200g.png",
+        price: 1600,
+        weight: "400g",
+      },
+      {
+        id: "continental-9",
+        name: "Pork Frankfurter 500g",
+        description: "Traditional Bavarian pretzels",
+        image: "/images/continentals/PorkFrankfurter500g.png",
+        price: 800,
+        weight: "300g",
+      },
+      {
+        id: "continental-10",
+        name: "Pork Frankfurter XL 1kg Export",
+        description: "Aged sheep's milk cheese",
+        image: "/images/continentals/PorkFrankfurterXL1kgExport.png",
+        price: 1900,
+        weight: "350g",
+      },
+      {
+        id: "continental-11",
+        name: "Pork Frankfurters 250g",
+        description: "Dry-cured ham",
+        image: "/images/continentals/PorkFrankfurters250g.png",
+        price: 2700,
+        weight: "300g",
+      },
+      {
+        id: "continental-12",
+        name: "Pork Frankfurters 500g",
+        description: "Slow-cooked duck leg",
+        image: "/images/continentals/PorkFrankfurters500g.png",
+        price: 2300,
+        weight: "500g",
+      },
+      {
+        id: "continental-13",
+        name: "Poultry  Vienna 1kg ",
+        description: "Smoked premium ham",
+        image: "/images/continentals/PoultryVienna1kg.png",
+        price: 2100,
+        weight: "1kg",
+      },
+      {
+        id: "continental-14",
+        name: "Poultry Viennas 250g",
+        description: "Spicy cured sausage",
+        image: "/images/continentals/PoultryViennas250g.png",
+        price: 1700,
+        weight: "250g",
+      },
+      {
+        id: "continental-15",
+        name: "Smokie Updated3",
+        description: "Bologna sausage with pistachios",
+        image: "/images/continentals/SmokieUpdated3.png",
+        price: 1400,
+        weight: "500g",
+      },
+      {
+        id: "continental-16",
+        name: "Smokies 1kg",
+        description: "Soft ripened cheese",
+        image: "/images/continentals/Smokies1kg.png",
+        price: 1500,
+        weight: "250g",
+      },
+      {
+        id: "continental-17",
+        name: "Smokies 900g",
+        description: "Fermented cabbage",
+        image: "/images/continentals/Smokies900g.png",
+        price: 700,
+        weight: "500g",
+      },
+      {
+        id: "continental-18",
+        name: "Polony 200g_",
+        description: "Marinated in olive oil",
+        image: "/images/continentals/Polony200g_.jpg",
+        price: 1200,
+        weight: "200g",
+      }
+    ]
+  },
+  {
+    id: "delicatessen",
+    name: "Delicatessen",
+    products: [
+      {
+        id: "delicatessen-1",
+        name: "Beef Choma Sausages",
+        description: "Aged Italian dry-cured ham",
+        image: "/images/Delicatessen/BeefChomaSausages.png",
+        price: 3200,
+        weight: "300g",
+      },
+      {
+        id: "delicatessen-2",
+        name: "Beef Pastarami",
+        description: "Spicy cured sausage with smoked paprika",
+        image: "/images/Delicatessen/BeefPastarami.png",
+        price: 1500,
+        weight: "400g",
+      },
+      {
+        id: "delicatessen-3",
+        name: "Bratwurst",
+        description: "Luxury duck liver pâté",
+        image: "/images/Delicatessen/Bratwurst.png",
+        price: 4200,
+        weight: "200g",
+      },
+      {
+        id: "delicatessen-4",
+        name: "choma sausages copy",
+        description: "Italian salami with black truffle",
+        image: "/images/Delicatessen/chomasausagescopy.png",
+        price: 2800,
+        weight: "350g",
+      },
+      {
+        id: "delicatessen-5",
+        name: "Danish Hotdog",
+        description: "Spanish dry-cured ham",
+        image: "/images/Delicatessen/DanishHotdog.png",
+        price: 2900,
+        weight: "300g",
+      },
+      {
+        id: "delicatessen-6",
+        name: "FC Kassler",
+        description: "Norwegian cold-smoked salmon",
+        image: "/images/Delicatessen/FCKassler.png",
+        price: 2500,
+        weight: "250g",
+      },
+      {
+        id: "delicatessen-7",
+        name: "Kabanos 400gms",
+        description: "Game meat sausage with juniper",
+        image: "/images/Delicatessen/Kabanos400gms.png",
+        price: 2100,
+        weight: "400g",
+      },
+      {
+        id: "delicatessen-8",
+        name: "Krainer with Cheese 400gms",
+        description: "French preserved duck",
+        image: "/images/Delicatessen/KrainerwithCheese400gms.png",
+        price: 1900,
+        weight: "300g",
+      },
+      {
+        id: "delicatessen-9",
+        name: "Pepperoni Bulk-01",
+        description: "Italian wild boar salami",
+        image: "/images/Delicatessen/PepperoniBulk-01.png",
+        price: 2300,
+        weight: "350g",
+      },
+      {
+        id: "delicatessen-10",
+        name: "Servelat 500GMS",
+        description: "Brie with black truffle",
+        image: "/images/Delicatessen/Servelat500GMS.png",
+        price: 2600,
+        weight: "250g",
+      },
+      {
+        id: "delicatessen-11",
+        name: "FC Kassler",
+        description: "Premium sturgeon caviar",
+        image: "/images/Delicatessen/FCKassler.png",
+        price: 8500,
+        weight: "100g",
+      },
+      {
+        id: "delicatessen-12",
+        name: "Spicy Russian Sausage 2",
+        description: "South African biltong",
+        image: "/images/Delicatessen/SpicyRussianSausage2.png",
+        price: 1800,
+        weight: "300g",
+      }
+    ]
+  },
+  {
+    id: "cold-deli",
+    name: "Cold Deli Products",
+    products: [
+      {
+        id: "cold-deli-1",
+        name: "Beef Brawn 3-3.5kg",
+        description: "Creamy chicken with herbs and vegetables",
+        image: "/images/FCColdDeliProducts/BeefBrawn3-3.5kg.png",
+        price: 850,
+        weight: "3-3.5kg",
+      },
+      {
+        id: "cold-deli-2",
+        name: "Beef Pastarami",
+        description: "Classic recipe with mayonnaise and herbs",
+        image: "/images/FCColdDeliProducts/BeefPastarami.png",
+        price: 650,
+        weight: "300g",
+      },
+      {
+        id: "cold-deli-3",
+        name: "CFG Salami Palaciego",
+        description: "Fresh cabbage and carrot mix",
+        image: "/images/FCColdDeliProducts/CFGSalamiPalaciego.png",
+        price: 550,
+        weight: "300g",
+      },
+      {
+        id: "cold-deli-4",
+        name: "CFG Salami Palaciego",
+        description: "Tri-color pasta with vegetables",
+        image: "/images/FCColdDeliProducts/CFGSalamiPalaciego.png",
+        price: 750,
+        weight: "350g",
+      },
+      {
+        id: "cold-deli-5",
+        name: "CFG Salami with Herb",
+        description: "Creamy egg salad with chives",
+        image: "/images/FCColdDeliProducts/CFGSalamiwithHerb.png",
+        price: 700,
+        weight: "250g",
+      },
+      {
+        id: "cold-deli-6",
+        name: "CFG Salami with Pepper",
+        description: "Feta, olives and vegetables",
+        image: "/images/FCColdDeliProducts/CFGSalamiwithPepper.png",
+        price: 900,
+        weight: "300g",
+      },
+      {
+        id: "cold-deli-7",
+        name: "Chicken Brawn Bulk 6kg-7kg",
+        description: "Flaked tuna with mayonnaise",
+        image: "/images/FCColdDeliProducts/ChickenBrawnBulk6kg-7kg.png",
+        price: 800,
+        weight: "6kg-7kg",
+      },
+      {
+        id: "cold-deli-8",
+        name: "Chicken Sandwich Bulk",
+        description: "Roasted beetroot with feta",
+        image: "/images/FCColdDeliProducts/ChickenSandwichBulk.jpg",
+        price: 750,
+        weight: "1kg",
+      },
+      {
+        id: "cold-deli-9",
+        name: "Cooked Whole Ham",
+        description: "Healthy quinoa with vegetables",
+        image: "/images/FCColdDeliProducts/CookedWholeHam.jpg",
+        price: 950,
+        weight: "2kg",
+      },
+      {
+        id: "cold-deli-10",
+        name: "FC Beef Brawn 1Kg",
+        description: "Apple, walnut and celery",
+        image: "/images/FCColdDeliProducts/FCBeefBrawn1Kg.png",
+        price: 850,
+        weight: "1kg",
+      },
+      {
+        id: "cold-deli-11",
+        name: "FC Kassler",
+        description: "Classic chickpea dip",
+        image: "/images/FCColdDeliProducts/FCKassler.png",
+        price: 600,
+        weight: "250g",
+      },
+      {
+        id: "cold-deli-12",
+        name: "FC Pork Brawn Bulk",
+        description: "Greek yogurt and cucumber dip",
+        image: "/images/FCColdDeliProducts/FCPorkBrawnBulk.png",
+        price: 650,
+        weight: "250g",
+      },
+      {
+        id: "cold-deli-13",
+        name: "FCL Country Ham Bulk",
+        description: "Smoky eggplant dip",
+        image: "/images/FCColdDeliProducts/FCLCountryHamBulk.png",
+        price: 700,
+        weight: "2kg",
+      },
+      {
+        id: "cold-deli-14",
+        name: "Honey Glazed Ham A",
+        description: "Olive and caper spread",
+        image: "/images/FCColdDeliProducts/HoneyGlazedHamA.png",
+        price: 750,
+        weight: "200g",
+      },
+      {
+        id: "cold-deli-15",
+        name: "Pork Brawn 1Kg",
+        description: "Fresh avocado dip",
+        image: "/images/FCColdDeliProducts/PorkBrawn1Kg.png",
+        price: 800,
+        weight: "1kg",
+      },
+      {
+        id: "cold-deli-16",
+        name: "Pork Brawn 1Kg",
+        description: "Assorted sushi selection",
+        image: "/images/FCColdDeliProducts/PorkBrawn1Kg.png",
+        price: 2200,
+        weight: "1kg",
+      },
+      {
+        id: "cold-deli-17",
+        name: "Sandwich Ham (Pork)",
+        description: "Creamy smoked trout spread",
+        image: "/images/FCColdDeliProducts/SandwichHam(Pork).jpg",
+        price: 950,
+        weight: "1kg",
+      },
+      {
+        id: "cold-deli-18",
+        name: "Sandwich Ham Beef",
+        description: "Cured meats and cheeses",
+        image: "/images/FCColdDeliProducts/SandwichHamBeef.png",
+        price: 2800,
+        weight: "1kg",
+      },
+      {
+        id: "cold-deli-19",
+        name: "Sandwich Ham Pork (Bulk)",
+        description: "Mozzarella, tomato and basil",
+        image: "/images/FCColdDeliProducts/SandwichHamPork(Bulk).png",
+        price: 1200,
+        weight: "2kg",
+      }
+    ]
+  },
+  {
+    id: "bacon-packs",
+    name: "Bacon Packs",
+    products: [
+      {
+        id: "bacon-1",
+        name: "Back Bacon 1kg",
+        description: "Premium applewood smoked bacon",
+        image: "/images/FCLBaconPacks/BackBacon1kg.png",
+        price: 1200,
+        weight: "1kg",
+      },
+      {
+        id: "bacon-2",
+        name: "Back Bacon 200gms",
+        description: "Sweet and savory Canadian-style bacon",
+        image: "/images/FCLBaconPacks/BackBacon200gms.png",
+        price: 1400,
+        weight: "200g",
+      },
+      {
+        id: "bacon-3",
+        name: "Back Bacon 400gms",
+        description: "Traditional dry-cured back bacon",
+        image: "/images/FCLBaconPacks/BackBacon400gms.png",
+        price: 1500,
+        weight: "400g",
+      },
+      {
+        id: "bacon-4",
+        name: "Beef Bacon 200gms A",
+        description: "Coarse black pepper crusted",
+        image: "/images/FCLBaconPacks/BeefBacon200gmsA.png",
+        price: 1300,
+        weight: "200g",
+      },
+      {
+        id: "bacon-5",
+        name: "Collar Bacon 1Kg",
+        description: "Sweet honey-glazed bacon",
+        image: "/images/FCLBaconPacks/CollarBacon1Kg.png",
+        price: 1450,
+        weight: "1kg",
+      },
+      {
+        id: "bacon-6",
+        name: "Collar Bacon 100g",
+        description: "Traditional Irish back bacon",
+        image: "/images/FCLBaconPacks/CollarBacon100g.png",
+        price: 1600,
+        weight: "100g",
+      },
+      {
+        id: "bacon-7",
+        name: "Collar Bacon 400gms",
+        description: "Italian-style cured pork belly",
+        image: "/images/FCLBaconPacks/CollarBacon400gms.png",
+        price: 1700,
+        weight: "400g",
+      },
+      {
+        id: "bacon-8",
+        name: "Collar Kadogoo-01",
+        description: "Lean turkey alternative",
+        image: "/images/FCLBaconPacks/CollarKadogoo-01.png",
+        price: 1100,
+        weight: "100g",
+      },
+      {
+        id: "bacon-9",
+        name: "FCL Collar Bacon 400gms",
+        description: "Rich cherrywood smoked flavor",
+        image: "/images/FCLBaconPacks/FCLCollarBacon400gms.png",
+        price: 1550,
+        weight: "400g",
+      },
+      {
+        id: "bacon-10",
+        name: "FCL Streaky Bacon 200g",
+        description: "Spicy jalapeño infused",
+        image: "/images/FCLBaconPacks/FCLStreakyBacon200g.png",
+        price: 1350,
+        weight: "200g",
+      },
+      {
+        id: "bacon-11",
+        name: "Pure Beef Bacon",
+        description: "Extra thick slices",
+        image: "/images/FCLBaconPacks/PureBeefBacon.png",
+        price: 1650,
+        weight: "500g",
+      },
+      {
+        id: "bacon-12",
+        name: "Rindless Bacon 1kg",
+        description: "Reduced salt content",
+        image: "/images/FCLBaconPacks/RindlessBacon1kg.png",
+        price: 1400,
+        weight: "400g",
+      },
+      {
+        id: "bacon-13",
+        name: "Rindless Bacon 200g",
+        description: "Traditional English cut",
+        image: "/images/FCLBaconPacks/RindlessBacon200g.png",
+        price: 1500,
+        weight: "200g",
+      },
+      {
+        id: "bacon-14",
+        name: "rindless bacon 400g",
+        description: "Sweet and aromatic",
+        image: "/images/FCLBaconPacks/rindlessbacon400g.png",
+        price: 1450,
+        weight: "400g",
+      },
+      {
+        id: "bacon-15",
+        name: "Rindless Bacon 400gms",
+        description: "Garlic infused strips",
+        image: "/images/FCLBaconPacks/RindlessBacon400gms.png",
+        price: 1300,
+        weight: "400g",
+      },
+      {
+        id: "bacon-16",
+        name: "Streaky Bacon 400gms B",
+        description: "Extra smoky flavor",
+        image: "/images/FCLBaconPacks/StreakyBacon400gmsB.png",
+        price: 1600,
+        weight: "400g",
+      },
+      {
+        id: "bacon-17",
+        name: "Streaky-BACON",
+        description: "German-style smoked bacon",
+        image: "/images/FCLBaconPacks/Streaky-BACON.png",
+        price: 1700,
+        weight: "400g",
+      },
+      {
+        id: "bacon-18",
+        name: "Beef Bacon 200gms A",
+        description: "No added sugars",
+        image: "/images/FCLBaconPacks/BeefBacon200gmsA.png",
+        price: 1400,
+        weight: "400g",
+      }
+    ]
+  },
+  {
+    id: "beefcuts",
+    name: "Beefcuts",
+    products: [
+      {
+        id: 1,
+        name: "Beef Ribeye",
+        description: "Grass-fed, well-marbled",
+        image: "/images/FCL Fresh cuts/Beefcuts/BarbequeRibsBulk2.png",
+        price: 1800,
+        weight: "500g",
+      },
+      {
+        id: 2,
+        name: "beef barbeque ribs sliced 2",
+        description: "Lean ground beef",
+        image: "/images/FCL Fresh cuts/Beefcuts/BarbequeRibsBulk.png",
+        price: 750,
+        weight: "500g",
+      },
+      {
+        id: 3,
+        name: "beef barbeque ribs sliced 2",
+        description: "Premium cut with tenderloin and strip",
+        image: "/images/FCL Fresh cuts/Beefcuts/beefbarbequeribssliced2.png",
+        price: 2200,
+        weight: "600g",
+      },
+      {
+        id: 4,
+        name: "beef barbeque ribs sliced",
+        description: "Tender center cut",
+        image: "/images/FCL Fresh cuts/Beefcuts/beefbarbequeribssliced.png",
+        price: 2800,
+        weight: "400g",
+      },
+      {
+        id: 5,
+        name: "Beef Brisket 2",
+        description: "Juicy and flavorful cut",
+        image: "/images/FCL Fresh cuts/Beefcuts/BeefBrisket2.png",
+        price: 1600,
+        weight: "450g",
+      },
+      {
+        id: 6,
+        name: "Beef Brisket",
+        description: "Lean and beefy flavor",
+        image: "/images/FCL Fresh cuts/Beefcuts/BeefBrisket.png",
+        price: 1400,
+        weight: "500g",
+      },
+      {
+        id: 7,
+        name: "Beef cubes 1",
+        description: "Perfect for slow cooking",
+        image: "/images/FCL Fresh cuts/Beefcuts/Beefcubes1.png",
+        price: 1200,
+        weight: "1kg",
+      },
+      {
+        id: 8,
+        name: "beef cubes",
+        description: "Meaty and flavorful",
+        image: "/images/FCL Fresh cuts/Beefcuts/beefcubes.png",
+        price: 1700,
+        weight: "800g",
+      },
+      {
+        id: 9,
+        name: "Beef Fillet protein",
+        description: "Great for grilling",
+        image: "/images/FCL Fresh cuts/Beefcuts/BeefFilletprotein.png",
+        price: 1500,
+        weight: "600g",
+      },
+      {
+        id: 10,
+        name: "Beef Fillet",
+        description: "Ideal for pot roasts",
+        image: "/images/FCL Fresh cuts/Beefcuts/BeefFillet.png",
+        price: 1300,
+        weight: "1kg",
+      },
+      {
+        id: 11,
+        name: "Beef Ribs 2",
+        description: "Flavorful for fajitas",
+        image: "/images/FCL Fresh cuts/Beefcuts/BeefRibs2.png",
+        price: 1450,
+        weight: "500g",
+      },
+      {
+        id: 12,
+        name: "Beef Ribs",
+        description: "Rich and gelatinous",
+        image: "/images/FCL Fresh cuts/Beefcuts/BeefRibs.png",
+        price: 1100,
+        weight: "500g",
+      },
+      {
+        id: 13,
+        name: "Beef Strips",
+        description: "Impressive ribeye with bone",
+        image: "/images/FCL Fresh cuts/Beefcuts/BeefStrips.png",
+        price: 3500,
+        weight: "1.2kg",
+      },
+      {
+        id: 14,
+        name: "Chuck and Blade (Java)",
+        description: "Butcher's cut with great flavor",
+        image: "/images/FCL Fresh cuts/Beefcuts/ChuckandBlade(Java).png",
+        price: 1900,
+        weight: "450g",
+      },
+      {
+        id: 15,
+        name: "diced cubes bone in",
+        description: "California cut for grilling",
+        image: "/images/FCL Fresh cuts/Beefcuts/dicedcubesbonein.png",
+        price: 1700,
+        weight: "700g",
+      },
+      {
+        id: 16,
+        name: "Eye Piece 2",
+        description: "Tender when slow cooked",
+        image: "/images/FCL Fresh cuts/Beefcuts/EyePiece2.png",
+        price: 950,
+        weight: "400g",
+      },
+      {
+        id: 17,
+        name: "Eye Piece",
+        description: "Lean cut for roasting",
+        image: "/images/FCL Fresh cuts/Beefcuts/EyePiece.png",
+        price: 1250,
+        weight: "800g",
+      },
+      {
+        id: 18,
+        name: "Half sir loin T- Bone joint 2",
+        description: "Great for braising",
+        image: "/images/FCL Fresh cuts/Beefcuts/HalfsirloinT-Bonejoint2.png",
+        price: 1150,
+        weight: "800g",
+      },
+      {
+        id: 19,
+        name: "Half sir loin T- Bone joint",
+        description: "Lean for roasting",
+        image: "/images/FCL Fresh cuts/Beefcuts/HalfsirloinT-Bonejoint.png",
+        price: 1350,
+        weight: "700g",
+      },
+      {
+        id: 20,
+        name: "Half Strip Loin Boneless",
+        description: "Ideal for soups",
+        image: "/images/FCL Fresh cuts/Beefcuts/HalfStripLoinBoneless.png",
+        price: 900,
+        weight: "600g",
+      },
+      {
+        id: 21,
+        name: "New York Strip Loin",
+        description: "Large T-bone cut",
+        image: "/images/FCL Fresh cuts/Beefcuts/NewYorkStripLoin.png",
+        price: 3000,
+        weight: "900g",
+      },
+      {
+        id: 22,
+        name: "Rib Eye steak bone in",
+        description: "Tender shoulder cut",
+        image: "/images/FCL Fresh cuts/Beefcuts/RibEyesteakbonein.png",
+        price: 1750,
+        weight: "500g",
+      },
+      {
+        id: 23,
+        name: "Rib Eye steak",
+        description: "Tender when cooked slowly",
+        image: "/images/FCL Fresh cuts/Beefcuts/RibEyesteak.png",
+        price: 850,
+        weight: "500g",
+      },
+      {
+        id: 24,
+        name: "Rump Steak",
+        description: "Rich in nutrients",
+        image: "/images/FCL Fresh cuts/Beefcuts/RumpSteak.png",
+        price: 700,
+        weight: "400g",
+      },
+      {
+        id: 25,
+        name: "Shin on bone whole shine on bone",
+        description: "For pies and stews",
+        image: "/images/FCL Fresh cuts/Beefcuts/Shinonbonewholeshineonbone.png",
+        price: 650,
+        weight: "300g",
+      },
+      {
+        id: 26,
+        name: "Strip LoinSteak",
+        description: "Lean and flavorful",
+        image: "/images/FCL Fresh cuts/Beefcuts/StripLoinSteak.png",
+        price: 750,
+        weight: "500g",
+      },
+      {
+        id: 27,
+        name: "T-bone Steak",
+        description: "For rich stews",
+        image: "/images/FCL Fresh cuts/Beefcuts/T-boneSteak.png",
+        price: 1100,
+        weight: "500g",
+      },
+      {
+        id: 28,
+        name: "Thick flank(Top Rump) 2",
+        description: "For broth and roasting",
+        image: "/images/FCL Fresh cuts/Beefcuts/Thickflank(TopRump)2.png",
+        price: 800,
+        weight: "1kg",
+      },
+      {
+        id: 29,
+        name: "whole ramp steak 2",
+        description: "Great for braising",
+        image: "/images/FCL Fresh cuts/Beefcuts/wholerampsteak2.png",
+        price: 1300,
+        weight: "600g",
+      },
+      {
+        id: 30,
+        name: "whole ramp steak",
+        description: "Flavorful and economical",
+        image: "/images/FCL Fresh cuts/Beefcuts/wholerampsteak.png",
+        price: 1250,
+        weight: "700g",
+      },
+      {
+        id: 31,
+        name: "Whole silver side 2",
+        description: "Newer tender cut",
+        image: "/images/FCL Fresh cuts/Beefcuts/Wholesilverside2.png",
+        price: 1650,
+        weight: "500g",
+      },
+      {
+        id: 32,
+        name: "Whole silver side",
+        description: "French flank steak",
+        image: "/images/FCL Fresh cuts/Beefcuts/Wholesilverside.png",
+        price: 1750,
+        weight: "600g",
+      },
+      {
+        id: 33,
+        name: "whole sir loin bone in 2",
+        description: "Hanger steak alternative",
+        image: "/images/FCL Fresh cuts/Beefcuts/wholesirloinbonein2.png",
+        price: 1850,
+        weight: "500g",
+      },
+      {
+        id: 34,
+        name: "whole sir loin bone in",
+        description: "Tender flat iron cut",
+        image: "/images/FCL Fresh cuts/Beefcuts/wholesirloinbonein.png",
+        price: 1700,
+        weight: "600g",
+      },
+      {
+        id: 35,
+        name: "Whole Strip Loin Boneless",
+        description: "Brazilian top sirloin cap",
+        image: "/images/FCL Fresh cuts/Beefcuts/WholeStripLoinBoneless.png",
+        price: 2000,
+        weight: "800g",
+      },
+      {
+        id: 36,
+        name: "whole top side",
+        description: "Shoulder tender cut",
+        image: "/images/FCL Fresh cuts/Beefcuts/wholetopside.png",
+        price: 1900,
+        weight: "500g",
+      },
+      {
+        id: 37,
+        name: "Thick flank(Top Rump) 2",
+        description: "Lean roasting joint",
+        image: "/images/FCL Fresh cuts/Beefcuts/Thickflank(TopRump)2.png",
+        price: 1550,
+        weight: "1kg",
+      },
+      {
+        id: 38,
+        name: "whole ramp steak",
+        description: "For roasting and corning",
+        image: "/images/FCL Fresh cuts/Beefcuts/wholerampsteak.png",
+        price: 1450,
+        weight: "1kg",
+      }
+    ]
+  },
+  {
+    id: "lamb",
+    name: "Lamb",
+    products: [
+      {
+        id: 1,
+        name: "Deboned Rolled Vetted Lamb Leg",
+        description: "New Zealand fresh",
+        image: "/images/FCL Fresh cuts/LAMB/DebonedRolledVettedLambLeg.png",
+        price: 2200,
+        weight: "800g",
+      },
+      {
+        id: 2,
+        name: "Lamb Casserole",
+        description: "Perfect for roasting",
+        image: "/images/FCL Fresh cuts/LAMB/LambCasserole.png",
+        price: 2800,
+        weight: "2kg",
+      },
+      {
+        id: 3,
+        name: "Lamb Dice bone Less",
+        description: "Tender and flavorful",
+        image: "/images/FCL Fresh cuts/LAMB/LambDiceboneLess.png",
+        price: 1900,
+        weight: "1kg",
+      },
+      {
+        id: 4,
+        name: "Lamb Dice bone Lessq",
+        description: "French-trimmed premium cut",
+        image: "/images/FCL Fresh cuts/LAMB/LambDiceboneLessq.png",
+        price: 3500,
+        weight: "1.2kg",
+      },
+      {
+        id: 5,
+        name: "lamb hocks",
+        description: "For slow roasting",
+        image: "/images/FCL Fresh cuts/LAMB/lambhocks.png",
+        price: 2400,
+        weight: "1.5kg",
+      },
+      {
+        id: 6,
+        name: "lamb leg sliced",
+        description: "Great for stews",
+        image: "/images/FCL Fresh cuts/LAMB/lamblegsliced.png",
+        price: 1500,
+        weight: "800g",
+      },
+      {
+        id: 7,
+        name: "Lamb Loin Chops",
+        description: "Ground lamb meat",
+        image: "/images/FCL Fresh cuts/LAMB/LambLoinChops.png",
+        price: 1200,
+        weight: "500g",
+      },
+      {
+        id: 8,
+        name: "Lamb Meaty Ribs",
+        description: "Meaty ribs for grilling",
+        image: "/images/FCL Fresh cuts/LAMB/LambMeatyRibs.png",
+        price: 1800,
+        weight: "1kg",
+      },
+      {
+        id: 9,
+        name: "Lamb Neck Bone",
+        description: "Tender small chops",
+        image: "/images/FCL Fresh cuts/LAMB/LambNeckBone.png",
+        price: 2500,
+        weight: "600g",
+      },
+      {
+        id: 10,
+        name: "Lamb Neck Sulk T-Bone",
+        description: "Premium roasting joint",
+        image: "/images/FCL Fresh cuts/LAMB/LambNeckSulkT-Bone.png",
+        price: 3200,
+        weight: "1.5kg",
+      },
+      {
+        id: 11,
+        name: "Lamb Rimb",
+        description: "For slow cooking",
+        image: "/images/FCL Fresh cuts/LAMB/LambRimb.png",
+        price: 1300,
+        weight: "1kg",
+      },
+      {
+        id: 12,
+        name: "Lamb Shanks 1",
+        description: "For frying or pâté",
+        image: "/images/FCL Fresh cuts/LAMB/LambShanks1.png",
+        price: 800,
+        weight: "400g",
+      },
+      {
+        id: 13,
+        name: "Lamb Shanks",
+        description: "For pies and stews",
+        image: "/images/FCL Fresh cuts/LAMB/LambShanks.png",
+        price: 750,
+        weight: "300g",
+      },
+      {
+        id: 14,
+        name: "Lamb Shoulder Chops",
+        description: "Lean and flavorful",
+        image: "/images/FCL Fresh cuts/LAMB/LambShoulderChops.png",
+        price: 850,
+        weight: "500g",
+      },
+    ]
+  }
+];
 
 export default function ProductsPage() {
   const [favorites, setFavorites] = useState([]);
@@ -147,7 +1094,6 @@ function ProductsSection({ category, favorites, toggleFavorite }) {
   const scrollRef = useRef(null);
   const { addToCart, cartItems } = useContext(CartContext);
   
-  // Get quantity of product in cart
   const getQuantity = (id) => {
     const item = cartItems.find(item => item.id === id);
     return item ? item.quantity : 0;
@@ -155,7 +1101,8 @@ function ProductsSection({ category, favorites, toggleFavorite }) {
 
   const scroll = (direction) => {
     if (scrollRef.current) {
-      const scrollAmount = 400; // Increased scroll amount for quick motion
+      // Scroll by 3 cards (each 224px) + gaps (2 * 20px)
+      const scrollAmount = 3 * 224 + 2 * 20;
       scrollRef.current.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth",
@@ -226,6 +1173,7 @@ function ProductCard({
 }) {
   const [showCartFeedback, setShowCartFeedback] = useState(false);
   const [quantity, setQuantity] = useState(quantityInCart || 0);
+  const [showDescription, setShowDescription] = useState(false);
 
   const handleAddToCart = () => {
     const newQuantity = quantity + 1;
@@ -267,24 +1215,27 @@ function ProductCard({
       </div>
 
       <div className="p-4">
-        <div className="flex justify-between items-center mb-2">
-          <h3 className="text-sm font-semibold text-[#333333] line-clamp-1">
+        <div className="mb-2">
+          <h3 
+            className="text-sm font-bold text-[#333333] line-clamp-1 cursor-pointer"
+            onMouseEnter={() => setShowDescription(true)}
+            onMouseLeave={() => setShowDescription(false)}
+          >
             {product.name}
           </h3>
-          <div className="flex items-center bg-gray-100 px-1.5 py-0.5 rounded text-xs">
-            <Star className="w-3 h-3 text-yellow-400 fill-yellow-400" />
-            <span className="ml-1 font-medium">{product.rating}</span>
-          </div>
+          {showDescription && (
+            <p className="text-xs text-[#666666] mt-1 absolute bg-white p-2 rounded shadow-lg z-10 w-52">
+              {product.description}
+            </p>
+          )}
         </div>
-
-        <p className="text-xs text-[#666666] mb-3 line-clamp-2">{product.description}</p>
 
         <div className="flex justify-between items-center">
           <p className="text-base font-bold text-[#A31621]">
             Ksh {product.price.toLocaleString()}
           </p>
           
-          {/* Updated Add to Cart Button with Quantity Counter */}
+          {/* Add to Cart Button with Quantity Counter */}
           <div className="flex items-center">
             {quantity > 0 ? (
               <div className="flex items-center border border-gray-300 rounded-full">
