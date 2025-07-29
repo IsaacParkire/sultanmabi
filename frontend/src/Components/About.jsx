@@ -23,7 +23,7 @@ function HomeAbout() {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-[#FCF7F8] font-sans">
+    <section className="py-12 md:py-16 bg-[#FCF7F8] font-sans"> {/* Reduced padding here */}
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
           {/* About Image */}
