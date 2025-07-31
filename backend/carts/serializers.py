@@ -1,3 +1,4 @@
+from products.models import Product
 from rest_framework import serializers
 from products.serializers import ProductSerializer
 from .models import Cart, CartItem

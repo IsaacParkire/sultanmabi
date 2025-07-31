@@ -6,6 +6,6 @@ from .models import Payment
 
 @admin.register(Payment)
 class PaymentAdmin(admin.ModelAdmin):
-    list_display = ('order', 'amount', 'payment_method', 'completed', 'timestamp')
+    list_display = ('order', 'amount', 'payment_method', 'completed', )
     list_filter = ('completed', 'payment_method')
     search_fields = ('order__id', 'transaction_id')

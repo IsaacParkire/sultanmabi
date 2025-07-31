@@ -39,11 +39,13 @@ INSTALLED_APPS = [
     'corsheaders',
     'carts',
     'django_filters',
+    
 ]
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'carts.middleware.CartSessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -75,11 +77,11 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sultanmabi_prod',
-        'USER': 'sultanmabi_user',
-        'PASSWORD': 'your_secure_password_123',
+        'NAME': 'sultandb',
+        'USER': 'postgres',
+        'PASSWORD': 'malicha02',
         'HOST': 'localhost',
-        'PORT': '5433',
+        'PORT': '5432', 
         }
 }
 
@@ -131,8 +133,8 @@ SIMPLE_JWT = {
 }
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",
-    "http://127.0.0.1:3000",
+    "http://localhost:3000",           # For local frontend dev
+    "https://sultanmabi.co.ke", 
 ]
 CORS_ALLOW_CREDENTIALS = True
 
