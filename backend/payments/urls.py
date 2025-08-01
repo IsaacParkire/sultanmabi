@@ -1,3 +1,4 @@
+from django.shortcuts import redirect
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views import PaymentViewSet
@@ -7,6 +8,8 @@ router = DefaultRouter()
 router.register(r'payments', PaymentViewSet, basename='payment')
 
 urlpatterns = [
+    path('', lambda request: redirect('/api/docs/')),
+
     path('', include(router.urls)),
     
     # M-Pesa callback URL

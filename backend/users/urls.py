@@ -1,3 +1,4 @@
+from django.shortcuts import redirect
 from django.urls import path
 from .views import (
     UserRegistrationView,
@@ -12,6 +13,8 @@ from .views import (
 )
 
 urlpatterns = [
+    path('', lambda request: redirect('/api/docs/')),
+
     # Authentication
     path('register/', UserRegistrationView.as_view(), name='user-register'),
     path('login/', UserLoginView.as_view(), name='user-login'),
