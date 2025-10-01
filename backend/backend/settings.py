@@ -39,13 +39,17 @@ INSTALLED_APPS = [
     'corsheaders',
     'carts',
     'django_filters',
+    'health_check',
+    'health_check.db',
+    'health_check.cache',
+    'health_check.storage',
+    'drf_yasg',
     
 ]
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'carts.middleware.CartSessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -74,15 +78,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
+# SQLite database for backup/testing
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+# PostgreSQL database (active)
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'sultandb',
-        'USER': 'postgres',
+        'NAME': 'sultanmabi',
+        'USER': 'sultandb',
         'PASSWORD': 'malicha02',
         'HOST': 'localhost',
-        'PORT': '5432', 
-        }
+        'PORT': '5432',
+    }
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -138,12 +151,15 @@ CORS_ALLOWED_ORIGINS = [
 ]
 CORS_ALLOW_CREDENTIALS = True
 
-# Security settings
-SECURE_HSTS_SECONDS = 31536000
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+# Development settings - change for production
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = False
+# Uncomment below for production
+# SECURE_HSTS_SECONDS = 31536000
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# SECURE_HSTS_PRELOAD = True
+# SESSION_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
 
 # Add to bottom of settings.py
 MPESA_CONFIG = {

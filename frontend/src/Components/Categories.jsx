@@ -10,7 +10,7 @@ const mainCategories = [
     name: "Farmer's Choice",
     path: "/farmers-choice",
     image: "/images/farmer.png",
-    description: "Premium quality meats from Kenya's trusted brand",
+    description: "Quality meats from Kenya's trusted brand",
     color: "#A31621", // Red theme
     subcategories: [
       { name: "Sausages", image: "/images/sausages.jpg", products: 24 },
@@ -28,7 +28,7 @@ const mainCategories = [
     description: "Gourmet cuts for the discerning palate",
     color: "#4C7A34", // Green theme
     subcategories: [
-      { name: "Premium Steaks", image: "/images/steaks.jpg", products: 16 },
+      { name: "Steaks", image: "/images/steaks.jpg", products: 16 },
       { name: "Ribs", image: "/images/ribs.jpg", products: 12 },
       { name: "Burgers", image: "/images/burgers.jpg", products: 20 },
       { name: "Minced Meat", image: "/images/minced.jpg", products: 15 },
@@ -40,7 +40,7 @@ const mainCategories = [
     name: "Sultanmabi Select",
     path: "/sultanmabi-select",
     image: "/images/sultanlogo.jpg",
-    description: "Exclusive handpicked selections for premium dining",
+    description: "Exclusive handpicked selections for fine dining",
     color: "#102542", // Blue theme
     subcategories: [
       { name: "Marinated Meats", image: "/images/marinated.jpg", products: 22 },
@@ -147,7 +147,7 @@ function Categories() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Premium Meat Categories
+            Quality Meat Categories
           </motion.h1>
           <motion.p 
             className="text-xl text-white/90 max-w-2xl mx-auto mb-10 text-center"
@@ -155,7 +155,7 @@ function Categories() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            Explore our premium selections from trusted brands
+            Explore our quality selections from trusted brands
           </motion.p>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
@@ -275,7 +275,7 @@ function Categories() {
               Featured Products
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
-              Customer favorites from our premium meat selection
+              Customer favorites from our quality meat selection
             </p>
           </div>
 
@@ -373,7 +373,7 @@ function Categories() {
               </h2>
               <p className="text-white/90 mb-6 max-w-2xl">
                 Sign up now and receive an exclusive discount on your first meat purchase. 
-                Premium quality at unbeatable prices.
+                Quality at unbeatable prices.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <input 

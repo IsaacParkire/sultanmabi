@@ -13,7 +13,7 @@ function HomeAbout() {
     {
       icon: <FaStar className="w-8 h-8" />,
       title: "Quality Commitment",
-      description: "Every cut inspected by master butchers for premium quality"
+      description: "Every cut inspected by master butchers for quality"
     },
     {
       icon: <FaTruck className="w-8 h-8" />,
@@ -57,11 +57,11 @@ function HomeAbout() {
             </div>
             
             <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#102542]">
-              Premium Meats, <span className="text-[#A31621]">Exceptional Quality</span>
+              Quality Meats, <span className="text-[#A31621]">Exceptional Quality</span>
             </h2>
             
             <p className="text-lg text-[#102542] mb-6 leading-relaxed">
-              At <span className="font-semibold text-[#A31621]">Sultanmabi</span>, we're dedicated to delivering the finest quality meats from trusted suppliers to your table. We prioritize freshness, flavor, and reliability—making every meal a premium experience.
+              At <span className="font-semibold text-[#A31621]">Sultanmabi</span>, we're dedicated to delivering the finest quality meats from trusted suppliers to your table. We prioritize freshness, flavor, and reliability—making every meal an exceptional experience.
             </p>
             
             <p className="text-lg text-[#102542] mb-8 leading-relaxed">

@@ -21,28 +21,18 @@ export default function Newsletter() {
       setTimeout(() => setIsSubscribed(false), 5000);
     }, 1500);
   };
-
   return (
-    <div className="relative py-16 overflow-hidden bg-gradient-to-br from-[#102542] to-[#1a3a5f]">
-      {/* Decorative elements */}
+    <div className="relative py-8 overflow-hidden bg-gradient-to-r from-[#A31621] to-[#102542]">
+      {/* Simplified decorative elements */}
       <div className="absolute inset-0 z-0">
-        <div className="absolute top-0 left-0 w-64 h-64 bg-[#A31621]/10 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#4C7A34]/10 rounded-full blur-3xl"></div>
-        <div className="absolute top-1/4 right-1/4 w-40 h-40 bg-white/5 rounded-full blur-2xl"></div>
+        <div className="absolute top-0 right-0 w-40 h-40 bg-white/5 rounded-full blur-2xl"></div>
+        <div className="absolute bottom-0 left-0 w-32 h-32 bg-white/10 rounded-full blur-xl"></div>
       </div>
       
-      {/* Pattern overlay */}
-      <div 
-        className="absolute inset-0 z-0 opacity-10"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E")`
-        }}
-      ></div>
-      
       <div className="relative z-10 max-w-4xl mx-auto px-4">
-        <div className="text-center mb-10">
+        <div className="text-center mb-6">
           <motion.h2 
-            className="text-3xl md:text-4xl font-bold text-white mb-4"
+            className="text-2xl md:text-3xl font-bold text-white mb-2"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -50,26 +40,24 @@ export default function Newsletter() {
             Join Our Meat Lovers Club
           </motion.h2>
           <motion.p 
-            className="text-lg text-white/90 max-w-2xl mx-auto"
+            className="text-sm md:text-base text-white/90 max-w-xl mx-auto"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            Subscribe to get exclusive offers, new product alerts, and grilling tips from our master butchers
+            Get exclusive offers, new product alerts, and grilling tips
           </motion.p>
-        </div>
-
-        {isSubscribed ? (
+        </div>        {isSubscribed ? (
           <motion.div
-            className="bg-white/10 backdrop-blur-sm p-8 rounded-2xl text-center border border-white/20 max-w-xl mx-auto"
+            className="bg-white/15 backdrop-blur-sm p-6 rounded-xl text-center border border-white/20 max-w-lg mx-auto"
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <div className="text-green-400 text-6xl mb-4">✓</div>
-            <h3 className="text-2xl font-bold text-white mb-2">Welcome to the Club!</h3>
-            <p className="text-white/90 mb-6">
-              Thank you for subscribing to our newsletter. Check your inbox for a special welcome offer.
+            <div className="text-white text-4xl mb-3">✓</div>
+            <h3 className="text-xl font-bold text-white mb-2">Welcome to the Club!</h3>
+            <p className="text-white/90 mb-4 text-sm">
+              Thank you for subscribing. Check your inbox for a special welcome offer.
             </p>
             <button 
               onClick={() => setIsSubscribed(false)}
@@ -81,7 +69,7 @@ export default function Newsletter() {
         ) : (
           <motion.form
             onSubmit={handleSubmit}
-            className="flex flex-col sm:flex-row gap-4 max-w-2xl mx-auto"
+            className="flex flex-col sm:flex-row gap-3 max-w-xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.4 }}
@@ -92,12 +80,12 @@ export default function Newsletter() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                placeholder="Your best email address"
-                className="w-full px-5 py-4 rounded-xl text-gray-800 focus:outline-none focus:ring-2 focus:ring-[#A31621] shadow-lg"
+                placeholder="Your email address"
+                className="w-full px-4 py-3 rounded-lg text-[#102542] bg-white focus:outline-none focus:ring-2 focus:ring-white shadow-lg placeholder-gray-500"
                 disabled={isLoading}
               />
               <svg 
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" 
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" 
                 fill="none" 
                 stroke="currentColor" 
                 viewBox="0 0 24 24"
@@ -108,23 +96,23 @@ export default function Newsletter() {
             
             <button 
               type="submit"
-              className={`px-8 py-4 rounded-xl font-medium shadow-lg transform transition-all duration-300 ${
+              className={`px-6 py-3 rounded-lg font-medium shadow-lg transform transition-all duration-300 text-white ${
                 isLoading 
                   ? "bg-gray-600 cursor-not-allowed" 
-                  : "bg-[#A31621] hover:bg-[#8a1220] hover:scale-105"
+                  : "bg-[#102542] hover:bg-[#0d1f36] hover:scale-105"
               }`}
               disabled={isLoading}
             >
               {isLoading ? (
                 <div className="flex items-center justify-center">
-                  <div className="w-5 h-5 border-t-2 border-white border-solid rounded-full animate-spin mr-2"></div>
+                  <div className="w-4 h-4 border-t-2 border-white border-solid rounded-full animate-spin mr-2"></div>
                   Subscribing...
                 </div>
               ) : (
                 <div className="flex items-center">
-                  Subscribe Now 
+                  Subscribe
                   <svg 
-                    className="ml-2 w-5 h-5" 
+                    className="ml-2 w-4 h-4" 
                     fill="none" 
                     stroke="currentColor" 
                     viewBox="0 0 24 24"
@@ -135,36 +123,39 @@ export default function Newsletter() {
               )}
             </button>
           </motion.form>
-        )}
-        
+        )}        
         <motion.p 
-          className="text-center text-white/60 text-sm mt-6 max-w-2xl mx-auto"
+          className="text-center text-white/70 text-xs mt-4 max-w-lg mx-auto"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.6 }}
         >
-          By subscribing, you agree to receive marketing emails. We respect your privacy - unsubscribe anytime.
+          By subscribing, you agree to receive marketing emails. Unsubscribe anytime.
         </motion.p>
         
         <motion.div 
-          className="flex justify-center mt-10 gap-6"
+          className="flex justify-center mt-6 gap-4"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.8 }}
         >
-          <div className="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
-            <div className="bg-gray-200 border-2 border-dashed rounded-xl w-8 h-8 mr-2" />
+          <div className="flex items-center bg-white/10 backdrop-blur-sm px-3 py-2 rounded-lg">
+            <div className="bg-white/20 rounded-lg w-6 h-6 mr-2 flex items-center justify-center">
+              <span className="text-white text-xs font-bold">%</span>
+            </div>
             <div>
-              <div className="text-xs text-white/80">First subscriber gift</div>
-              <div className="text-white font-medium">15% OFF</div>
+              <div className="text-xs text-white/80">Welcome gift</div>
+              <div className="text-white font-medium text-sm">15% OFF</div>
             </div>
           </div>
           
-          <div className="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
-            <div className="bg-gray-200 border-2 border-dashed rounded-xl w-8 h-8 mr-2" />
+          <div className="flex items-center bg-white/10 backdrop-blur-sm px-3 py-2 rounded-lg">
+            <div className="bg-white/20 rounded-lg w-6 h-6 mr-2 flex items-center justify-center">
+              <span className="text-white text-xs">📧</span>
+            </div>
             <div>
-              <div className="text-xs text-white/80">Monthly exclusive</div>
-              <div className="text-white font-medium">Recipes & Tips</div>
+              <div className="text-xs text-white/80">Monthly</div>
+              <div className="text-white font-medium text-sm">Tips & Recipes</div>
             </div>
           </div>
         </motion.div>

@@ -94,6 +94,7 @@ export default {
         'slide-left': 'slideLeft 0.5s ease-out',
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'bounce-slow': 'bounce 2s infinite',
+        'shimmer': 'shimmer 2s linear infinite',
       },
       
       keyframes: {
@@ -108,6 +109,10 @@ export default {
         slideLeft: {
           '0%': { transform: 'translateX(20px)', opacity: '0' },
           '100%': { transform: 'translateX(0)', opacity: '1' },
+        },
+        shimmer: {
+          '0%': { backgroundPosition: '-200% 0' },
+          '100%': { backgroundPosition: '200% 0' },
         },
         pulse: {
           '0%, 100%': { opacity: '1' },

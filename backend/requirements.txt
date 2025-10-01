@@ -1,0 +1,11 @@
+Django>=5.0.0
+djangorestframework
+djangorestframework-simplejwt
+django-cors-headers
+django-filter
+django-health-check
+drf-yasg
+psycopg2-binary
+python-dotenv
+requests
+Pillow

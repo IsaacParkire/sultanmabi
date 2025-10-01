@@ -1,57 +1,49 @@
 import { motion } from "framer-motion";
-import { FaMapMarkerAlt, FaClock, FaPhone, FaLeaf, FaTruck, FaStar } from "react-icons/fa";
+import { FaMapMarkerAlt, FaClock, FaPhone, FaLeaf, FaTruck, FaStar, FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
-function About() {
-  // Team members data
+function About() {  // Team members data
   const teamMembers = [
     {
-      name: "Michael Johnson",
+      name: "Team Member 1",
       role: "Head Butcher",
-      bio: "20+ years of experience in premium meat selection and preparation.",
+      bio: "20+ years of experience in quality meat selection and preparation.",
       image: "/images/team1.jpg"
     },
     {
-      name: "Sarah Williams",
+      name: "Team Member 2",
       role: "Quality Control",
       bio: "Ensures every product meets our rigorous standards for freshness and quality.",
       image: "/images/team2.jpg"
     },
     {
-      name: "David Kimani",
+      name: "Team Member 3",
       role: "Customer Relations",
       bio: "Dedicated to ensuring our customers receive exceptional service.",
       image: "/images/team3.jpg"
     },
     {
-      name: "Grace Omondi",
+      name: "Team Member 4",
       role: "Logistics Manager",
       bio: "Manages our cold chain to guarantee freshness from farm to doorstep.",
       image: "/images/team4.jpg"
     }
   ];
-
   // Shop locations data
   const locations = [
     {
-      name: "Westlands Flagship",
-      address: "Westgate Shopping Mall, 3rd Floor",
+      name: "Petrocity Nyali",
+      address: "Petrocity Mall, Nyali, Mombasa",
       hours: "Mon-Sat: 8am-8pm, Sun: 9am-6pm",
       phone: "+254 712 345 678",
-      features: ["Butchery Counter", "Cooking Classes", "Tasting Room"]
+      features: ["Fresh Meat Counter", "Cold Storage", "Quality Cuts", "Halal Certified"]
     },
     {
-      name: "Karen Boutique",
-      address: "Karen Hub, Next to ArtCaffe",
-      hours: "Mon-Sat: 9am-7pm, Sun: 10am-5pm",
+      name: "Ukunda Diani",
+      address: "Ukunda Shopping Center, Diani",
+      hours: "Mon-Sat: 8am-7pm, Sun: 9am-5pm",
       phone: "+254 734 567 890",
-      features: ["Specialty Cuts", "Gourmet Products", "Wine Pairing"]
-    },
-    {
-      name: "CBD Express",
-      address: "Koinange Street, Nation Centre",
-      hours: "Mon-Fri: 7am-7pm, Sat: 8am-5pm",
-      phone: "+254 720 987 654",
-      features: ["Quick Pickup", "Lunch Specials", "Corporate Orders"]
+      features: ["Specialty Cuts", "Farmer's Choice Products", "Fresh Sausages", "Local Delivery"]
     }
   ];
 
@@ -65,7 +57,7 @@ function About() {
     {
       icon: <FaStar className="w-8 h-8" />,
       title: "Quality Commitment",
-      description: "Every cut is inspected by our master butchers to ensure premium quality and freshness."
+      description: "Every cut is inspected by our master butchers to ensure quality and freshness."
     },
     {
       icon: <FaTruck className="w-8 h-8" />,
@@ -99,7 +91,7 @@ function About() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 0.8 }}
             >
-              Discover the journey, values, and people behind Sultanmabi's commitment to premium meats
+              Discover the journey, values, and people behind Sultanmabi's commitment to quality meats
             </motion.p>
           </motion.div>
         </div>
@@ -120,17 +112,12 @@ function About() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 1 }}
             viewport={{ once: true }}
-          >
-            <div className="relative">
+          >            <div className="relative">
               <img
                 src="/images/about.jpeg"
                 alt="About Us"
                 className="rounded-3xl shadow-artcaffe-lg border-4 border-[#A31621]"
               />
-              <div className="absolute -bottom-6 -right-6 bg-[#102542] text-[#FCF7F8] py-4 px-8 rounded-xl shadow-lg">
-                <p className="text-xl font-bold">Since 2010</p>
-                <p className="text-sm">Serving premium meats</p>
-              </div>
             </div>
           </motion.div>
 
@@ -146,7 +133,7 @@ function About() {
               About <span className="text-[#102542]">Sultanmabi</span>
             </h2>
             <p className="text-lg text-[#102542] mb-6 leading-relaxed">
-              At <span className="font-semibold text-[#A31621]">Sultanmabi</span>, we're committed to delivering the finest quality meats from trusted Farmer's Choice suppliers to your table. We prioritize freshness, flavor, and reliability—making every meal a premium experience.
+              At <span className="font-semibold text-[#A31621]">Sultanmabi</span>, we're committed to delivering the finest quality meats from trusted Farmer's Choice suppliers to your table. We prioritize freshness, flavor, and reliability—making every meal an exceptional experience.
             </p>
             <p className="text-lg text-[#102542] mb-8 leading-relaxed">
               Whether you're preparing a family dinner or running a busy kitchen, we're here to serve quality cuts, sausages, fish, pork, and more—quickly and conveniently.
@@ -199,11 +186,11 @@ function About() {
               transition={{ delay: 0.3, duration: 0.8 }}
               viewport={{ once: true }}
             >
-              Visit us at one of our premium locations for an exceptional meat-buying experience
+              Visit us at one of our quality locations for an exceptional meat-buying experience
             </motion.p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
             {locations.map((location, index) => (
               <motion.div
                 key={index}
@@ -429,6 +416,121 @@ function About() {
               <p className="text-[#102542] max-w-md mx-auto">
                 We're committed to environmentally responsible practices throughout our supply chain and operations.
               </p>
+            </motion.div>          </div>
+        </div>
+      </section>
+
+      {/* Social Media & Connect Section */}
+      <section className="py-20 bg-gradient-to-br from-[#102542] to-[#A31621]">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <motion.h2 
+              className="text-4xl md:text-5xl font-bold mb-4 text-[#FCF7F8]"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              Stay Connected
+            </motion.h2>
+            <motion.p 
+              className="text-xl text-[#FCF7F8]/90 max-w-2xl mx-auto"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              Follow us on social media for the latest updates, special offers, and meat preparation tips
+            </motion.p>
+          </div>
+
+          <div className="flex flex-col items-center space-y-8">
+            {/* Social Media Icons */}
+            <motion.div 
+              className="flex space-x-6"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <motion.a
+                href="#" 
+                className="bg-[#FCF7F8]/10 backdrop-blur-sm border border-[#FCF7F8]/20 rounded-full p-4 text-[#FCF7F8] hover:bg-[#1877F2] hover:border-[#1877F2] transition-all duration-300 group"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <FaFacebook className="w-6 h-6" />
+              </motion.a>
+              
+              <motion.a
+                href="#" 
+                className="bg-[#FCF7F8]/10 backdrop-blur-sm border border-[#FCF7F8]/20 rounded-full p-4 text-[#FCF7F8] hover:bg-gradient-to-br hover:from-[#E4405F] hover:to-[#F56040] hover:border-[#E4405F] transition-all duration-300 group"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <FaInstagram className="w-6 h-6" />
+              </motion.a>
+              
+              <motion.a
+                href="#" 
+                className="bg-[#FCF7F8]/10 backdrop-blur-sm border border-[#FCF7F8]/20 rounded-full p-4 text-[#FCF7F8] hover:bg-[#000000] hover:border-[#000000] transition-all duration-300 group"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <FaXTwitter className="w-6 h-6" />
+              </motion.a>
+              
+              <motion.a
+                href="#" 
+                className="bg-[#FCF7F8]/10 backdrop-blur-sm border border-[#FCF7F8]/20 rounded-full p-4 text-[#FCF7F8] hover:bg-[#25D366] hover:border-[#25D366] transition-all duration-300 group"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <FaWhatsapp className="w-6 h-6" />
+              </motion.a>
+            </motion.div>
+
+            {/* Newsletter Signup */}
+            <motion.div 
+              className="bg-[#FCF7F8]/10 backdrop-blur-sm border border-[#FCF7F8]/20 rounded-2xl p-8 max-w-md w-full text-center"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <h3 className="text-2xl font-bold text-[#FCF7F8] mb-4">Get Weekly Updates</h3>
+              <p className="text-[#FCF7F8]/90 mb-6">
+                Subscribe to our newsletter for special offers and meat preparation tips
+              </p>
+              <div className="flex space-x-3">
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                  className="flex-1 px-4 py-3 rounded-full bg-[#FCF7F8] text-[#102542] placeholder-[#102542]/60 focus:outline-none focus:ring-2 focus:ring-[#A31621]"
+                />
+                <button className="bg-[#A31621] hover:bg-[#8a121c] text-[#FCF7F8] px-6 py-3 rounded-full font-bold transition-all duration-300 whitespace-nowrap">
+                  Subscribe
+                </button>
+              </div>
+            </motion.div>
+
+            {/* Contact CTA */}
+            <motion.div 
+              className="text-center"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: 0.6, duration: 0.8 }}
+              viewport={{ once: true }}
+            >
+              <p className="text-[#FCF7F8]/90 mb-4">
+                Have questions? We'd love to hear from you!
+              </p>
+              <a 
+                href="tel:+254712345678"
+                className="inline-block bg-[#FCF7F8] text-[#102542] hover:bg-[#FCF7F8]/90 px-8 py-3 rounded-full font-bold shadow-lg transition-all duration-300"
+              >
+                Call Us Now
+              </a>
             </motion.div>
           </div>
         </div>

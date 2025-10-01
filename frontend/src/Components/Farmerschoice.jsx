@@ -3,1590 +3,1711 @@ import { CartContext } from "../context/CartContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Heart } from "lucide-react";
 
-// Complete product catalog with all items
-const categories = [
-  {
+// Complete product catalog with all items from refined price list
+const categories = [  {
     id: "continentals",
     name: "Continentals",
     products: [
       {
-        id: "continental-1",
-        name: "Beef continental salami",
-        description: "Assorted premium Italian cured meats",
-        image: "/images/continentals/Beefcontinentalsalami.png",
-        price: 2400,
-        weight: "200gms",
-      },
-      {
-        id: "continental-2",
-        name: "BEEF GARLIC SALAMI",
-        description: "Luxurious duck and chicken liver pâtés",
-        image: "/images/continentals/Beefgarlicsalami.png",
-        price: 1800,
+        id: "garlic-salami-200g",
+        name: "Garlic Salami 200gms",
+        description: "Quality garlic salami",
+        image: "/images/continentals/GarlicSalami.png",
+        price: 350,
         weight: "200g",
       },
       {
-        id: "continental-3",
-        name: "German Bratwurst",
-        description: "Traditional German sausage",
-        image: "/images/continentals/BeefViennas500g.png",
-        price: 1500,
-        weight: "600g",
-      },
-      {
-        id: "continental-4",
-        name: "Beef Viennas 500gms",
-        description: "Premium acorn-fed ham",
-        image: "/images/continentals/BeefViennas500gms.png",
-        price: 3500,
-        weight: "300g",
-      },
-      {
-        id: "continental-5",
-        name: "FCL Poultry Viennas",
-        description: "Assorted Swiss cheeses",
-        image: "/images/continentals/FCLPoultryViennas.png",
-        price: 2200,
-        weight: "500g",
-      },
-      {
-        id: "continental-6",
-        name: "Garlic Salami ",
-        description: "Kalamata and green olives",
+        id: "garlic-salami-bulk",
+        name: "Garlic Salami - Bulk 1-1.5kg",
+        description: "Bulk garlic salami",
         image: "/images/continentals/GarlicSalami.png",
-        price: 950,
-        weight: "400g",
-      },
-      {
-        id: "continental-7",
-        name: "Italian Salami ",
-        description: "Cured meats, cheeses and vegetables",
-        image: "/images/continentals/ItalianSalami.png",
-        price: 2800,
-        weight: "750g",
-      },
-      {
-        id: "continental-8",
-        name: "Polony 200g",
-        description: "Creamy French brie cheese",
-        image: "/images/continentals/Polony200g.png",
-        price: 1600,
-        weight: "400g",
-      },
-      {
-        id: "continental-9",
-        name: "Pork Frankfurter 500g",
-        description: "Traditional Bavarian pretzels",
-        image: "/images/continentals/PorkFrankfurter500g.png",
-        price: 800,
-        weight: "300g",
-      },
-      {
-        id: "continental-10",
-        name: "Pork Frankfurter XL 1kg Export",
-        description: "Aged sheep's milk cheese",
-        image: "/images/continentals/PorkFrankfurterXL1kgExport.png",
-        price: 1900,
-        weight: "350g",
-      },
-      {
-        id: "continental-11",
-        name: "Pork Frankfurters 250g",
-        description: "Dry-cured ham",
-        image: "/images/continentals/PorkFrankfurters250g.png",
-        price: 2700,
-        weight: "300g",
-      },
-      {
-        id: "continental-12",
-        name: "Pork Frankfurters 500g",
-        description: "Slow-cooked duck leg",
-        image: "/images/continentals/PorkFrankfurters500g.png",
-        price: 2300,
-        weight: "500g",
-      },
-      {
-        id: "continental-13",
-        name: "Poultry  Vienna 1kg ",
-        description: "Smoked premium ham",
-        image: "/images/continentals/PoultryVienna1kg.png",
-        price: 2100,
+        price: 1350,
         weight: "1kg",
       },
       {
-        id: "continental-14",
-        name: "Poultry Viennas 250g",
-        description: "Spicy cured sausage",
-        image: "/images/continentals/PoultryViennas250g.png",
-        price: 1700,
-        weight: "250g",
-      },
-      {
-        id: "continental-15",
-        name: "Smokie Updated3",
-        description: "Bologna sausage with pistachios",
-        image: "/images/continentals/SmokieUpdated3.png",
-        price: 1400,
-        weight: "500g",
-      },
-      {
-        id: "continental-16",
-        name: "Smokies 1kg",
-        description: "Soft ripened cheese",
-        image: "/images/continentals/Smokies1kg.png",
-        price: 1500,
-        weight: "250g",
-      },
-      {
-        id: "continental-17",
-        name: "Smokies 900g",
-        description: "Fermented cabbage",
-        image: "/images/continentals/Smokies900g.png",
-        price: 700,
-        weight: "500g",
-      },
-      {
-        id: "continental-18",
-        name: "Polony 200g_",
-        description: "Marinated in olive oil",
-        image: "/images/continentals/Polony200g_.jpg",
-        price: 1200,
+        id: "beef-garlic-salami-200g",
+        name: "Beef Garlic Salami 200gms",
+        description: "Quality beef garlic salami",
+        image: "/images/continentals/Beefgarlicsalami.png",
+        price: 350,
         weight: "200g",
-      }
-    ]
-  },
-  {
+      },
+      {
+        id: "beef-garlic-salami-bulk",
+        name: "Beef Garlic Salami -Bulk 1.5kg",
+        description: "Bulk beef garlic salami",
+        image: "/images/continentals/Beefgarlicsalami.png",
+        price: 1350,
+        weight: "1kg",
+      },
+      {
+        id: "hungarian-salami-200g",
+        name: "Hungarian Salami 200gms",
+        description: "Traditional Hungarian salami",
+        image: "/images/continentals/ItalianSalami.png",
+        price: 420,
+        weight: "200g",
+      },
+      {
+        id: "hungarian-salami-bulk",
+        name: "Hungarian Salami, Bulk",
+        description: "Bulk Hungarian salami",
+        image: "/images/continentals/ItalianSalami.png",
+        price: 1350,
+        weight: "1kg",
+      },
+      {
+        id: "italian-salami-100g",
+        name: "Italian (Dry) Pork Salami 100g",
+        description: "Italian dry pork salami",
+        image: "/images/continentals/ItalianSalami.png",
+        price: 700,
+        weight: "100g",
+      },
+      {
+        id: "italian-pork-dry-salami-bulk",
+        name: "Italian Pork Dry Salami 1-1.5k",
+        description: "Bulk Italian pork dry salami",
+        image: "/images/continentals/ItalianSalami.png",
+        price: 3400,
+        weight: "1kg",
+      },
+      {
+        id: "polony-200g",
+        name: "Polony 200gms",
+        description: "Quality polony",
+        image: "/images/continentals/Polony200g.png",
+        price: 250,
+        weight: "200g",
+      },
+      {
+        id: "polony-bulk",
+        name: "Polony, Bulk 2-2.5kg",
+        description: "Bulk polony",
+        image: "/images/continentals/Polony200g.png",
+        price: 965,
+        weight: "1kg",
+      },
+      {
+        id: "beef-polony-200g",
+        name: "Beef Polony 200gms",
+        description: "Quality beef polony",
+        image: "/images/continentals/Polony200g.png",
+        price: 250,
+        weight: "200g",
+      },
+      {
+        id: "beef-polony-bulk",
+        name: "Beef Polony, Bulk 2-2.5kg",
+        description: "Bulk beef polony",
+        image: "/images/continentals/Polony200g.png",
+        price: 950,
+        weight: "1kg",
+      },
+      {
+        id: "chicken-polony-bulk",
+        name: "Chicken Polony, Bulk 2-2.5kg",
+        description: "Bulk chicken polony",
+        image: "/images/continentals/Polony200g.png",
+        price: 950,
+        weight: "1kg",
+      },
+      {
+        id: "chicken-sandwich-slices-200g",
+        name: "Chicken Sandwich Slices, 200gm",
+        description: "Chicken sandwich slices",
+        image: "/images/continentals/Polony200g.png",
+        price: 300,
+        weight: "200g",
+      },
+      {
+        id: "chicken-sandwich-bulk",
+        name: "Chicken Sandwich, Bulk 2-2.5kg",
+        description: "Bulk chicken sandwich",
+        image: "/images/continentals/Polony200g.png",
+        price: 990,
+        weight: "1kg",
+      },
+      {
+        id: "black-pudding-125g",
+        name: "Black Pudding 125gms",
+        description: "Traditional black pudding",
+        image: "/images/continentals/Polony200g.png",
+        price: 70,
+        weight: "125g",
+      },
+      {
+        id: "black-pudding-bulk",
+        name: "Black Pudding- Bulk 1-1.5kg",
+        description: "Bulk black pudding",
+        image: "/images/continentals/Polony200g.png",
+        price: 480,
+        weight: "1kg",
+      },
+      {
+        id: "frankfurters-250g",
+        name: "Frankfurters 250gms",
+        description: "Quality frankfurters",
+        image: "/images/continentals/PorkFrankfurters250g.png",
+        price: 260,
+        weight: "250g",
+      },
+      {
+        id: "frankfurters-500g",
+        name: "Frankfurters 500gms",
+        description: "Quality frankfurters",
+        image: "/images/continentals/PorkFrankfurter500g.png",
+        price: 480,
+        weight: "500g",
+      },
+      {
+        id: "frankfurters-500g-ex-long",
+        name: "Frankfurters 500gms(ex-long)",
+        description: "Extra long frankfurters",
+        image: "/images/continentals/PorkFrankfurterXL1kg Export.png",
+        price: 480,
+        weight: "500g",
+      },
+      {
+        id: "frankfurters-1kg-ex-long",
+        name: "Frankfurters 1kg (ex-long)",
+        description: "Extra long frankfurters 1kg",
+        image: "/images/continentals/PorkFrankfurterXL1kg Export.png",
+        price: 920,
+        weight: "1kg",
+      },
+      {
+        id: "beef-viennas-250g",
+        name: "Beef Viennas 250gms",
+        description: "Quality beef viennas",
+        image: "/images/continentals/BeefViennas500gms.png",
+        price: 260,
+        weight: "250g",
+      },
+      {
+        id: "beef-vienna-500g",
+        name: "Beef Vienna, 500gms",
+        description: "Quality beef vienna",
+        image: "/images/continentals/BeefViennas500gms.png",
+        price: 480,
+        weight: "500g",
+      },
+      {
+        id: "beef-viennas-500g-ex-long",
+        name: "Beef Viennas, 500gms Ex-long)",
+        description: "Extra long beef viennas",
+        image: "/images/continentals/BeefViennas500gms.png",
+        price: 480,
+        weight: "500g",
+      },
+      {
+        id: "beef-viennas-1kg-extra-long",
+        name: "Beef Viennas 1kg (Extra Long)",
+        description: "Extra long beef viennas 1kg",
+        image: "/images/continentals/BeefViennas500gms.png",
+        price: 920,
+        weight: "1kg",
+      },
+      {
+        id: "poultry-viennas-250g",
+        name: "Poultry Viennas 250gms",
+        description: "Quality poultry viennas",
+        image: "/images/continentals/FCLPoultryViennas.png",
+        price: 260,
+        weight: "250g",
+      },
+      {
+        id: "poultry-vienna-500g",
+        name: "Poultry Vienna 500gms",
+        description: "Quality poultry vienna",
+        image: "/images/continentals/PoultryVienna1kg.png",
+        price: 480,
+        weight: "500g",
+      },
+      {
+        id: "poultry-vienna-ex-long-500g",
+        name: "Poultry Vienna Ex-long 500gms",
+        description: "Extra long poultry vienna",
+        image: "/images/continentals/PoultryVienna1kg.png",
+        price: 480,
+        weight: "500g",
+      },
+      {
+        id: "poultry-vienna-ex-long-1kg",
+        name: "Poultry Vienna Ex-long 1kg",
+        description: "Extra long poultry vienna 1kg",
+        image: "/images/continentals/PoultryVienna1kg.png",
+        price: 920,
+        weight: "1kg",
+      },
+    ],
+  },{
     id: "delicatessen",
     name: "Delicatessen",
     products: [
       {
-        id: "delicatessen-1",
-        name: "Beef Choma Sausages",
-        description: "Aged Italian dry-cured ham",
-        image: "/images/Delicatessen/BeefChomaSausages.png",
-        price: 3200,
-        weight: "300g",
+        id: "liver-pate-125g",
+        name: "Liver Pate (Leberwurst) 125gms",
+        description: "Traditional liver pate",
+        image: "/images/Delicatessen/Bratwurst.png",
+        price: 180,
+        weight: "125g",
       },
       {
-        id: "delicatessen-2",
-        name: "Beef Pastarami",
-        description: "Spicy cured sausage with smoked paprika",
-        image: "/images/Delicatessen/BeefPastarami.png",
-        price: 1500,
+        id: "pork-choma-sausage-500g",
+        name: "Pork Choma Sausage 500gms",
+        description: "Traditional pork choma sausage",
+        image: "/images/Delicatessen/BeefChomaSausages.png",
+        price: 450,
+        weight: "500g",
+      },
+      {
+        id: "pork-choma-sausage-1kg",
+        name: "Pork Choma Sausage 1kg",
+        description: "Traditional pork choma sausage",
+        image: "/images/Delicatessen/BeefChomaSausages.png",
+        price: 930,
+        weight: "1kg",
+      },
+      {
+        id: "beef-choma-sausage-1kg",
+        name: "Beef Choma Sausage 1kg",
+        description: "Traditional beef choma sausage",
+        image: "/images/Delicatessen/BeefChomaSausages.png",
+        price: 930,
+        weight: "1kg",
+      },
+      {
+        id: "servelat-ex-long-500g",
+        name: "Servelat Ex-Long 500gms",
+        description: "Extra long servelat",
+        image: "/images/Delicatessen/Servelat500GMS.png",
+        price: 430,
+        weight: "500g",
+      },
+      {
+        id: "danish-pork-hotdogs-500g",
+        name: "Danish Pork Hotdogs 500gms",
+        description: "Authentic Danish pork hotdogs",
+        image: "/images/Delicatessen/DanishHotdog.png",
+        price: 345,
+        weight: "500g",
+      },
+      {
+        id: "bratwurst-1kg",
+        name: "Bratwurst 1kg",
+        description: "Traditional German bratwurst",
+        image: "/images/Delicatessen/Bratwurst.png",
+        price: 1650,
+        weight: "1kg",
+      },
+      {
+        id: "pepperoni-sliced-1kg",
+        name: "Pepperoni - Sliced 1kg",
+        description: "Sliced pepperoni",
+        image: "/images/Delicatessen/PepperoniBulk-01.png",
+        price: 1950,
+        weight: "1kg",
+      },
+      {
+        id: "kabanosi-400g",
+        name: "Kabanosi 400gms",
+        description: "Polish kabanos sausage",
+        image: "/images/Delicatessen/Kabanos400gms.png",
+        price: 350,
         weight: "400g",
       },
       {
-        id: "delicatessen-3",
-        name: "Bratwurst",
-        description: "Luxury duck liver pâté",
-        image: "/images/Delicatessen/Bratwurst.png",
-        price: 4200,
+        id: "krainer-cheese-400g",
+        name: "Krainer With Cheese 400gms",
+        description: "Krainer sausage with cheese",
+        image: "/images/Delicatessen/KrainerwithCheese400gms.png",
+        price: 320,
+        weight: "400g",
+      },
+      {
+        id: "krainer-cheese-1kg",
+        name: "Krainer With Cheese 1kg",
+        description: "Krainer sausage with cheese",
+        image: "/images/Delicatessen/KrainerwithCheese400gms.png",
+        price: 800,
+        weight: "1kg",
+      },
+    ],
+  },{
+    id: "sausages",
+    name: "Sausages",
+    products: [
+      // Pork Sausages
+      {
+        id: "pork-chipolatas-200g",
+        name: "Pork Chipolatas 200gms",
+        description: "Quality pork chipolatas",
+        image: "/images/FCLSausagesPacks/PorkChipolatas200g.png",
+        price: 190,
         weight: "200g",
       },
       {
-        id: "delicatessen-4",
-        name: "choma sausages copy",
-        description: "Italian salami with black truffle",
-        image: "/images/Delicatessen/chomasausagescopy.png",
-        price: 2800,
-        weight: "350g",
+        id: "pork-chipolatas-1kg",
+        name: "Pork Chipolatas 1kg",
+        description: "Quality pork chipolatas",
+        image: "/images/FCLSausagesPacks/PorkChipolatas1kg.png",
+        price: 850,
+        weight: "1kg",
       },
       {
-        id: "delicatessen-5",
-        name: "Danish Hotdog",
-        description: "Spanish dry-cured ham",
-        image: "/images/Delicatessen/DanishHotdog.png",
-        price: 2900,
-        weight: "300g",
-      },
-      {
-        id: "delicatessen-6",
-        name: "FC Kassler",
-        description: "Norwegian cold-smoked salmon",
-        image: "/images/Delicatessen/FCKassler.png",
-        price: 2500,
-        weight: "250g",
-      },
-      {
-        id: "delicatessen-7",
-        name: "Kabanos 400gms",
-        description: "Game meat sausage with juniper",
-        image: "/images/Delicatessen/Kabanos400gms.png",
-        price: 2100,
+        id: "pork-sausages-400g",
+        name: "Pork Sausages 400gms",
+        description: "Quality pork sausages",
+        image: "/images/FCLSausagesPacks/PremiumPorkSausages400gcopy.png",
+        price: 380,
         weight: "400g",
       },
       {
-        id: "delicatessen-8",
-        name: "Krainer with Cheese 400gms",
-        description: "French preserved duck",
-        image: "/images/Delicatessen/KrainerwithCheese400gms.png",
-        price: 1900,
-        weight: "300g",
+        id: "spicy-pork-sausages-400g",
+        name: "Spicy Pork Sausages 400gms",
+        description: "Spicy pork sausages",
+        image: "/images/FCLSausagesPacks/SpicyPork_.png",
+        price: 420,
+        weight: "400g",
       },
       {
-        id: "delicatessen-9",
-        name: "Pepperoni Bulk-01",
-        description: "Italian wild boar salami",
-        image: "/images/Delicatessen/PepperoniBulk-01.png",
-        price: 2300,
-        weight: "350g",
+        id: "low-fat-pork-sausage-400g",
+        name: "Low Fat Pork Sausage 400gms",
+        description: "Low fat pork sausage",
+        image: "/images/FCLSausagesPacks/LowFatPorkSausages.jpg",
+        price: 420,
+        weight: "400g",
       },
       {
-        id: "delicatessen-10",
-        name: "Servelat 500GMS",
-        description: "Brie with black truffle",
-        image: "/images/Delicatessen/Servelat500GMS.png",
-        price: 2600,
-        weight: "250g",
+        id: "pork-garlic-iqf-454g",
+        name: "Pork & Garlic IQF Sausages 454gms",
+        description: "Pork and garlic IQF sausages",
+        image: "/images/FCLSausagesPacks/Pork-&-Garlic-IQF.png",
+        price: 380,
+        weight: "454g",
       },
       {
-        id: "delicatessen-11",
-        name: "FC Kassler",
-        description: "Premium sturgeon caviar",
-        image: "/images/Delicatessen/FCKassler.png",
-        price: 8500,
+        id: "pork-herb-iqf-454g",
+        name: "Pork & Herb IQF Sausages 454gms",
+        description: "Pork and herb IQF sausages",
+        image: "/images/FCLSausagesPacks/IQFPorkSausages.png",
+        price: 360,
+        weight: "454g",
+      },
+      {
+        id: "pork-cumberland-iqf-454g",
+        name: "Pork Cumberland IQF Sausages 454gms",
+        description: "Pork Cumberland IQF sausages",
+        image: "/images/FCLSausagesPacks/IQFPorkSausages.png",
+        price: 360,
+        weight: "454g",
+      },
+      {
+        id: "pork-iqf-454g",
+        name: "Pork IQF Sausages 454gms",
+        description: "Pork IQF sausages",
+        image: "/images/FCLSausagesPacks/IQFPorkSausages.png",
+        price: 450,
+        weight: "454g",
+      },
+      {
+        id: "meaty-pork-sausages-1kg",
+        name: "Meaty Pork Sausages 1kg",
+        description: "Meaty pork sausages",
+        image: "/images/FCLSausagesPacks/MeatyBeefSausages1kg.png",
+        price: 720,
+        weight: "1kg",
+      },
+      {
+        id: "value-pack-pork-sausages-1kg",
+        name: "Value Pack Pork Sausages 1kg",
+        description: "Value pack pork sausages",
+        image: "/images/FCLSausagesPacks/PorkSausagesCatering2.png",
+        price: 680,
+        weight: "1kg",
+      },
+      {
+        id: "spicy-pork-sausages-vp-1kg",
+        name: "Spicy Pork Sausages V/P 1kg",
+        description: "Spicy pork sausages value pack",
+        image: "/images/FCLSausagesPacks/SpicyPork_.png",
+        price: 680,
+        weight: "1kg",
+      },
+      {
+        id: "pork-catering-1kg",
+        name: "Pork Catering (Economy) 1kg",
+        description: "Pork sausages for catering",
+        image: "/images/FCLSausagesPacks/PorkSausagesCatering2.png",
+        price: 680,
+        weight: "1kg",
+      },
+      {
+        id: "classic-pork-sausages-500g",
+        name: "Classic Pork Sausages 500gms",
+        description: "Classic pork sausages",
+        image: "/images/FCLSausagesPacks/ClassicSafari.png",
+        price: 360,
+        weight: "500g",
+      },
+      {
+        id: "boerewors-pork-500g",
+        name: "Boerewors - Pork 500gms",
+        description: "Traditional pork boerewors",
+        image: "/images/FCLSausagesPacks/Boerewors 500g.png",
+        price: 620,
+        weight: "500g",
+      },
+      {
+        id: "pork-sausage-meat-1kg",
+        name: "Pork Sausage Meat 1kg",
+        description: "Pork sausage meat",
+        image: "/images/FCLSausagesPacks/PorkSausagesCatering2.png",
+        price: 830,
+        weight: "1kg",
+      },
+      {
+        id: "pork-sausage-meat-3kg",
+        name: "Pork Sausage Meat 3kgs",
+        description: "Pork sausage meat bulk",
+        image: "/images/FCLSausagesPacks/PorkSausagesCatering2.png",
+        price: 1850,
+        weight: "3kg",
+      },
+      {
+        id: "spicy-pork-sausage-meat-3kg",
+        name: "Spicy Pork Sausage Meat 3kgs",
+        description: "Spicy pork sausage meat bulk",
+        image: "/images/FCLSausagesPacks/SpicyPork_.png",
+        price: 2750,
+        weight: "3kg",
+      },
+      // Beef Sausages
+      {
+        id: "beef-chipolatas-200g",
+        name: "Beef Chipolatas 200gms",
+        description: "Quality beef chipolatas",
+        image: "/images/FCLSausagesPacks/BeefChipolatas1kg.png",
+        price: 200,
+        weight: "200g",
+      },
+      {
+        id: "beef-chipolatas-1kg",
+        name: "Beef Chipolatas 1kg",
+        description: "Quality beef chipolatas",
+        image: "/images/FCLSausagesPacks/BeefChipolatas1kg.png",
+        price: 850,
+        weight: "1kg",
+      },
+      {
+        id: "meaty-beef-sausages-400g",
+        name: "Meaty Beef Sausages 400gms",
+        description: "Meaty beef sausages",
+        image: "/images/FCLSausagesPacks/MeatyBeefSausages400g.png",
+        price: 350,
+        weight: "400g",
+      },
+      {
+        id: "spicy-beef-sausages-400g",
+        name: "Spicy Beef Sausages 400gms",
+        description: "Spicy beef sausages",
+        image: "/images/FCLSausagesPacks/SpicyBeefSausages1KG-01.png",
+        price: 350,
+        weight: "400g",
+      },
+      {
+        id: "low-fat-beef-sausages-400g",
+        name: "Low Fat Beef Sausage 400gms",
+        description: "Low fat beef sausage",
+        image: "/images/FCLSausagesPacks/LowFatBeefSausages.jpg",
+        price: 350,
+        weight: "400g",
+      },
+      {
+        id: "meaty-beef-sausages-1kg",
+        name: "Meaty Beef Sausages 1kg",
+        description: "Meaty beef sausages",
+        image: "/images/FCLSausagesPacks/MeatyBeefSausages1kg.png",
+        price: 850,
+        weight: "1kg",
+      },
+      {
+        id: "spicy-beef-sausages-vp-1kg",
+        name: "Spicy Beef Sausages V/P 1kg",
+        description: "Spicy beef sausages value pack",
+        image: "/images/FCLSausagesPacks/SpicyBeefSausages1KG-01.png",
+        price: 680,
+        weight: "1kg",
+      },
+      {
+        id: "value-pack-beef-sausages-1kg",
+        name: "Value Pack Beef Sausages 1kg",
+        description: "Value pack beef sausages",
+        image: "/images/FCLSausagesPacks/BeefCatering1Kg.png",
+        price: 680,
+        weight: "1kg",
+      },
+      {
+        id: "beef-sausages-economy-1kg",
+        name: "Beef Sausages (Economy) 1kg",
+        description: "Economy beef sausages",
+        image: "/images/FCLSausagesPacks/BeefCatering1Kg.png",
+        price: 680,
+        weight: "1kg",
+      },
+      {
+        id: "beef-sausages-safari-500g",
+        name: "Beef Sausages (Safari) 500gms",
+        description: "Safari beef sausages",
+        image: "/images/FCLSausagesPacks/SafariBeef.png",
+        price: 350,
+        weight: "500g",
+      },
+      {
+        id: "baby-boers-beef-500g",
+        name: "Baby Boers - Beef 500gms",
+        description: "Baby beef boerewors",
+        image: "/images/FCLSausagesPacks/BabyBoers.png",
+        price: 550,
+        weight: "500g",
+      },
+      {
+        id: "boerewors-beef-500g",
+        name: "Boerewors - Beef 500gms",
+        description: "Traditional beef boerewors",
+        image: "/images/FCLSausagesPacks/DeliBeefBoerewors.png",
+        price: 650,
+        weight: "500g",
+      },
+      {
+        id: "deli-boerewors-1kg",
+        name: "Deli Boerewors Sausages 1kg",
+        description: "Delicatessen boerewors sausages",
+        image: "/images/FCLSausagesPacks/DeliBeefBoerewors.png",
+        price: 795,
+        weight: "1kg",
+      },
+      // Chicken Sausages
+      {
+        id: "chicken-sausages-400g",
+        name: "Chicken Sausages 400gms",
+        description: "Quality chicken sausages",
+        image: "/images/FCLSausagesPacks/ChickenSausages1kg.png",
+        price: 350,
+        weight: "400g",
+      },
+      {
+        id: "chicken-sausages-vp-1kg",
+        name: "Chicken Sausages Value Pack 1kg",
+        description: "Chicken sausages value pack",
+        image: "/images/FCLSausagesPacks/ChickenSausages1kg.png",
+        price: 680,
+        weight: "1kg",
+      },
+      {
+        id: "spicy-chicken-vp-1kg",
+        name: "Spicy Chicken Value Pack 1kg",
+        description: "Spicy chicken sausages value pack",
+        image: "/images/FCLSausagesPacks/SpicyChickenVP1Kg.png",
+        price: 680,
+        weight: "1kg",
+      },
+    ],
+  },  {
+    id: "bacon-hams",
+    name: "Bacon & Hams",
+    products: [
+      {
+        id: "back-bacon-200g",
+        name: "Back Bacon 200gms",
+        description: "Quality back bacon",
+        image: "/images/FCLBaconPacks/BackBacon200gms.png",
+        price: 580,
+        weight: "200g",
+      },
+      {
+        id: "back-bacon-400g",
+        name: "Back Bacon 400gms",
+        description: "Quality back bacon",
+        image: "/images/FCLBaconPacks/BackBacon400gms.png",
+        price: 800,
+        weight: "400g",
+      },
+      {
+        id: "back-bacon-1kg",
+        name: "Back Bacon 1kg",
+        description: "Quality back bacon",
+        image: "/images/FCLBaconPacks/BackBacon1kg.png",
+        price: 1800,
+        weight: "1kg",
+      },
+      {
+        id: "streaky-bacon-200g",
+        name: "Streaky Bacon 200g",
+        description: "Quality streaky bacon",
+        image: "/images/FCLBaconPacks/FCLStreakyBacon200g.png",
+        price: 380,
+        weight: "200g",
+      },
+      {
+        id: "streaky-bacon-400g",
+        name: "Streaky Bacon 400gms",
+        description: "Quality streaky bacon",
+        image: "/images/FCLBaconPacks/StreakyBacon400gmsB.png",
+        price: 800,
+        weight: "400g",
+      },
+      {
+        id: "streaky-bacon-1kg",
+        name: "Streaky Bacon 1kg",
+        description: "Quality streaky bacon",
+        image: "/images/FCLBaconPacks/StreakyBacon400gmsB.png",
+        price: 1690,
+        weight: "1kg",
+      },
+      {
+        id: "rindless-bacon-200g",
+        name: "Rindless Bacon 200g",
+        description: "Rindless bacon",
+        image: "/images/FCLBaconPacks/RindlessBacon200g.png",
+        price: 510,
+        weight: "200g",
+      },
+      {
+        id: "rindless-bacon-400g",
+        name: "Rindless Bacon 400gms",
+        description: "Rindless bacon",
+        image: "/images/FCLBaconPacks/rindlessbacon400g.png",
+        price: 520,
+        weight: "400g",
+      },
+      {
+        id: "rindless-bacon-1kg",
+        name: "Rindless Bacon 1kg",
+        description: "Rindless bacon",
+        image: "/images/FCLBaconPacks/RindlessBacon1kg.png",
+        price: 1200,
+        weight: "1kg",
+      },
+      {
+        id: "collar-bacon-100g",
+        name: "Collar Bacon 100g",
+        description: "Quality collar bacon",
+        image: "/images/FCLBaconPacks/CollarBacon100g.png",
+        price: 150,
         weight: "100g",
       },
       {
-        id: "delicatessen-12",
-        name: "Spicy Russian Sausage 2",
-        description: "South African biltong",
-        image: "/images/Delicatessen/SpicyRussianSausage2.png",
-        price: 1800,
-        weight: "300g",
-      }
-    ]
-  },
-  {
-    id: "cold-deli",
-    name: "Cold Deli Products",
-    products: [
-      {
-        id: "cold-deli-1",
-        name: "Beef Brawn 3-3.5kg",
-        description: "Creamy chicken with herbs and vegetables",
-        image: "/images/FCColdDeliProducts/BeefBrawn3-3.5kg.png",
-        price: 850,
-        weight: "3-3.5kg",
+        id: "collar-bacon-400g",
+        name: "Collar Bacon 400gms",
+        description: "Quality collar bacon",
+        image: "/images/FCLBaconPacks/CollarBacon400gms.png",
+        price: 580,
+        weight: "400g",
       },
       {
-        id: "cold-deli-2",
-        name: "Beef Pastarami",
-        description: "Classic recipe with mayonnaise and herbs",
-        image: "/images/FCColdDeliProducts/BeefPastarami.png",
-        price: 650,
-        weight: "300g",
-      },
-      {
-        id: "cold-deli-3",
-        name: "CFG Salami Palaciego",
-        description: "Fresh cabbage and carrot mix",
-        image: "/images/FCColdDeliProducts/CFGSalamiPalaciego.png",
-        price: 550,
-        weight: "300g",
-      },
-      {
-        id: "cold-deli-4",
-        name: "CFG Salami Palaciego",
-        description: "Tri-color pasta with vegetables",
-        image: "/images/FCColdDeliProducts/CFGSalamiPalaciego.png",
-        price: 750,
-        weight: "350g",
-      },
-      {
-        id: "cold-deli-5",
-        name: "CFG Salami with Herb",
-        description: "Creamy egg salad with chives",
-        image: "/images/FCColdDeliProducts/CFGSalamiwithHerb.png",
-        price: 700,
-        weight: "250g",
-      },
-      {
-        id: "cold-deli-6",
-        name: "CFG Salami with Pepper",
-        description: "Feta, olives and vegetables",
-        image: "/images/FCColdDeliProducts/CFGSalamiwithPepper.png",
-        price: 900,
-        weight: "300g",
-      },
-      {
-        id: "cold-deli-7",
-        name: "Chicken Brawn Bulk 6kg-7kg",
-        description: "Flaked tuna with mayonnaise",
-        image: "/images/FCColdDeliProducts/ChickenBrawnBulk6kg-7kg.png",
-        price: 800,
-        weight: "6kg-7kg",
-      },
-      {
-        id: "cold-deli-8",
-        name: "Chicken Sandwich Bulk",
-        description: "Roasted beetroot with feta",
-        image: "/images/FCColdDeliProducts/ChickenSandwichBulk.jpg",
-        price: 750,
+        id: "collar-bacon-1kg",
+        name: "Collar Bacon 1kg",
+        description: "Quality collar bacon",
+        image: "/images/FCLBaconPacks/CollarBacon1Kg.png",
+        price: 1350,
         weight: "1kg",
       },
       {
-        id: "cold-deli-9",
-        name: "Cooked Whole Ham",
-        description: "Healthy quinoa with vegetables",
-        image: "/images/FCColdDeliProducts/CookedWholeHam.jpg",
-        price: 950,
-        weight: "2kg",
-      },
-      {
-        id: "cold-deli-10",
-        name: "FC Beef Brawn 1Kg",
-        description: "Apple, walnut and celery",
-        image: "/images/FCColdDeliProducts/FCBeefBrawn1Kg.png",
-        price: 850,
-        weight: "1kg",
-      },
-      {
-        id: "cold-deli-11",
-        name: "FC Kassler",
-        description: "Classic chickpea dip",
-        image: "/images/FCColdDeliProducts/FCKassler.png",
-        price: 600,
-        weight: "250g",
-      },
-      {
-        id: "cold-deli-12",
-        name: "FC Pork Brawn Bulk",
-        description: "Greek yogurt and cucumber dip",
-        image: "/images/FCColdDeliProducts/FCPorkBrawnBulk.png",
-        price: 650,
-        weight: "250g",
-      },
-      {
-        id: "cold-deli-13",
-        name: "FCL Country Ham Bulk",
-        description: "Smoky eggplant dip",
-        image: "/images/FCColdDeliProducts/FCLCountryHamBulk.png",
-        price: 700,
-        weight: "2kg",
-      },
-      {
-        id: "cold-deli-14",
-        name: "Honey Glazed Ham A",
-        description: "Olive and caper spread",
-        image: "/images/FCColdDeliProducts/HoneyGlazedHamA.png",
-        price: 750,
+        id: "beef-bacon-200g",
+        name: "Beef Bacon 200gms",
+        description: "Quality beef bacon",
+        image: "/images/FCLBaconPacks/BeefBacon200gmsA.png",
+        price: 590,
         weight: "200g",
       },
       {
-        id: "cold-deli-15",
-        name: "Pork Brawn 1Kg",
-        description: "Fresh avocado dip",
-        image: "/images/FCColdDeliProducts/PorkBrawn1Kg.png",
-        price: 800,
-        weight: "1kg",
+        id: "beef-bacon-400g",
+        name: "Beef Bacon 400gms",
+        description: "Quality beef bacon",
+        image: "/images/FCLBaconPacks/BeefBacon200gmsA.png",
+        price: 1100,
+        weight: "400g",
       },
       {
-        id: "cold-deli-16",
-        name: "Pork Brawn 1Kg",
-        description: "Assorted sushi selection",
-        image: "/images/FCColdDeliProducts/PorkBrawn1Kg.png",
+        id: "beef-bacon-1kg",
+        name: "Beef Bacon 1kg",
+        description: "Quality beef bacon",
+        image: "/images/FCLBaconPacks/PureBeefBacon.png",
         price: 2200,
         weight: "1kg",
       },
       {
-        id: "cold-deli-17",
-        name: "Sandwich Ham (Pork)",
-        description: "Creamy smoked trout spread",
-        image: "/images/FCColdDeliProducts/SandwichHam(Pork).jpg",
-        price: 950,
-        weight: "1kg",
-      },
-      {
-        id: "cold-deli-18",
-        name: "Sandwich Ham Beef",
-        description: "Cured meats and cheeses",
-        image: "/images/FCColdDeliProducts/SandwichHamBeef.png",
-        price: 2800,
-        weight: "1kg",
-      },
-      {
-        id: "cold-deli-19",
-        name: "Sandwich Ham Pork (Bulk)",
-        description: "Mozzarella, tomato and basil",
-        image: "/images/FCColdDeliProducts/SandwichHamPork(Bulk).png",
-        price: 1200,
-        weight: "2kg",
-      }
-    ]
+        id: "rindless-boiling-bacon",
+        name: "Rindless Boiling Bacon",
+        description: "Rindless boiling bacon",
+        image: "/images/FCLBaconPacks/RindlessBacon1kg.png",
+        price: 1900,
+        weight: "0.5-1kg",      },
+    ],
   },
   {
-    id: "bacon-packs",
-    name: "Bacon Packs",
+    id: "hams",
+    name: "Hams",
     products: [
       {
-        id: "bacon-1",
-        name: "Back Bacon 1kg",
-        description: "Premium applewood smoked bacon",
+        id: "cooked-gammon-200g",
+        name: "Cooked Gammon (Country Ham) 200gm",
+        description: "Quality cooked gammon",
+        image: "/images/FCLBaconPacks/BackBacon200gms.png",
+        price: 350,
+        weight: "200g",
+      },
+      {
+        id: "cooked-country-ham-3kg",
+        name: "Cooked Country Ham, 3kg",
+        description: "Cooked country ham bulk",
+        image: "/images/FCLBaconPacks/BackBacon1kg.png",
+        price: 1350,
+        weight: "1kg",
+      },
+      {
+        id: "cooked-whole-ham",
+        name: "Cooked Whole Ham (S.R)",
+        description: "Cooked whole ham",
+        image: "/images/FCLBaconPacks/BackBacon1kg.png",
+        price: 1335,
+        weight: "1kg",
+      },
+      {
+        id: "whole-honey-glazed-ham",
+        name: "Whole Honey Glazed Ham",
+        description: "Whole honey glazed ham",
         image: "/images/FCLBaconPacks/BackBacon1kg.png",
         price: 1200,
         weight: "1kg",
       },
       {
-        id: "bacon-2",
-        name: "Back Bacon 200gms",
-        description: "Sweet and savory Canadian-style bacon",
+        id: "black-forest-ham-100g",
+        name: "Black Forest Ham (Prosciutto) 100gms",
+        description: "Black forest ham prosciutto",
         image: "/images/FCLBaconPacks/BackBacon200gms.png",
-        price: 1400,
-        weight: "200g",
-      },
-      {
-        id: "bacon-3",
-        name: "Back Bacon 400gms",
-        description: "Traditional dry-cured back bacon",
-        image: "/images/FCLBaconPacks/BackBacon400gms.png",
-        price: 1500,
-        weight: "400g",
-      },
-      {
-        id: "bacon-4",
-        name: "Beef Bacon 200gms A",
-        description: "Coarse black pepper crusted",
-        image: "/images/FCLBaconPacks/BeefBacon200gmsA.png",
-        price: 1300,
-        weight: "200g",
-      },
-      {
-        id: "bacon-5",
-        name: "Collar Bacon 1Kg",
-        description: "Sweet honey-glazed bacon",
-        image: "/images/FCLBaconPacks/CollarBacon1Kg.png",
-        price: 1450,
-        weight: "1kg",
-      },
-      {
-        id: "bacon-6",
-        name: "Collar Bacon 100g",
-        description: "Traditional Irish back bacon",
-        image: "/images/FCLBaconPacks/CollarBacon100g.png",
-        price: 1600,
+        price: 900,
         weight: "100g",
       },
       {
-        id: "bacon-7",
-        name: "Collar Bacon 400gms",
-        description: "Italian-style cured pork belly",
-        image: "/images/FCLBaconPacks/CollarBacon400gms.png",
-        price: 1700,
-        weight: "400g",
-      },
-      {
-        id: "bacon-8",
-        name: "Collar Kadogoo-01",
-        description: "Lean turkey alternative",
-        image: "/images/FCLBaconPacks/CollarKadogoo-01.png",
-        price: 1100,
-        weight: "100g",
-      },
-      {
-        id: "bacon-9",
-        name: "FCL Collar Bacon 400gms",
-        description: "Rich cherrywood smoked flavor",
-        image: "/images/FCLBaconPacks/FCLCollarBacon400gms.png",
-        price: 1550,
-        weight: "400g",
-      },
-      {
-        id: "bacon-10",
-        name: "FCL Streaky Bacon 200g",
-        description: "Spicy jalapeño infused",
-        image: "/images/FCLBaconPacks/FCLStreakyBacon200g.png",
-        price: 1350,
-        weight: "200g",
-      },
-      {
-        id: "bacon-11",
-        name: "Pure Beef Bacon",
-        description: "Extra thick slices",
-        image: "/images/FCLBaconPacks/PureBeefBacon.png",
-        price: 1650,
-        weight: "500g",
-      },
-      {
-        id: "bacon-12",
-        name: "Rindless Bacon 1kg",
-        description: "Reduced salt content",
-        image: "/images/FCLBaconPacks/RindlessBacon1kg.png",
-        price: 1400,
-        weight: "400g",
-      },
-      {
-        id: "bacon-13",
-        name: "Rindless Bacon 200g",
-        description: "Traditional English cut",
-        image: "/images/FCLBaconPacks/RindlessBacon200g.png",
-        price: 1500,
-        weight: "200g",
-      },
-      {
-        id: "bacon-14",
-        name: "rindless bacon 400g",
-        description: "Sweet and aromatic",
-        image: "/images/FCLBaconPacks/rindlessbacon400g.png",
-        price: 1450,
-        weight: "400g",
-      },
-      {
-        id: "bacon-15",
-        name: "Rindless Bacon 400gms",
-        description: "Garlic infused strips",
-        image: "/images/FCLBaconPacks/RindlessBacon400gms.png",
-        price: 1300,
-        weight: "400g",
-      },
-      {
-        id: "bacon-16",
-        name: "Streaky Bacon 400gms B",
-        description: "Extra smoky flavor",
-        image: "/images/FCLBaconPacks/StreakyBacon400gmsB.png",
-        price: 1600,
-        weight: "400g",
-      },
-      {
-        id: "bacon-17",
-        name: "Streaky-BACON",
-        description: "German-style smoked bacon",
-        image: "/images/FCLBaconPacks/Streaky-BACON.png",
-        price: 1700,
-        weight: "400g",
-      },
-      {
-        id: "bacon-18",
-        name: "Beef Bacon 200gms A",
-        description: "No added sugars",
-        image: "/images/FCLBaconPacks/BeefBacon200gmsA.png",
-        price: 1400,
-        weight: "400g",
-      }
-    ]
-  },
-  {
-    id: "beefcuts",
-    name: "Beefcuts",
-    products: [
-      {
-        id: 1,
-        name: "Beef Ribeye",
-        description: "Grass-fed, well-marbled",
-        image: "/images/FCL Fresh cuts/Beefcuts/BarbequeRibsBulk2.png",
-        price: 1800,
-        weight: "500g",
-      },
-      {
-        id: 2,
-        name: "beef barbeque ribs sliced 2",
-        description: "Lean ground beef",
-        image: "/images/FCL Fresh cuts/Beefcuts/BarbequeRibsBulk.png",
-        price: 750,
-        weight: "500g",
-      },
-      {
-        id: 3,
-        name: "beef barbeque ribs sliced 2",
-        description: "Premium cut with tenderloin and strip",
-        image: "/images/FCL Fresh cuts/Beefcuts/beefbarbequeribssliced2.png",
-        price: 2200,
-        weight: "600g",
-      },
-      {
-        id: 4,
-        name: "beef barbeque ribs sliced",
-        description: "Tender center cut",
-        image: "/images/FCL Fresh cuts/Beefcuts/beefbarbequeribssliced.png",
-        price: 2800,
-        weight: "400g",
-      },
-      {
-        id: 5,
-        name: "Beef Brisket 2",
-        description: "Juicy and flavorful cut",
-        image: "/images/FCL Fresh cuts/Beefcuts/BeefBrisket2.png",
-        price: 1600,
-        weight: "450g",
-      },
-      {
-        id: 6,
-        name: "Beef Brisket",
-        description: "Lean and beefy flavor",
-        image: "/images/FCL Fresh cuts/Beefcuts/BeefBrisket.png",
-        price: 1400,
-        weight: "500g",
-      },
-      {
-        id: 7,
-        name: "Beef cubes 1",
-        description: "Perfect for slow cooking",
-        image: "/images/FCL Fresh cuts/Beefcuts/Beefcubes1.png",
-        price: 1200,
+        id: "green-gammon-bone-in",
+        name: "Green Gammon Bone-in, 5-10kg",
+        description: "Green gammon with bone",
+        image: "/images/FCLBaconPacks/BackBacon1kg.png",
+        price: 800,
         weight: "1kg",
       },
       {
-        id: 8,
-        name: "beef cubes",
-        description: "Meaty and flavorful",
-        image: "/images/FCL Fresh cuts/Beefcuts/beefcubes.png",
-        price: 1700,
-        weight: "800g",
-      },
-      {
-        id: 9,
-        name: "Beef Fillet protein",
-        description: "Great for grilling",
-        image: "/images/FCL Fresh cuts/Beefcuts/BeefFilletprotein.png",
-        price: 1500,
-        weight: "600g",
-      },
-      {
-        id: 10,
-        name: "Beef Fillet",
-        description: "Ideal for pot roasts",
-        image: "/images/FCL Fresh cuts/Beefcuts/BeefFillet.png",
-        price: 1300,
-        weight: "1kg",
-      },
-      {
-        id: 11,
-        name: "Beef Ribs 2",
-        description: "Flavorful for fajitas",
-        image: "/images/FCL Fresh cuts/Beefcuts/BeefRibs2.png",
-        price: 1450,
-        weight: "500g",
-      },
-      {
-        id: 12,
-        name: "Beef Ribs",
-        description: "Rich and gelatinous",
-        image: "/images/FCL Fresh cuts/Beefcuts/BeefRibs.png",
-        price: 1100,
-        weight: "500g",
-      },
-      {
-        id: 13,
-        name: "Beef Strips",
-        description: "Impressive ribeye with bone",
-        image: "/images/FCL Fresh cuts/Beefcuts/BeefStrips.png",
-        price: 3500,
-        weight: "1.2kg",
-      },
-      {
-        id: 14,
-        name: "Chuck and Blade (Java)",
-        description: "Butcher's cut with great flavor",
-        image: "/images/FCL Fresh cuts/Beefcuts/ChuckandBlade(Java).png",
-        price: 1900,
-        weight: "450g",
-      },
-      {
-        id: 15,
-        name: "diced cubes bone in",
-        description: "California cut for grilling",
-        image: "/images/FCL Fresh cuts/Beefcuts/dicedcubesbonein.png",
-        price: 1700,
-        weight: "700g",
-      },
-      {
-        id: 16,
-        name: "Eye Piece 2",
-        description: "Tender when slow cooked",
-        image: "/images/FCL Fresh cuts/Beefcuts/EyePiece2.png",
+        id: "green-gammon-boneless",
+        name: "Green Gammon Boneless, Bulk",
+        description: "Green gammon boneless",
+        image: "/images/FCLBaconPacks/BackBacon1kg.png",
         price: 950,
-        weight: "400g",
+        weight: "1kg",
       },
       {
-        id: 17,
-        name: "Eye Piece",
-        description: "Lean cut for roasting",
-        image: "/images/FCL Fresh cuts/Beefcuts/EyePiece.png",
-        price: 1250,
-        weight: "800g",
+        id: "honey-glazed-ham-bulk",
+        name: "Honey Glazed Ham-Bulk, per kg",
+        description: "Honey glazed ham bulk",
+        image: "/images/FCLBaconPacks/BackBacon1kg.png",
+        price: 1800,
+        weight: "1kg",
       },
       {
-        id: 18,
-        name: "Half sir loin T- Bone joint 2",
-        description: "Great for braising",
-        image: "/images/FCL Fresh cuts/Beefcuts/HalfsirloinT-Bonejoint2.png",
-        price: 1150,
-        weight: "800g",
+        id: "honey-glazed-smoked-gammon",
+        name: "Honey Glazed Smoked Cooked Gammon B'I",
+        description: "Honey glazed smoked gammon",
+        image: "/images/FCLBaconPacks/BackBacon1kg.png",
+        price: 1100,
+        weight: "1kg",
       },
       {
-        id: 19,
-        name: "Half sir loin T- Bone joint",
-        description: "Lean for roasting",
-        image: "/images/FCL Fresh cuts/Beefcuts/HalfsirloinT-Bonejoint.png",
-        price: 1350,
-        weight: "700g",
+        id: "prime-gammon-ham",
+        name: "Prime Gammon Ham, Bulk p/kg",
+        description: "Prime gammon ham",
+        image: "/images/FCLBaconPacks/BackBacon1kg.png",
+        price: 1600,
+        weight: "1kg",
       },
       {
-        id: 20,
-        name: "Half Strip Loin Boneless",
-        description: "Ideal for soups",
-        image: "/images/FCL Fresh cuts/Beefcuts/HalfStripLoinBoneless.png",
-        price: 900,
-        weight: "600g",
+        id: "smoked-gammon-bone-in",
+        name: "Smoked Gammon Bone-in, 5-10kg",
+        description: "Smoked gammon with bone",
+        image: "/images/FCLBaconPacks/BackBacon1kg.png",
+        price: 950,
+        weight: "1kg",
       },
       {
-        id: 21,
-        name: "New York Strip Loin",
-        description: "Large T-bone cut",
-        image: "/images/FCL Fresh cuts/Beefcuts/NewYorkStripLoin.png",
-        price: 3000,
-        weight: "900g",
-      },
-      {
-        id: 22,
-        name: "Rib Eye steak bone in",
-        description: "Tender shoulder cut",
-        image: "/images/FCL Fresh cuts/Beefcuts/RibEyesteakbonein.png",
-        price: 1750,
-        weight: "500g",
-      },
-      {
-        id: 23,
-        name: "Rib Eye steak",
-        description: "Tender when cooked slowly",
-        image: "/images/FCL Fresh cuts/Beefcuts/RibEyesteak.png",
-        price: 850,
-        weight: "500g",
-      },
-      {
-        id: 24,
-        name: "Rump Steak",
-        description: "Rich in nutrients",
-        image: "/images/FCL Fresh cuts/Beefcuts/RumpSteak.png",
-        price: 700,
-        weight: "400g",
-      },
-      {
-        id: 25,
-        name: "Shin on bone whole shine on bone",
-        description: "For pies and stews",
-        image: "/images/FCL Fresh cuts/Beefcuts/Shinonbonewholeshineonbone.png",
+        id: "smoked-beef-200g",
+        name: "Smoked Beef, 200gms",
+        description: "Quality smoked beef",
+        image: "/images/FCLBaconPacks/BeefBacon200gmsA.png",
         price: 650,
-        weight: "300g",
+        weight: "200g",
       },
       {
-        id: 26,
-        name: "Strip LoinSteak",
-        description: "Lean and flavorful",
-        image: "/images/FCL Fresh cuts/Beefcuts/StripLoinSteak.png",
-        price: 750,
-        weight: "500g",
-      },
-      {
-        id: 27,
-        name: "T-bone Steak",
-        description: "For rich stews",
-        image: "/images/FCL Fresh cuts/Beefcuts/T-boneSteak.png",
-        price: 1100,
-        weight: "500g",
-      },
-      {
-        id: 28,
-        name: "Thick flank(Top Rump) 2",
-        description: "For broth and roasting",
-        image: "/images/FCL Fresh cuts/Beefcuts/Thickflank(TopRump)2.png",
-        price: 800,
-        weight: "1kg",
-      },
-      {
-        id: 29,
-        name: "whole ramp steak 2",
-        description: "Great for braising",
-        image: "/images/FCL Fresh cuts/Beefcuts/wholerampsteak2.png",
-        price: 1300,
-        weight: "600g",
-      },
-      {
-        id: 30,
-        name: "whole ramp steak",
-        description: "Flavorful and economical",
-        image: "/images/FCL Fresh cuts/Beefcuts/wholerampsteak.png",
-        price: 1250,
-        weight: "700g",
-      },
-      {
-        id: 31,
-        name: "Whole silver side 2",
-        description: "Newer tender cut",
-        image: "/images/FCL Fresh cuts/Beefcuts/Wholesilverside2.png",
-        price: 1650,
-        weight: "500g",
-      },
-      {
-        id: 32,
-        name: "Whole silver side",
-        description: "French flank steak",
-        image: "/images/FCL Fresh cuts/Beefcuts/Wholesilverside.png",
-        price: 1750,
-        weight: "600g",
-      },
-      {
-        id: 33,
-        name: "whole sir loin bone in 2",
-        description: "Hanger steak alternative",
-        image: "/images/FCL Fresh cuts/Beefcuts/wholesirloinbonein2.png",
-        price: 1850,
-        weight: "500g",
-      },
-      {
-        id: 34,
-        name: "whole sir loin bone in",
-        description: "Tender flat iron cut",
-        image: "/images/FCL Fresh cuts/Beefcuts/wholesirloinbonein.png",
-        price: 1700,
-        weight: "600g",
-      },
-      {
-        id: 35,
-        name: "Whole Strip Loin Boneless",
-        description: "Brazilian top sirloin cap",
-        image: "/images/FCL Fresh cuts/Beefcuts/WholeStripLoinBoneless.png",
-        price: 2000,
-        weight: "800g",
-      },
-      {
-        id: 36,
-        name: "whole top side",
-        description: "Shoulder tender cut",
-        image: "/images/FCL Fresh cuts/Beefcuts/wholetopside.png",
-        price: 1900,
-        weight: "500g",
-      },
-      {
-        id: 37,
-        name: "Thick flank(Top Rump) 2",
-        description: "Lean roasting joint",
-        image: "/images/FCL Fresh cuts/Beefcuts/Thickflank(TopRump)2.png",
-        price: 1550,
-        weight: "1kg",
-      },
-      {
-        id: 38,
-        name: "whole ramp steak",
-        description: "For roasting and corning",
-        image: "/images/FCL Fresh cuts/Beefcuts/wholerampsteak.png",
-        price: 1450,
-        weight: "1kg",
-      }
-    ]
-  },
-  {
-    id: "lamb",
-    name: "Lamb",
-    products: [
-      {
-        id: 1,
-        name: "Deboned Rolled Vetted Lamb Leg",
-        description: "New Zealand fresh",
-        image: "/images/FCL Fresh cuts/LAMB/DebonedRolledVettedLambLeg.png",
-        price: 2200,
-        weight: "800g",
-      },
-      {
-        id: 2,
-        name: "Lamb Casserole",
-        description: "Perfect for roasting",
-        image: "/images/FCL Fresh cuts/LAMB/LambCasserole.png",
-        price: 2800,
-        weight: "2kg",
-      },
-      {
-        id: 3,
-        name: "Lamb Dice bone Less",
-        description: "Tender and flavorful",
-        image: "/images/FCL Fresh cuts/LAMB/LambDiceboneLess.png",
-        price: 1900,
-        weight: "1kg",
-      },
-      {
-        id: 4,
-        name: "Lamb Dice bone Lessq",
-        description: "French-trimmed premium cut",
-        image: "/images/FCL Fresh cuts/LAMB/LambDiceboneLessq.png",
-        price: 3500,
-        weight: "1.2kg",
-      },
-      {
-        id: 5,
-        name: "lamb hocks",
-        description: "For slow roasting",
-        image: "/images/FCL Fresh cuts/LAMB/lambhocks.png",
-        price: 2400,
-        weight: "1.5kg",
-      },
-      {
-        id: 6,
-        name: "lamb leg sliced",
-        description: "Great for stews",
-        image: "/images/FCL Fresh cuts/LAMB/lamblegsliced.png",
-        price: 1500,
-        weight: "800g",
-      },
-      {
-        id: 7,
-        name: "Lamb Loin Chops",
-        description: "Ground lamb meat",
-        image: "/images/FCL Fresh cuts/LAMB/LambLoinChops.png",
-        price: 1200,
-        weight: "500g",
-      },
-      {
-        id: 8,
-        name: "Lamb Meaty Ribs",
-        description: "Meaty ribs for grilling",
-        image: "/images/FCL Fresh cuts/LAMB/LambMeatyRibs.png",
-        price: 1800,
-        weight: "1kg",
-      },
-      {
-        id: 9,
-        name: "Lamb Neck Bone",
-        description: "Tender small chops",
-        image: "/images/FCL Fresh cuts/LAMB/LambNeckBone.png",
+        id: "smoked-beef-sliced-1kg",
+        name: "Smoked Beef - Sliced 1kg",
+        description: "Sliced smoked beef",
+        image: "/images/FCLBaconPacks/BeefBacon200gmsA.png",
         price: 2500,
-        weight: "600g",
+        weight: "1kg",
       },
       {
-        id: 10,
-        name: "Lamb Neck Sulk T-Bone",
-        description: "Premium roasting joint",
-        image: "/images/FCL Fresh cuts/LAMB/LambNeckSulkT-Bone.png",
-        price: 3200,
-        weight: "1.5kg",
+        id: "smoked-beef-bulk",
+        name: "Smoked Beef, Bulk",
+        description: "Smoked beef bulk",
+        image: "/images/FCLBaconPacks/BeefBacon200gmsA.png",
+        price: 2400,
+        weight: "1kg",
       },
       {
-        id: 11,
-        name: "Lamb Rimb",
-        description: "For slow cooking",
-        image: "/images/FCL Fresh cuts/LAMB/LambRimb.png",
+        id: "sandwich-beef-200g",
+        name: "Sandwich Beef, 200gms",
+        description: "Quality sandwich beef",
+        image: "/images/FCLBaconPacks/BeefBacon200gmsA.png",
+        price: 260,
+        weight: "200g",
+      },
+      {
+        id: "sliced-sandwich-beef-1kg",
+        name: "Sliced Sandwich Beef, 1kg",
+        description: "Sliced sandwich beef",
+        image: "/images/FCLBaconPacks/BeefBacon200gmsA.png",
         price: 1300,
         weight: "1kg",
       },
       {
-        id: 12,
-        name: "Lamb Shanks 1",
-        description: "For frying or pâté",
-        image: "/images/FCL Fresh cuts/LAMB/LambShanks1.png",
-        price: 800,
-        weight: "400g",
-      },
-      {
-        id: 13,
-        name: "Lamb Shanks",
-        description: "For pies and stews",
-        image: "/images/FCL Fresh cuts/LAMB/LambShanks.png",
-        price: 750,
-        weight: "300g",
-      },
-      {
-        id: 14,
-        name: "Lamb Shoulder Chops",
-        description: "Lean and flavorful",
-        image: "/images/FCL Fresh cuts/LAMB/LambShoulderChops.png",
-        price: 850,
-        weight: "500g",
-      },
-      {
-        id: 15,
-        name: "Lamb Shoulder Whole1",
-        description: "Tender when cooked slowly",
-        image: "/images/FCL Fresh cuts/LAMB/LambShoulderWhole1.png",
-        price: 900,
-        weight: "400g",
-      },
-      {
-        id: 16,
-        name: "lamb shoulder",
-        description: "Boneless leg steaks",
-        image: "/images/FCL Fresh cuts/LAMB/lambshoulder.png",
-        price: 2000,
-        weight: "600g",
-      },
-      {
-        id: 17,
-        name: "Lamb T-Bone",
-        description: "French-trimmed cutlets",
-        image: "/images/FCL Fresh cuts/LAMB/LambT-Bone.png",
-        price: 2800,
-        weight: "500g",
-      },
-      {
-        id: 18,
-        name: "lamb",
-        description: "Ground lamb meat",
-        image: "/images/FCL Fresh cuts/LAMB/lamb.png",
+        id: "sandwich-beef-bulk",
+        name: "Sandwich Beef Bulk, per kg",
+        description: "Sandwich beef bulk",
+        image: "/images/FCLBaconPacks/BeefBacon200gmsA.png",
         price: 1200,
-        weight: "500g",
+        weight: "1kg",
       },
       {
-        id: 19,
-        name: "Rack of Lamb 2",
-        description: "Flavorful shoulder cuts",
-        image: "/images/FCL Fresh cuts/LAMB/RackofLamb2.png",
-        price: 1700,
-        weight: "700g",
+        id: "sandwich-ham-200g",
+        name: "Sandwich Ham, 200gms",
+        description: "Quality sandwich ham",
+        image: "/images/FCLBaconPacks/BackBacon200gms.png",
+        price: 320,
+        weight: "200g",
       },
       {
-        id: 20,
-        name: "Rack of Lamb",
-        description: "Pre-made lamb patties",
-        image: "/images/FCL Fresh cuts/LAMB/RackofLamb.png",
-        price: 1500,
-        weight: "600g",
-      },
-      {
-        id: 21,
-        name: "Whole Lamb Leg Bone In",
-        description: "Spicy North African sausages",
-        image: "/images/FCL Fresh cuts/LAMB/WholeLambLegBoneIn.png",
-        price: 1800,
-        weight: "500g",
-      },
-      {
-        id: 22,
-        name: "Whole Lamb Loin 1",
-        description: "Spiced lamb skewers",
-        image: "/images/FCL Fresh cuts/LAMB/WholeLambLoin1.png",
-        price: 1600,
-        weight: "500g",
-      },
-      {
-        id: 23,
-        name: "Whole Lamb Loin",
-        description: "Cubed for stews",
-        image: "/images/FCL Fresh cuts/LAMB/WholeLambLoin.png",
-        price: 1400,
-        weight: "500g",
-      },
-      {
-        id: 24,
-        name: "whole_lamb",
-        description: "Ground lamb meat",
-        image: "/images/FCL Fresh cuts/LAMB/whole_lamb.png",
+        id: "sliced-sandwich-ham-1kg",
+        name: "Sliced Sandwich Ham, 1kg",
+        description: "Sliced sandwich ham",
+        image: "/images/FCLBaconPacks/BackBacon1kg.png",
         price: 1200,
-        weight: "500g",
+        weight: "1kg",
       },
       {
-        id: 25,
-        name: "Lamb T-Bone",
-        description: "Bone-in for slow cooking",
-        image: "/images/FCL Fresh cuts/LAMB/LambT-Bone.png",
-        price: 2600,
-        weight: "1.5kg",
-      }
-    ]
-  },
-  {
-    id: "porkcuts",
-    name: "Porkcuts",
+        id: "sandwich-ham-bulk",
+        name: "Sandwich Ham, Bulk",
+        description: "Sandwich ham bulk",
+        image: "/images/FCLBaconPacks/BackBacon1kg.png",
+        price: 1200,
+        weight: "1kg",
+      },
+    ],
+  },  {
+    id: "economical",
+    name: "Economical Products",
     products: [
       {
-        id: 1,
-        name: "Half Poker Head",
-        description: "Meaty BBQ ribs",
-        image: "/images/FCL Fresh cuts/Porkcuts/HalfPokerHead.png",
-        price: 1600,
-        weight: "1kg",
-      },
-      {
-        id: 2,
-        name: "Pork Baby Ribs",
-        description: "Perfect for crispy roast",
-        image: "/images/FCL Fresh cuts/Porkcuts/PorkBabyRibs.png",
-        price: 1400,
-        weight: "1.2kg",
-      },
-      {
-        id: 3,
-        name: "Pork Belly Spare Ribs",
-        description: "Lean and tender cut",
-        image: "/images/FCL Fresh cuts/Porkcuts/PorkBellySpareRibs.png",
-        price: 1700,
-        weight: "800g",
-      },
-      {
-        id: 4,
-        name: "Pork Cubes",
-        description: "Thick-cut bone-in chops",
-        image: "/images/FCL Fresh cuts/Porkcuts/PorkCubes.png",
-        price: 1250,
-        weight: "600g",
-      },
-      {
-        id: 5,
-        name: "Pork Fillets",
-        description: "For pulled pork",
-        image: "/images/FCL Fresh cuts/Porkcuts/PorkFillets.png",
-        price: 1500,
-        weight: "1.5kg",
-      },
-      {
-        id: 6,
-        name: "Pork Hock Pork Shanks",
-        description: "Whole leg for roasting",
-        image: "/images/FCL Fresh cuts/Porkcuts/PorkHockPorkShanks.png",
-        price: 2000,
-        weight: "3kg",
-      },
-      {
-        id: 7,
-        name: "Pork Loin Bone in Rindless",
-        description: "Lean and tender",
-        image: "/images/FCL Fresh cuts/Porkcuts/PorkLoinBoneinRindless.png",
-        price: 1800,
-        weight: "500g",
-      },
-      {
-        id: 8,
-        name: "Pork Loin Bone in Rnd",
-        description: "Ground pork meat",
-        image: "/images/FCL Fresh cuts/Porkcuts/PorkLoinBoneinRnd.png",
-        price: 900,
-        weight: "500g",
-      },
-      {
-        id: 9,
-        name: "Pork loin Boneless",
-        description: "Traditional pork sausages",
-        image: "/images/FCL Fresh cuts/Porkcuts/PorkloinBoneless.png",
-        price: 1100,
-        weight: "1kg",
-      },
-      {
-        id: 10,
-        name: "Pork Loin Chops (2)",
-        description: "Flavorful cut for stews",
-        image: "/images/FCL Fresh cuts/Porkcuts/PorkLoinChops(2).png",
-        price: 1200,
-        weight: "800g",
-      },
-      {
-        id: 11,
-        name: "Pork Loin Chops",
-        description: "Tender when slow cooked",
-        image: "/images/FCL Fresh cuts/Porkcuts/PorkLoinChops.png",
-        price: 1300,
-        weight: "500g",
-      },
-      {
-        id: 12,
-        name: "Pork Shoulder Chops",
-        description: "For frying or pâté",
-        image: "/images/FCL Fresh cuts/Porkcuts/PorkShoulderChops.png",
-        price: 750,
+        id: "beef-smokies-400g",
+        name: "Beef Smokies, 400gms Ex long",
+        description: "Extra long beef smokies",
+        image: "/images/continentals/Smokies1kg.png",
+        price: 300,
         weight: "400g",
       },
       {
-        id: 13,
-        name: "Pork Shoulder spare ribs",
-        description: "For pies and stews",
-        image: "/images/FCL Fresh cuts/Porkcuts/PorkShoulderspareribs.png",
-        price: 700,
-        weight: "300g",
+        id: "beef-smokies-labless-1kg",
+        name: "Beef Smokies Labless 1Kg",
+        description: "Beef smokies without labels",
+        image: "/images/continentals/Smokies1kg.png",
+        price: 540,
+        weight: "1kg",
       },
       {
-        id: 14,
-        name: "Pork Tails",
-        description: "Lean and flavorful",
-        image: "/images/FCL Fresh cuts/Porkcuts/PorkTails.png",
-        price: 800,
+        id: "beef-smokies-bazenga-1kg",
+        name: "Beef Smokies Bazenga 1Kg",
+        description: "Beef smokies bazenga",
+        image: "/images/continentals/Smokies1kg.png",
+        price: 540,
+        weight: "1kg",
+      },
+      {
+        id: "spicy-beef-smokies-bazenga-1kg",
+        name: "Spicy Beef Smokies Bazenga 1Kg",
+        description: "Spicy beef smokies bazenga",
+        image: "/images/continentals/Smokies1kg.png",
+        price: 540,
+        weight: "1kg",
+      },
+      {
+        id: "smoked-mini-bites-250g",
+        name: "Smoked Mini Bites 250gms",
+        description: "Smoked mini bite snacks",
+        image: "/images/Minibite/MiniBitesPacks.png",
+        price: 200,
+        weight: "250g",
+      },
+      {
+        id: "smoked-mini-bites-500g",
+        name: "Smoked Mini Bites 500gms",
+        description: "Smoked mini bite snacks",
+        image: "/images/Minibite/MiniBitesPacks.png",
+        price: 360,
         weight: "500g",
       },
       {
-        id: 15,
-        name: "Rolled Boneless Shoulder Rindless",
-        description: "Tender when cooked slowly",
-        image: "/images/FCL Fresh cuts/Porkcuts/RolledBonelessShoulderRindless.png",
-        price: 850,
-        weight: "400g",
+        id: "tasty-chicken-mini-bites-500g",
+        name: "Tasty Chicken Mini Bites 500gm",
+        description: "Tasty chicken mini bites",
+        image: "/images/Minibite/MiniBitesPacks.png",
+        price: 360,
+        weight: "500g",
       },
       {
-        id: 16,
-        name: "Rolled Boneless Shoulder Rnd on",
-        description: "For stocks and stews",
-        image: "/images/FCL Fresh cuts/Porkcuts/RolledBonelessShoulderRndon.png",
+        id: "nyamabite-125g",
+        name: "Nyamabite, 125gms",
+        description: "Bite-sized meat snacks",
+        image: "/images/Nyamabite/Nyamabite2.png",
+        price: 85,
+        weight: "125g",
+      },
+      {
+        id: "eazy-peel-sausages-60g",
+        name: "Eazy Peel Sausages, 60gms",
+        description: "Easy peel sausages",
+        image: "/images/FCLSausagesPacks/SoseKadogoo-.png",
+        price: 40,
+        weight: "60g",
+      },
+      {
+        id: "pork-brawn-sliced-200g",
+        name: "Pork Brawn - Sliced, 200gms",
+        description: "Sliced pork brawn",
+        image: "/images/continentals/Polony200g.png",
+        price: 125,
+        weight: "200g",
+      },
+      {
+        id: "pork-brawn-sliced-500g",
+        name: "Pork Brawn - Sliced, 500gms",
+        description: "Sliced pork brawn",
+        image: "/images/continentals/Polony200g.png",
+        price: 320,
+        weight: "500g",
+      },
+      {
+        id: "pork-brawn-sliced-1kg",
+        name: "Pork Brawn - Sliced, 1kg",
+        description: "Sliced pork brawn",
+        image: "/images/continentals/Polony200g.png",
         price: 600,
         weight: "1kg",
       },
       {
-        id: 17,
-        name: "Trotters",
-        description: "For rich stews",
-        image: "/images/FCL Fresh cuts/Porkcuts/Trotters.png",
-        price: 700,
-        weight: "500g",
-      },
-      {
-        id: 18,
-        name: "Whole Neck Fillet",
-        description: "For crispy snacks",
-        image: "/images/FCL Fresh cuts/Porkcuts/WholeNeckFillet.png",
-        price: 500,
-        weight: "300g",
-      },
-      {
-        id: 19,
-        name: "Whole Pork Leg",
-        description: "Breaded cutlets",
-        image: "/images/FCL Fresh cuts/Porkcuts/WholePorkLeg.png",
-        price: 1400,
-        weight: "600g",
-      },
-      {
-        id: 20,
-        name: "Whole pork Middle",
-        description: "Bone-in pork chops",
-        image: "/images/FCL Fresh cuts/Porkcuts/WholeporkMiddle.png",
-        price: 1300,
-        weight: "700g",
-      },
-      {
-        id: 21,
-        name: "Whole Pork Shoulder",
-        description: "For BBQ and grilling",
-        image: "/images/FCL Fresh cuts/Porkcuts/WholePorkShoulder.png",
-        price: 1500,
+        id: "pork-brawn-bulk",
+        name: "Pork Brawn - 3-3.5kg",
+        description: "Bulk pork brawn",
+        image: "/images/continentals/Polony200g.png",
+        price: 560,
         weight: "1kg",
       },
       {
-        id: 22,
-        name: "Whole Porker Head",
-        description: "Flavorful shoulder cut",
-        image: "/images/FCL Fresh cuts/Porkcuts/WholePorkerHead.png",
-        price: 1200,
-        weight: "600g",
-      },
-      {
-        id: 23,
-        name: "Whole Rolled Deboned leg",
-        description: "For pulled pork",
-        image: "/images/FCL Fresh cuts/Porkcuts/WholeRolledDebonedleg.png",
-        price: 1600,
-        weight: "1.5kg",
-      },
-      {
-        id: 24,
-        name: "Trotters",
-        description: "For soups and stews",
-        image: "/images/FCL Fresh cuts/Porkcuts/Trotters.png",
-        price: 1100,
-        weight: "800g",
-      }
-    ]
-  },
-  {
-    id: "sausages",
-    name: "Sausages Packs",
-    products: [
-      {
-        id: 1,
-        name: "Baby Boers",
-        description: "Handcrafted premium",
-        image: "/images/FCLSausagesPacks/BabyBoers.png",
-        price: 1200,
-        weight: "1kg",
-      },
-      {
-        id: 2,
-        name: "Beef Catering 1Kg",
-        description: "Lean and flavorful",
-        image: "/images/FCLSausagesPacks/BeefCatering1Kg.png",
-        price: 1300,
-        weight: "1kg",
-      },
-      {
-        id: 3,
-        name: "Beef Chipolatas 1kg",
-        description: "Spicy Spanish-style",
-        image: "/images/FCLSausagesPacks/BeefChipolatas1kg.png",
-        price: 1500,
-        weight: "800g",
-      },
-      {
-        id: 4,
-        name: "beef vp",
-        description: "Traditional South African",
-        image: "/images/FCLSausagesPacks/beefvp.png",
-        price: 1600,
-        weight: "1kg",
-      },
-      {
-        id: 5,
-        name: "Boerewors 500g",
-        description: "With fennel and garlic",
-        image: "/images/FCLSausagesPacks/Boerewors500g.png",
-        price: 1400,
-        weight: "500g",
-      },
-      {
-        id: 6,
-        name: "Chicken Sausage 1Kg",
-        description: "German-style sausages",
-        image: "/images/FCLSausagesPacks/ChickenSausage1Kg.png",
-        price: 1450,
-        weight: "800g",
-      },
-      {
-        id: 7,
-        name: "Chicken Sausages 1kg",
-        description: "Small breakfast sausages",
-        image: "/images/FCLSausagesPacks/ChickenSausages1kg.png",
-        price: 1100,
-        weight: "1kg",
-      },
-      {
-        id: 8,
-        name: "Classic Safari",
-        description: "Spicy North African",
-        image: "/images/FCLSausagesPacks/ClassicSafari.png",
-        price: 1550,
-        weight: "800g",
-      },
-      {
-        id: 9,
-        name: "Deli Beef Boerewors",
-        description: "Classic hot dogs",
-        image: "/images/FCLSausagesPacks/DeliBeefBoerewors.png",
-        price: 1200,
-        weight: "1kg",
-      },
-      {
-        id: 10,
-        name: "FCL Chicken Sausage",
-        description: "English coiled sausages",
-        image: "/images/FCLSausagesPacks/FCLChickenSausage.png",
-        price: 1650,
-        weight: "900g",
-      },
-      {
-        id: 11,
-        name: "IQF CUMBERLAND PORK SAUSAGES",
-        description: "Herb-flavored sausages",
-        image: "/images/FCLSausagesPacks/IQFCUMBERLANDPORKSAUSAGES.png",
-        price: 1500,
-        weight: "1kg",
-      },
-      {
-        id: 12,
-        name: "IQF Pork Sausages",
-        description: "French garlic sausages",
-        image: "/images/FCLSausagesPacks/IQFPorkSausages.png",
-        price: 1700,
-        weight: "800g",
-      },
-      {
-        id: 13,
-        name: "Lamb-Sausages",
-        description: "Polish smoked sausage",
-        image: "/images/FCLSausagesPacks/Lamb-Sausages.png",
-        price: 1600,
-        weight: "900g",
-      },
-      {
-        id: 14,
-        name: "Low Fat Beef Sausages",
-        description: "Cajun smoked sausage",
-        image: "/images/FCLSausagesPacks/LowFatBeefSausages.jpg",
-        price: 1750,
-        weight: "800g",
-      },
-      {
-        id: 15,
-        name: "Low Fat Pork Sausages",
-        description: "Bavarian white sausage",
-        image: "/images/FCLSausagesPacks/LowFatPorkSausages.jpg",
-        price: 1550,
-        weight: "700g",
-      },
-      {
-        id: 16,
-        name: "Meaty Beef Chipolatas 200g",
-        description: "Lean poultry option",
-        image: "/images/FCLSausagesPacks/MeatyBeefChipolatas200g.png",
-        price: 1300,
+        id: "beef-brawn-sliced-200g",
+        name: "Beef Brawn- Sliced, 200gms",
+        description: "Sliced beef brawn",
+        image: "/images/continentals/Polony200g.png",
+        price: 145,
         weight: "200g",
       },
       {
-        id: 17,
-        name: "Meaty Beef Sausages 1kg",
-        description: "Game meat sausages",
-        image: "/images/FCLSausagesPacks/MeatyBeefSausages1kg.png",
-        price: 1900,
+        id: "beef-brawn-sliced-500g",
+        name: "Beef Brawn - Sliced 500gms",
+        description: "Sliced beef brawn",
+        image: "/images/continentals/Polony200g.png",
+        price: 320,
+        weight: "500g",
+      },
+      {
+        id: "beef-brawn-sliced-1kg",
+        name: "Beef Brawn - Sliced 1kg",
+        description: "Sliced beef brawn",
+        image: "/images/continentals/Polony200g.png",
+        price: 630,
         weight: "1kg",
       },
       {
-        id: 18,
-        name: "Meaty Beef Sausages 400g",
-        description: "Herbed lamb sausages",
-        image: "/images/FCLSausagesPacks/MeatyBeefSausages400g.png",
-        price: 1700,
-        weight: "400g",
+        id: "beef-brawn-bulk",
+        name: "Beef Brawn 3-3.5 kg",
+        description: "Bulk beef brawn",
+        image: "/images/continentals/Polony200g.png",
+        price: 620,
+        weight: "1kg",
       },
       {
-        id: 19,
-        name: "Meaty Pork Sausages",
-        description: "Special dietary option",
-        image: "/images/FCLSausagesPacks/MeatyPorkSausages.png",
+        id: "chicken-brawn-sliced-200g",
+        name: "Chicken Brawn- Sliced, 200gms",
+        description: "Sliced chicken brawn",
+        image: "/images/continentals/Polony200g.png",
+        price: 120,
+        weight: "200g",
+      },
+      {
+        id: "sose-kadogo",
+        name: "Sose Kadogo",
+        description: "Economical sausages",
+        image: "/images/FCLSausagesPacks/SoseKadogoo-.png",
+        price: 120,
+        weight: "200g",
+      },
+      {
+        id: "collar-kadogo",
+        name: "Collar Kadogo",
+        description: "Economical collar bacon",
+        image: "/images/FCLBaconPacks/CollarKadogoo-01.png",
+        price: 180,
+        weight: "200g",
+      },
+    ],
+  },
+  {
+    id: "fresh-meats",
+    name: "Fresh Meats",
+    products: [
+      {
+        id: "beef-fillet",
+        name: "Beef Fillet",
+        description: "Prime beef fillet",
+        image: "/images/FCL Fresh cuts/Beefcuts/BeefFillet.png",
         price: 1800,
-        weight: "800g",
-      },
-      {
-        id: 20,
-        name: "Pork Chipolatas 1kg",
-        description: "Maple-flavored links",
-        image: "/images/FCLSausagesPacks/PorkChipolatas1kg.png",
-        price: 1250,
         weight: "1kg",
       },
       {
-        id: 21,
-        name: "Pork Chipolatas 200g",
-        description: "Hickory-smoked flavor",
-        image: "/images/FCLSausagesPacks/PorkChipolatas200g.png",
-        price: 1550,
-        weight: "900g",
-      },
-      {
-        id: 22,
-        name: "Pork Sausages Catering 2",
-        description: "With cheddar chunks",
-        image: "/images/FCLSausagesPacks/PorkSausagesCatering2.png",
-        price: 1450,
-        weight: "800g",
-      },
-      {
-        id: 23,
-        name: "Pork Sausages IQF 454gms",
-        description: "Sweet and savory",
-        image: "/images/FCLSausagesPacks/PorkSausagesIQF454gms.png",
+        id: "ribeye-steak",
+        name: "Ribeye Steak",
+        description: "Premium ribeye steak",
+        image: "/images/FCL Fresh cuts/Beefcuts/RibEyesteak.png",
         price: 1500,
-        weight: "900g",
+        weight: "1kg",
       },
       {
-        id: 24,
-        name: "Pork VP",
-        description: "Spicy with peppers",
-        image: "/images/FCLSausagesPacks/PorkVP.png",
-        price: 1600,
-        weight: "800g",
-      },
-      {
-        id: 25,
-        name: "Pork-&-Garlic-IQF",
-        description: "With rosemary and thyme",
-        image: "/images/FCLSausagesPacks/Pork-&-Garlic-IQF.png",
+        id: "t-bone-steak",
+        name: "T-bone Steak",
+        description: "Premium T-bone steak",
+        image: "/images/FCL Fresh cuts/Beefcuts/T-boneSteak.png",
         price: 1400,
         weight: "1kg",
       },
       {
-        id: 26,
-        name: "Premium Pork Sausages 400g copy",
-        description: "Sweet and tangy",
-        image: "/images/FCLSausagesPacks/PremiumPorkSausages400gcopy.png",
-        price: 1550,
-        weight: "400g",
+        id: "rump-steak",
+        name: "Rump Steak",
+        description: "Quality rump steak",
+        image: "/images/FCL Fresh cuts/Beefcuts/RumpSteak.png",
+        price: 1200,
+        weight: "1kg",
       },
       {
-        id: 27,
-        name: "Safari Beef",
-        description: "Brewed with lager",
-        image: "/images/FCLSausagesPacks/SafariBeef.png",
-        price: 1650,
-        weight: "800g",
-      },
-      {
-        id: 28,
-        name: "Sose Kadogoo-",
-        description: "Gamey flavor",
-        image: "/images/FCLSausagesPacks/SoseKadogoo-.png",
-        price: 2000,
-        weight: "700g",
-      },
-      {
-        id: 29,
-        name: "Spicy Beef Sausages 1KG-01",
-        description: "Rich and flavorful",
-        image: "/images/FCLSausagesPacks/SpicyBeefSausages1KG-01.png",
-        price: 1900,
-        weight: "800g",
-      },
-      {
-        id: 30,
-        name: "Spicy Beef_",
-        description: "Lean poultry option",
-        image: "/images/FCLSausagesPacks/SpicyBeef_.png",
+        id: "strip-loin-steak",
+        name: "Strip Loin Steak",
+        description: "Premium strip loin steak",
+        image: "/images/FCL Fresh cuts/Beefcuts/StripLoinSteak.png",
         price: 1350,
         weight: "1kg",
       },
       {
-        id: 31,
-        name: "Spicy Chicken VP 1Kg",
-        description: "Meat-free alternative",
-        image: "/images/FCLSausagesPacks/SpicyChickenVP1Kg.png",
-        price: 1200,
-        weight: "800g",
+        id: "beef-cubes",
+        name: "Beef Cubes",
+        description: "Diced beef cubes",
+        image: "/images/FCL Fresh cuts/Beefcuts/beefcubes.png",
+        price: 950,
+        weight: "1kg",
       },
       {
-        id: 32,
-        name: "Spicy Pork Sausages VP_",
-        description: "Extra spicy Spanish",
-        image: "/images/FCLSausagesPacks/SpicyPorkSausagesVP_.png",
-        price: 1700,
-        weight: "700g",
+        id: "beef-strips",
+        name: "Beef Strips",
+        description: "Beef strips for stir-fry",
+        image: "/images/FCL Fresh cuts/Beefcuts/BeefStrips.png",
+        price: 1100,
+        weight: "1kg",
       },
       {
-        id: 33,
-        name: "Spicy Pork_",
-        description: "Dry-cured style",
-        image: "/images/FCLSausagesPacks/SpicyPork_.png",
-        price: 1800,
-        weight: "600g",
-      }
-    ]
+        id: "beef-ribs",
+        name: "Beef Ribs",
+        description: "Fresh beef ribs",
+        image: "/images/FCL Fresh cuts/Beefcuts/BeefRibs.png",
+        price: 850,
+        weight: "1kg",
+      },
+      {
+        id: "beef-brisket",
+        name: "Beef Brisket",
+        description: "Quality beef brisket",
+        image: "/images/FCL Fresh cuts/Beefcuts/BeefBrisket.png",
+        price: 900,
+        weight: "1kg",
+      },
+      {
+        id: "whole-silverside",
+        name: "Whole Silverside",
+        description: "Whole silverside cut",
+        image: "/images/FCL Fresh cuts/Beefcuts/Wholesilverside.png",
+        price: 850,
+        weight: "1kg",
+      },
+      {
+        id: "whole-topside",
+        name: "Whole Topside",
+        description: "Whole topside cut",
+        image: "/images/FCL Fresh cuts/Beefcuts/wholetopside.png",
+        price: 900,
+        weight: "1kg",
+      },
+      {
+        id: "chuck-and-blade",
+        name: "Chuck and Blade (Java)",
+        description: "Chuck and blade cut",
+        image: "/images/FCL Fresh cuts/Beefcuts/ChuckandBlade(Java).png",
+        price: 750,
+        weight: "1kg",
+      },
+      {
+        id: "thick-flank",
+        name: "Thick Flank (Top Rump)",
+        description: "Thick flank cut",
+        image: "/images/FCL Fresh cuts/Beefcuts/Thickflank(TopRump).png",
+        price: 950,
+        weight: "1kg",
+      },
+      {
+        id: "eye-piece",
+        name: "Eye Piece",
+        description: "Eye piece cut",
+        image: "/images/FCL Fresh cuts/Beefcuts/EyePiece.png",
+        price: 1050,
+        weight: "1kg",
+      },
+      {
+        id: "shin-on-bone",
+        name: "Shin on Bone",
+        description: "Shin on bone cut",
+        image: "/images/FCL Fresh cuts/Beefcuts/Shinonbonewholeshineonbone.png",
+        price: 650,
+        weight: "1kg",
+      },
+      {
+        id: "barbecue-ribs-bulk",
+        name: "Barbecue Ribs Bulk",
+        description: "Bulk barbecue ribs",
+        image: "/images/FCL Fresh cuts/Beefcuts/BarbequeRibsBulk.png",
+        price: 800,
+        weight: "1kg",      },
+    ],
   },
   {
-    id: "mini-bites",
-    name: "Mini bite & Nyamabites",
+    id: "miscellaneous-products",
+    name: "Miscellaneous Products",
     products: [
       {
-        id: 1,
-        name: "Mini Bites Packs",
-        description: "Assorted bite-sized snacks",
-        image: "/images/Minibite/MiniBitesPacks.png",
+        id: "team-pet-food-2kg",
+        name: "Team Pet Food, 1x2 kg",
+        description: "Pet food for dogs",
+        image: "/images/miscellaneous/team-pet-food.png",
+        price: 352,
+        weight: "2kg",
+      },
+      {
+        id: "beefo-pet-food-2kg",
+        name: "Beefo Pet Food, 1x2 kg",
+        description: "Pet food for dogs",
+        image: "/images/miscellaneous/beefo-pet-food.png",
+        price: 352,
+        weight: "2kg",
+      },
+    ],
+  },
+  {
+    id: "pre-packed-fresh-meats",
+    name: "Pre Packed Fresh Meats",
+    products: [
+      {
+        id: "frozen-pork-fillet-500g",
+        name: "Frozen Pork Fillet 500g",
+        description: "Frozen pork fillet",
+        image: "/images/fresh-meats/frozen-pork-fillet.png",
+        price: 680,
+        weight: "500g",
+      },
+      {
+        id: "pork-loin-chops-bin-500g",
+        name: "Pork Loin Chops B'In, 500gms",
+        description: "Pork loin chops bone-in",
+        image: "/images/fresh-meats/pork-loin-chops.png",
+        price: 1020,
+        weight: "500g",
+      },
+      {
+        id: "frozen-loin-chops-bin-500g",
+        name: "Frozen Loin Chops B'In 500g",
+        description: "Frozen loin chops bone-in",
+        image: "/images/fresh-meats/frozen-loin-chops.png",
+        price: 950,
+        weight: "500g",
+      },
+      {
+        id: "frozen-belly-spare-ribs-750g",
+        name: "Frozen Belly Spare Ribs 750g",
+        description: "Frozen belly spare ribs",
+        image: "/images/fresh-meats/frozen-belly-spare-ribs.png",
+        price: 850,
+        weight: "750g",
+      },
+      {
+        id: "frozen-shoulder-chops-500g",
+        name: "Frozen Shoulder Chops 500g",
+        description: "Frozen shoulder chops",
+        image: "/images/fresh-meats/frozen-shoulder-chops.png",
+        price: 750,
+        weight: "500g",
+      },
+      {
+        id: "frozen-pork-cubes-500g",
+        name: "Frozen Pork Cubes 500g",
+        description: "Frozen pork cubes",
+        image: "/images/fresh-meats/frozen-pork-cubes.png",
+        price: 760,
+        weight: "500g",
+      },
+      {
+        id: "frozen-pork-leg-steaks-500g",
+        name: "Frozen Pork Leg Steaks 500gms",
+        description: "Frozen pork leg steaks",
+        image: "/images/fresh-meats/frozen-pork-leg-steaks.png",
+        price: 580,
+        weight: "500g",
+      },
+      {
+        id: "pork-mince-500g",
+        name: "Pork Mince, 500 gms",
+        description: "Fresh pork mince",
+        image: "/images/fresh-meats/pork-mince.png",
+        price: 630,
+        weight: "500g",
+      },
+      {
+        id: "beef-cubes-500g",
+        name: "Beef Cubes, 500 gms",
+        description: "Fresh beef cubes",
+        image: "/images/fresh-meats/beef-cubes-500g.png",
+        price: 700,
+        weight: "500g",
+      },
+      {
+        id: "frozen-beef-cubes-500g",
+        name: "Frozen Beef Cubes 500gms",
+        description: "Frozen beef cubes",
+        image: "/images/fresh-meats/frozen-beef-cubes.png",
+        price: 730,
+        weight: "500g",
+      },
+      {
+        id: "minced-beef-500g-high-grade",
+        name: "Minced Beef 500g (High Grade)",
+        description: "High grade minced beef",
+        image: "/images/fresh-meats/minced-beef-high-grade.png",
+        price: 470,
+        weight: "500g",
+      },
+      {
+        id: "frozen-beef-mince-500g",
+        name: "Frozen Beef Mince 500gm",
+        description: "Frozen beef mince",
+        image: "/images/fresh-meats/frozen-beef-mince.png",
+        price: 300,
+        weight: "500g",
+      },
+      {
+        id: "lamb-loin-chops-500g",
+        name: "Lamb Loin Chops 500gm",
+        description: "Fresh lamb loin chops",
+        image: "/images/fresh-meats/lamb-loin-chops.png",
+        price: 980,
+        weight: "500g",
+      },
+      {
+        id: "lamb-shoulder-chops-500g",
+        name: "Lamb Shoulder Chops 500gm",
+        description: "Fresh lamb shoulder chops",
+        image: "/images/fresh-meats/lamb-shoulder-chops.png",
+        price: 580,
+        weight: "500g",
+      },
+    ],
+  },
+  {
+    id: "fresh-pork",
+    name: "Fresh Pork",
+    products: [
+      {
+        id: "loin-chops-per-kg",
+        name: "Loin Chops, per kg",
+        description: "Fresh pork loin chops",
+        image: "/images/fresh-pork/loin-chops.png",
+        price: 1150,
+        weight: "1kg",
+      },
+      {
+        id: "pork-belly-spare-ribs-10kg",
+        name: "Pork Belly Spare Ribs, 10 kgs",
+        description: "Pork belly spare ribs bulk",
+        image: "/images/fresh-pork/belly-spare-ribs.png",
+        price: 980,
+        weight: "1kg",
+      },
+      {
+        id: "local-belly-spare-ribs-kg",
+        name: "Local Belly Spare Ribs/kg",
+        description: "Local belly spare ribs",
+        image: "/images/fresh-pork/local-belly-spare-ribs.png",
         price: 900,
+        weight: "1kg",
+      },
+      {
+        id: "prime-shoulder-ribs-kg",
+        name: "Prime Shoulder Ribs,per Kg",
+        description: "Prime shoulder ribs",
+        image: "/images/fresh-pork/prime-shoulder-ribs.png",
+        price: 950,
+        weight: "1kg",
+      },
+      {
+        id: "baby-spare-ribs-kg",
+        name: "Baby Spare Ribs per Kg",
+        description: "Baby spare ribs",
+        image: "/images/fresh-pork/baby-spare-ribs.png",
+        price: 995,
+        weight: "1kg",
+      },
+      {
+        id: "p-belly-bone-in-r-on-kg",
+        name: "P-Belly Bone-In R-On /kg",
+        description: "Pork belly bone-in rind-on",
+        image: "/images/fresh-pork/belly-bone-in.png",
+        price: 1250,
+        weight: "1kg",
+      },
+      {
+        id: "p-belly-boneless-rindless-kg",
+        name: "P-Belly B/less R/less /kg",
+        description: "Pork belly boneless rindless",
+        image: "/images/fresh-pork/belly-boneless.png",
+        price: 1250,
+        weight: "1kg",
+      },
+      {
+        id: "pork-belly-boneless-rind-on",
+        name: "Pork Belly Boneless Rind On",
+        description: "Pork belly boneless rind on",
+        image: "/images/fresh-pork/belly-boneless-rind-on.png",
+        price: 1250,
+        weight: "1kg",
+      },
+      {
+        id: "pork-belly-slices-kg",
+        name: "Pork Belly Slices/Kg",
+        description: "Pork belly slices",
+        image: "/images/fresh-pork/belly-slices.png",
+        price: 990,
+        weight: "1kg",
+      },
+      {
+        id: "pork-hand-boneless",
+        name: "Pork Hand Boneless",
+        description: "Pork hand boneless",
+        image: "/images/fresh-pork/hand-boneless.png",
+        price: 900,
+        weight: "1kg",
+      },
+      {
+        id: "rolled-shoulder-kg",
+        name: "Rolled Shoulder, Per Kg",
+        description: "Rolled shoulder",
+        image: "/images/fresh-pork/rolled-shoulder.png",
+        price: 1050,
+        weight: "1kg",
+      },
+      {
+        id: "shoulder-bin-ron-kg",
+        name: "Shoulder B/In R/On /kg",
+        description: "Shoulder bone-in rind-on",
+        image: "/images/fresh-pork/shoulder-bone-in.png",
+        price: 1100,
+        weight: "1kg",
+      },
+      {
+        id: "shoulder-chops-kg",
+        name: "Shoulder Chops, Per Kg",
+        description: "Shoulder chops",
+        image: "/images/fresh-pork/shoulder-chops.png",
+        price: 1400,
+        weight: "1kg",
+      },
+      {
+        id: "pork-vikings-kg",
+        name: "Pork Vikings Per Kg",
+        description: "Pork vikings",
+        image: "/images/fresh-pork/pork-vikings.png",
+        price: 530,
+        weight: "1kg",
+      },
+      {
+        id: "local-belly-spare-ribs-500g",
+        name: "Local Belly Spare Ribs, 500 gms",
+        description: "Local belly spare ribs",
+        image: "/images/fresh-pork/local-belly-spare-ribs-500g.png",
+        price: 430,
+        weight: "500g",
+      },
+      {
+        id: "prime-shoulder-ribs-500g",
+        name: "Prime Shoulder Ribs, 500 gms",
+        description: "Prime shoulder ribs",
+        image: "/images/fresh-pork/prime-shoulder-ribs-500g.png",
+        price: 430,
+        weight: "500g",
+      },
+      {
+        id: "meat-on-bone-pork-500g",
+        name: "Meat on Bone Pork, 500 gms",
+        description: "Meat on bone pork",
+        image: "/images/fresh-pork/meat-on-bone.png",
+        price: 350,
+        weight: "500g",
+      },
+      {
+        id: "beef-sirloin-kg",
+        name: "Beef Sirloin, Per Kg",
+        description: "Beef sirloin",
+        image: "/images/fresh-beef/beef-sirloin.png",
+        price: 1500,
+        weight: "1kg",
+      },
+      {
+        id: "beef-striploin-kg",
+        name: "Beef Striploin, Per Kg",
+        description: "Beef striploin",
+        image: "/images/fresh-beef/beef-striploin.png",
+        price: 1560,
+        weight: "1kg",
+      },
+      {
+        id: "barbecue-beef-ribs-kg",
+        name: "Barbecue Beef Ribs per kg",
+        description: "Barbecue beef ribs",
+        image: "/images/fresh-beef/barbecue-beef-ribs.png",
+        price: 700,
+        weight: "1kg",
+      },
+    ],
+  },
+  {
+    id: "fresh-beef-cont",
+    name: "Fresh Beef (Cont.)",
+    products: [
+      {
+        id: "beef-casserole-kg",
+        name: "Beef Casserole/Kg",
+        description: "Beef casserole cuts",
+        image: "/images/fresh-beef/beef-casserole.png",
+        price: 650,
+        weight: "1kg",
+      },
+      {
+        id: "minced-beef-high-grade-kg",
+        name: "Minced Beef (High Grade), Kg",
+        description: "High grade minced beef",
+        image: "/images/fresh-beef/minced-beef-high-grade.png",
+        price: 590,
+        weight: "1kg",
+      },
+      {
+        id: "osubuko-shin-on-bone",
+        name: "Osubuko (Shin on Bone)",
+        description: "Shin on bone",
+        image: "/images/fresh-beef/osubuko.png",
+        price: 760,
+        weight: "1kg",
+      },
+      {
+        id: "ox-tail-kg",
+        name: "Ox-Tail per kg",
+        description: "Fresh ox-tail",
+        image: "/images/fresh-beef/ox-tail.png",
+        price: 510,
+        weight: "1kg",
+      },
+      {
+        id: "meaty-soup-bones-5kg",
+        name: "Meaty Soup Bones,5kgs",
+        description: "Meaty soup bones",
+        image: "/images/fresh-beef/soup-bones.png",
+        price: 1100,
+        weight: "5kg",
+      },
+    ],
+  },
+  {
+    id: "fresh-burgers",
+    name: "Fresh Burgers",
+    products: [
+      {
+        id: "fresh-beef-burgers-1kg",
+        name: "Fresh Beef Burgers, 1kg",
+        description: "Fresh beef burger patties",
+        image: "/images/fresh-burgers/beef-burgers-1kg.png",
+        price: 790,
+        weight: "1kg",
+      },
+      {
+        id: "fresh-beef-burger-400g",
+        name: "Fresh Beef Burger 400gms",
+        description: "Fresh beef burger patties",
+        image: "/images/fresh-burgers/beef-burger-400g.png",
+        price: 350,
         weight: "400g",
       },
       {
-        id: 2,
-        name: "Nyamabite 2",
-        description: "Premium meat bites selection",
-        image: "/images/Nyamabite/Nyamabite2.png",
+        id: "chicken-burger-1kg",
+        name: "Chicken Burger 1 kg",
+        description: "Chicken burger patties",
+        image: "/images/fresh-burgers/chicken-burger-1kg.png",
+        price: 790,
+        weight: "1kg",
+      },
+      {
+        id: "chicken-burger-400g",
+        name: "Chicken Burger 400gms",
+        description: "Chicken burger patties",
+        image: "/images/fresh-burgers/chicken-burger-400g.png",
+        price: 350,
+        weight: "400g",
+      },
+      {
+        id: "meat-balls-1kg",
+        name: "Meat Balls, 1 Kg",
+        description: "Fresh meat balls",
+        image: "/images/fresh-burgers/meat-balls.png",
+        price: 700,
+        weight: "1kg",
+      },
+      {
+        id: "savoury-meat-balls-300g",
+        name: "Savoury Meat Balls, 300 gms",
+        description: "Savoury meat balls",
+        image: "/images/fresh-burgers/savoury-meat-balls.png",
+        price: 255,
+        weight: "300g",
+      },
+    ],
+  },
+  {
+    id: "fresh-lamb",
+    name: "Fresh Lamb",
+    products: [
+      {
+        id: "whole-lamb-14-18kg",
+        name: "Whole Lamb 14-18kg",
+        description: "Whole lamb carcass",
+        image: "/images/fresh-lamb/whole-lamb.png",
+        price: 900,
+        weight: "1kg",
+      },
+      {
+        id: "lamb-leg-kg",
+        name: "Lamb Leg /kg",
+        description: "Fresh lamb leg",
+        image: "/images/fresh-lamb/lamb-leg.png",
+        price: 850,
+        weight: "1kg",
+      },
+      {
+        id: "lamb-leg-boneless-2-2kg",
+        name: "Lamb Leg B'less 2.2kg",
+        description: "Boneless lamb leg",
+        image: "/images/fresh-lamb/lamb-leg-boneless.png",
         price: 1200,
-        weight: "500g",
-      }
-    ]
-  }
+        weight: "1kg",
+      },
+      {
+        id: "lamb-shoulder-chops-kg",
+        name: "Lamb Shoulder Chops /kg",
+        description: "Lamb shoulder chops",
+        image: "/images/fresh-lamb/lamb-shoulder-chops.png",
+        price: 900,
+        weight: "1kg",
+      },
+      {
+        id: "lamb-loin-bone-in-kg",
+        name: "Lamb Loin, Bone In /kg",
+        description: "Lamb loin bone-in",
+        image: "/images/fresh-lamb/lamb-loin-bone-in.png",
+        price: 1650,
+        weight: "1kg",
+      },
+      {
+        id: "lamb-loin-chops-kg",
+        name: "Lamb Loin Chops /kg",
+        description: "Lamb loin chops",
+        image: "/images/fresh-lamb/lamb-loin-chops.png",
+        price: 1800,
+        weight: "1kg",
+      },
+      {
+        id: "frenched-lamb-loin-chops-kg",
+        name: "Frenched Lamb Loin Chops/kg",
+        description: "Frenched lamb loin chops",
+        image: "/images/fresh-lamb/frenched-lamb-loin-chops.png",
+        price: 3200,
+        weight: "1kg",
+      },
+      {
+        id: "lamb-casserole",
+        name: "Lamb Casserole",
+        description: "Lamb casserole cuts",
+        image: "/images/fresh-lamb/lamb-casserole.png",
+        price: 400,
+        weight: "1kg",
+      },
+    ],
+  },
 ];
 
 export default function Farmerschoice() {
+  const categoryScrollRef = useRef(null);
   const [favorites, setFavorites] = useState([]);
-  const [activeCategory, setActiveCategory] = useState(categories[0].id);
+  const [activeCategory, setActiveCategory] = useState(categories.length > 0 ? categories[0].id : "continentals");
   const [showDescription, setShowDescription] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false); // Changed to false for faster loading
+  const [categoryScrollAtStart, setCategoryScrollAtStart] = useState(true);
+  const [categoryScrollAtEnd, setCategoryScrollAtEnd] = useState(false);
 
   useEffect(() => {
-    // Simulate loading time
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 800);
-    
-    return () => clearTimeout(timer);
-  }, []);
+    // Reduced loading time for better performance
+    if (isLoading) {
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+      }, 300);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [isLoading]);
 
   const toggleFavorite = (id) => {
     setFavorites(prev => 
@@ -1595,7 +1716,6 @@ export default function Farmerschoice() {
         : [...prev, id]
     );
   };
-
   const toggleDescription = (id) => {
     setShowDescription(prev => ({
       ...prev,
@@ -1603,114 +1723,173 @@ export default function Farmerschoice() {
     }));
   };
 
+  // Category scroll functions
+  const checkCategoryScrollPosition = () => {
+    if (!categoryScrollRef.current) return;
+    
+    const { scrollLeft, scrollWidth, clientWidth } = categoryScrollRef.current;
+    setCategoryScrollAtStart(scrollLeft === 0);
+    setCategoryScrollAtEnd(scrollLeft >= scrollWidth - clientWidth - 10);
+  };
+
+  const scrollCategoryNav = (direction) => {
+    if (!categoryScrollRef.current) return;
+    
+    const scrollAmount = 200; // Adjust scroll amount as needed
+    categoryScrollRef.current.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
+  };
+
+  // Check scroll position on mount and scroll
+  useEffect(() => {
+    const container = categoryScrollRef.current;
+    if (!container) return;
+    
+    container.addEventListener('scroll', checkCategoryScrollPosition);
+    checkCategoryScrollPosition(); // Initial check
+    
+    return () => container.removeEventListener('scroll', checkCategoryScrollPosition);
+  }, []);
+
   return (
-    <div className="bg-[#fafafa] min-h-screen">
-      {/* Modern Hero Section with Farmers Choice theme */}
+    <div className="bg-[#fafafa] min-h-screen">      {/* Enhanced Hero Section with Farmer's Choice theme */}
       <div 
         className="relative bg-cover bg-center"
         style={{ backgroundImage: "url('/images/meat-background.jpg')" }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-[#A31621]/90 to-[#7A0E16]/90"></div>
-        <div className="container mx-auto relative z-10 text-center pt-16 pb-12 px-4">
-          {/* Farmers Choice Logo */}
-          <div className="flex justify-center mb-4">
-            <img 
-              src="/images/farmer.png" 
-              alt="Farmer's Choice Logo"
-              className="w-32 h-32 object-contain"
-            />
+        <div className="container mx-auto relative z-10 py-6 px-4">
+          <div className="flex items-center justify-between">
+            {/* Farmer's Choice Logo - Left Side */}
+            <div className="flex items-center">
+              <img 
+                src="/images/farmer.png" 
+                alt="Farmer's Choice Logo"
+                className="w-16 h-16 md:w-20 md:h-20 object-contain mr-4"
+                loading="eager"
+              />
+              <div>
+                <motion.h1 
+                  className="text-2xl md:text-3xl font-bold text-white"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  Farmer's Choice Selection
+                </motion.h1>
+                <motion.p 
+                  className="text-sm md:text-base text-white/90"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                  Kenya's finest meats since 1970
+                </motion.p>
+              </div>
+            </div>
+            
+            {/* Category Quick Nav - Right Side */}
+            <motion.div 
+              className="hidden md:flex gap-2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              {categories.slice(0, 4).map(category => (
+                <button
+                  key={category.id}
+                  onClick={() => setActiveCategory(category.id)}
+                  className={`px-3 py-1 rounded-full text-xs font-medium transition-all ${
+                    activeCategory === category.id
+                      ? 'bg-white text-[#A31621]'
+                      : 'bg-white/10 text-white/90 hover:bg-white/20'
+                  }`}
+                >
+                  {category.name.split(' ')[0]}
+                </button>
+              ))}
+            </motion.div>
           </div>
-          
-          <motion.h1 
-            className="text-4xl md:text-5xl font-bold text-white mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            Farmer's Choice Premium Selection
-          </motion.h1>
-          <motion.p 
-            className="text-xl text-white/90 max-w-2xl mx-auto mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            Kenya's finest meats since 1970
-          </motion.p>
-          <motion.div 
-            className="flex flex-wrap justify-center gap-3"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            {categories.slice(0, 5).map(category => (
-              <button
-                key={category.id}
-                onClick={() => setActiveCategory(category.id)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                  activeCategory === category.id
-                    ? 'bg-white text-[#A31621]'
-                    : 'bg-white/10 text-white/90 hover:bg-white/20'
-                }`}
-              >
-                {category.name.split(' ')[0]}
-              </button>
-            ))}
-          </motion.div>
         </div>
-      </div>
-
-      {/* Category Navigation */}
+      </div>      {/* Category Navigation with Horizontal Scroll */}
       <div className="sticky top-0 z-20 bg-white border-b border-gray-100 shadow-sm">
         <div className="container mx-auto px-4">
-          <div className="flex overflow-x-auto scrollbar-hide py-3 space-x-4">
-            {categories.map(category => (
-              <button
-                key={category.id}
-                onClick={() => {
-                  setActiveCategory(category.id);
-                  document.getElementById(category.id)?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className={`flex-shrink-0 px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all ${
-                  activeCategory === category.id
-                    ? 'bg-[#A31621] text-white shadow-red-sm'
-                    : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
-                }`}
-              >
-                {category.name}
-              </button>
-            ))}
+          <div className="relative">
+            {/* Left scroll arrow */}
+            <button
+              onClick={() => scrollCategoryNav("left")}
+              disabled={categoryScrollAtStart}
+              className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-2 z-30 bg-white rounded-full p-2 shadow-lg transition-colors ${
+                categoryScrollAtStart ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#A31621] hover:text-white'
+              }`}
+              aria-label="Scroll categories left"
+            >
+              <ChevronLeft className="w-4 h-4" />
+            </button>
+            
+            {/* Right scroll arrow */}
+            <button
+              onClick={() => scrollCategoryNav("right")}
+              disabled={categoryScrollAtEnd}
+              className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 z-30 bg-white rounded-full p-2 shadow-lg transition-colors ${
+                categoryScrollAtEnd ? 'opacity-50 cursor-not-allowed' : 'hover:bg-[#A31621] hover:text-white'
+              }`}
+              aria-label="Scroll categories right"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+            
+            {/* Category buttons container */}
+            <div 
+              ref={categoryScrollRef}
+              className="flex overflow-x-auto scrollbar-hide py-3 space-x-4"
+            >
+              {categories.map(category => (
+                <button
+                  key={category.id}
+                  onClick={() => {
+                    setActiveCategory(category.id);
+                    document.getElementById(category.id)?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className={`flex-shrink-0 px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-all ${
+                    activeCategory === category.id
+                      ? 'bg-[#A31621] text-white shadow-red-sm'
+                      : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
+                  }`}
+                >
+                  {category.name}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-
-      {/* Loading Skeleton */}
+      </div>{/* Loading Skeleton */}
       {isLoading && (
         <div className="container mx-auto py-8 px-4">
-          {[...Array(5)].map((_, idx) => (
-            <div key={idx} className="mb-16">
-              <div className="flex items-center justify-between mb-6">
+          {[...Array(3)].map((_, idx) => (
+            <div key={idx} className="mb-12">
+              <div className="flex items-center justify-between mb-4">
                 <div>
-                  <div className="h-8 bg-gray-200 rounded w-48 mb-2"></div>
-                  <div className="w-16 h-1 bg-gray-200 rounded-full mt-1"></div>
+                  <div className="h-6 bg-gray-200 rounded w-32 mb-1"></div>
+                  <div className="w-12 h-1 bg-gray-200 rounded-full"></div>
                 </div>
               </div>
-              <div className="relative">
-                <div className="flex overflow-x-auto scrollbar-hide space-x-5 pb-8 px-1">
-                  {[...Array(6)].map((_, i) => (
-                    <div key={i} className="flex-shrink-0 w-56 bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100">
-                      <div className="relative h-44 bg-gray-200 animate-pulse"></div>
-                      <div className="p-4">
-                        <div className="h-5 bg-gray-200 rounded w-4/5 mb-3"></div>
-                        <div className="h-4 bg-gray-200 rounded w-3/4 mb-4"></div>
-                        <div className="flex justify-between items-center">
-                          <div className="h-6 bg-gray-200 rounded w-1/4"></div>
-                          <div className="h-8 bg-gray-200 rounded-full w-20"></div>
-                        </div>
+              <div className="flex overflow-x-auto space-x-4 pb-4">
+                {[...Array(4)].map((_, i) => (
+                  <div key={i} className="flex-shrink-0 w-52 bg-white rounded-lg shadow-sm overflow-hidden border">
+                    <div className="h-36 bg-gray-200 animate-pulse"></div>
+                    <div className="p-3">
+                      <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+                      <div className="h-3 bg-gray-200 rounded w-1/2 mb-3"></div>
+                      <div className="flex justify-between items-center">
+                        <div className="h-5 bg-gray-200 rounded w-1/3"></div>
+                        <div className="h-6 bg-gray-200 rounded-full w-16"></div>
                       </div>
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
             </div>
           ))}
@@ -1860,7 +2039,6 @@ function ProductCard({
     setShowCartFeedback(true);
     setTimeout(() => setShowCartFeedback(false), 1000);
   };
-
   return (
     <motion.div
       className="flex-shrink-0 w-56 bg-white rounded-xl shadow-sm hover:shadow-md transition-all overflow-hidden border border-gray-100 relative group"
@@ -1868,25 +2046,32 @@ function ProductCard({
       layout
     >
       <div className="relative h-44">
-        {/* Loading placeholder */}
+        {/* Optimized Loading placeholder */}
         {!imageLoaded && !imageError && (
-          <div className="absolute inset-0 bg-gray-200 animate-pulse flex items-center justify-center">
-            <div className="text-gray-500 text-sm">Loading...</div>
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-100 via-gray-200 to-gray-100 bg-[length:200%_100%] animate-shimmer flex items-center justify-center">
+            <div className="text-gray-400 text-xs">Loading...</div>
           </div>
         )}
         
-        {/* Product image */}
+        {/* Optimized Product image - removed lazy loading for better performance */}
         {!imageError ? (
           <img
             src={product.image}
             alt={product.name}
-            className={`w-full h-full object-cover ${imageLoaded ? 'block' : 'hidden'}`}
+            className={`w-full h-full object-cover transition-opacity duration-300 ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
             onLoad={() => setImageLoaded(true)}
             onError={() => setImageError(true)}
+            decoding="async"
+            fetchPriority="high"
           />
         ) : (
-          <div className="bg-gray-200 border-2 border-dashed rounded-xl w-full h-full flex items-center justify-center">
-            <span className="text-gray-500 text-sm">Image not available</span>
+          <div className="bg-gray-100 border-2 border-dashed border-gray-300 rounded-xl w-full h-full flex items-center justify-center">
+            <div className="text-center text-gray-500">
+              <svg className="w-8 h-8 mx-auto mb-2 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <span className="text-xs">No image</span>
+            </div>
           </div>
         )}
         

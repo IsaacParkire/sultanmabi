@@ -11,7 +11,7 @@ const categories = [
       {
         id: "continental-1",
         name: "Beef continental salami",
-        description: "Assorted premium Italian cured meats",
+        description: "Assorted Italian cured meats",
         image: "/images/continentals/Beefcontinentalsalami.png",
         price: 2400,
         weight: "200gms",
@@ -35,7 +35,7 @@ const categories = [
       {
         id: "continental-4",
         name: "Beef Viennas 500gms",
-        description: "Premium acorn-fed ham",
+        description: "Acorn-fed ham",
         image: "/images/continentals/BeefViennas500gms.png",
         price: 3500,
         weight: "300g",
@@ -107,7 +107,7 @@ const categories = [
       {
         id: "continental-13",
         name: "Poultry  Vienna 1kg ",
-        description: "Smoked premium ham",
+        description: "Smoked ham",
         image: "/images/continentals/PoultryVienna1kg.png",
         price: 2100,
         weight: "1kg",
@@ -241,7 +241,7 @@ const categories = [
       {
         id: "delicatessen-11",
         name: "FC Kassler",
-        description: "Premium sturgeon caviar",
+        description: "Sturgeon caviar",
         image: "/images/Delicatessen/FCKassler.png",
         price: 8500,
         weight: "100g",
@@ -421,7 +421,7 @@ const categories = [
       {
         id: "bacon-1",
         name: "Back Bacon 1kg",
-        description: "Premium applewood smoked bacon",
+        description: "Applewood smoked bacon",
         image: "/images/FCLBaconPacks/BackBacon1kg.png",
         price: 1200,
         weight: "1kg",
@@ -587,7 +587,7 @@ const categories = [
       {
         id: 3,
         name: "beef barbeque ribs sliced 2",
-        description: "Premium cut with tenderloin and strip",
+        description: "Cut with tenderloin and strip",
         image: "/images/FCL Fresh cuts/Beefcuts/beefbarbequeribssliced2.png",
         price: 2200,
         weight: "600g",
@@ -905,7 +905,7 @@ const categories = [
       {
         id: 4,
         name: "Lamb Dice bone Lessq",
-        description: "French-trimmed premium cut",
+        description: "French-trimmed cut",
         image: "/images/FCL Fresh cuts/LAMB/LambDiceboneLessq.png",
         price: 3500,
         weight: "1.2kg",
@@ -953,7 +953,7 @@ const categories = [
       {
         id: 10,
         name: "Lamb Neck Sulk T-Bone",
-        description: "Premium roasting joint",
+        description: "Roasting joint",
         image: "/images/FCL Fresh cuts/LAMB/LambNeckSulkT-Bone.png",
         price: 3200,
         weight: "1.5kg",
@@ -1007,46 +1007,54 @@ export default function ProductsPage() {
   };
 
   return (
-    <div className="bg-[#fafafa] min-h-screen">
-      {/* Modern Hero Section */}
+    <div className="bg-[#fafafa] min-h-screen">      {/* Compact Hero Section */}
       <div className="relative bg-gradient-to-r from-[#102542] to-[#1a3a5f]">
-        <div className="container mx-auto relative z-10 text-center pt-24 pb-20 px-4">
-          <motion.h1 
-            className="text-4xl md:text-5xl font-bold text-white mb-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            Premium Meat Selection
-          </motion.h1>
-          <motion.p 
-            className="text-xl text-white/90 max-w-2xl mx-auto mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
-            Finest cuts sourced from trusted local farms
-          </motion.p>
-          <motion.div 
-            className="flex flex-wrap justify-center gap-3"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          >
-            {categories.slice(0, 5).map(category => (
-              <button
-                key={category.id}
-                onClick={() => setActiveCategory(category.id)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                  activeCategory === category.id
-                    ? 'bg-[#A31621] text-white'
-                    : 'bg-white/10 text-white/90 hover:bg-white/20'
-                }`}
-              >
-                {category.name.split(' ')[0]}
-              </button>
-            ))}
-          </motion.div>
+        <div className="container mx-auto relative z-10 py-6 px-4">
+          <div className="flex items-center justify-between">
+            {/* Products Logo/Title - Left Side */}
+            <div className="flex items-center">
+              <div>
+                <motion.h1 
+                  className="text-2xl md:text-3xl font-bold text-white"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  Quality Meat Selection
+                </motion.h1>
+                <motion.p 
+                  className="text-sm md:text-base text-white/90"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                >
+                  Finest cuts sourced from trusted local farms
+                </motion.p>
+              </div>
+            </div>
+            
+            {/* Category Quick Nav - Right Side */}
+            <motion.div 
+              className="hidden md:flex gap-2"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            >
+              {categories.slice(0, 4).map(category => (
+                <button
+                  key={category.id}
+                  onClick={() => setActiveCategory(category.id)}
+                  className={`px-3 py-1 rounded-full text-xs font-medium transition-all ${
+                    activeCategory === category.id
+                      ? 'bg-white text-[#102542]'
+                      : 'bg-white/10 text-white/90 hover:bg-white/20'
+                  }`}
+                >
+                  {category.name.split(' ')[0]}
+                </button>
+              ))}
+            </motion.div>
+          </div>
         </div>
         <div className="absolute inset-0 bg-[url('/images/meat-pattern.svg')] bg-cover opacity-10"></div>
       </div>

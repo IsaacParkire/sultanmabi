@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Menu, ShoppingCart, Search, Sun, Moon, ChevronDown, ChevronUp, User, X } from "lucide-react";
+import { useState } from "react";
+import { Menu, ShoppingCart, Search, ChevronDown, ChevronUp, User, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
@@ -7,9 +7,6 @@ import { useCart } from "../context/CartContext";
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [categoriesOpen, setCategoriesOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(
-    localStorage.getItem("darkMode") === "true" || false
-  );
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
   const [showMobileSearch, setShowMobileSearch] = useState(false);
@@ -20,21 +17,10 @@ export default function Navbar() {
 
   // Madder color (A31621) for navbar background
   const primaryColor = "text-[#A31621]";
-  const bgColor = darkMode ? "bg-gray-900" : "bg-[#A31621]";
-  const textColor = darkMode ? "text-gray-100" : "text-white";
-  const hoverColor = darkMode ? "hover:text-yellow-400" : "hover:text-[#FFD8A9]";
-  const dropdownBg = darkMode ? "bg-gray-800 text-white" : "bg-white text-black";
-  
-  // Apply dark mode to entire page
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("darkMode", "true");
-    } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("darkMode", "false");
-    }
-  }, [darkMode]);
+  const bgColor = "bg-[#A31621]";
+  const textColor = "text-white";
+  const hoverColor = "hover:text-[#FFD8A9]";
+  const dropdownBg = "bg-white text-black";
 
   // Search functionality
   const handleSearch = (e) => {
@@ -47,25 +33,22 @@ export default function Navbar() {
     }
   };
 
-  return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition shadow-md ${bgColor} ${textColor}`}>
-      <div className="flex justify-between items-center px-4 md:px-6 py-3 max-w-7xl mx-auto">
+  return (    <nav className={`fixed top-0 left-0 w-full z-50 transition shadow-md ${bgColor} ${textColor}`}>
+      <div className="flex justify-between items-center px-4 md:px-6 py-2 max-w-7xl mx-auto">
 
-        {/* Logo - made clickable to homepage */}
-        <motion.div 
+        {/* Logo - made clickable to homepage */}        <motion.div 
           initial={{ opacity: 0, x: -50 }} 
           animate={{ opacity: 1, x: 0 }} 
-          className="flex items-center cursor-pointer space-x-2"
-        >
-          <Link to="/" onClick={() => window.scrollTo(0, 0)}>
+          className="flex items-center cursor-pointer space-x-1"
+        >          <Link to="/" onClick={() => window.scrollTo(0, 0)}>
             <img 
-              src="/images/sultanlogo.jpg" 
+              src="/images/whitelogo.png" 
               alt="Sultanmabi Logo" 
-              className="w-10 h-10 object-cover rounded-full border-2 border-white"
+              className="w-12 h-12 md:w-16 md:h-16 object-contain"
             />
           </Link>
           <Link to="/" onClick={() => window.scrollTo(0, 0)}>
-            <span className="text-2xl font-bold text-white">Sultanmabi</span>
+            <span className="text-lg md:text-xl font-bold text-white hidden sm:block ml-1">Sultanmabi Market</span>
           </Link>
         </motion.div>
 
@@ -87,12 +70,10 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.2 }}
-                  className={`absolute top-8 left-0 w-64 ${dropdownBg} shadow-lg rounded-md p-4 space-y-3 border border-gray-200 dark:border-gray-700`}
-                >
-                  <h4 className="text-lg font-semibold mb-2 border-b pb-2">Our Categories</h4>
-                  <Link to="/categories/fruits" className="block px-4 py-2 rounded hover:bg-[#fcecec] dark:hover:bg-gray-700 transition-colors">Farmer's choice range</Link>
-                  <Link to="/categories/vegetables" className="block px-4 py-2 rounded hover:bg-[#fcecec] dark:hover:bg-gray-700 transition-colors">Choice meats</Link>
-                  <Link to="/categories/bakery" className="block px-4 py-2 rounded hover:bg-[#fcecec] dark:hover:bg-gray-700 transition-colors">Sultanmabi select</Link>
+                  className={`absolute top-8 left-0 w-64 ${dropdownBg} shadow-lg rounded-md p-4 space-y-3 border border-gray-200`}
+                >                  <h4 className="text-lg font-semibold mb-2 border-b pb-2">Our Categories</h4>                  <Link to="/farmers-choice" className="block px-4 py-2 rounded hover:bg-[#fcecec] transition-colors">Farmer's choice range</Link>
+                  <Link to="/choice-meats" className="block px-4 py-2 rounded hover:bg-[#fcecec] transition-colors">Choice meats</Link>
+                  <Link to="/sultanmabi-select" className="block px-4 py-2 rounded hover:bg-[#fcecec] transition-colors">Sultanmabi select</Link>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -102,26 +83,20 @@ export default function Navbar() {
         </ul>
 
         {/* Right Icons */}
-        <div className="flex items-center space-x-4">
-          {/* Desktop Search */}
+        <div className="flex items-center space-x-4">          {/* Desktop Search */}
           <form onSubmit={handleSearch} className="hidden md:flex items-center">
             <div className="relative">
               <input 
                 type="text" 
                 placeholder="Search..." 
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className={`py-1 pl-3 pr-10 rounded-full outline-none transition-all duration-300 ${
-                  darkMode 
-                    ? "bg-gray-700 text-white placeholder-gray-400" 
-                    : "bg-[#d14a52] text-white placeholder-[#FFD8A9]"
-                } w-48 focus:w-56`}
+                onChange={(e) => setSearchTerm(e.target.value)}                className="py-1 pl-3 pr-10 rounded-full outline-none transition-all duration-300 bg-[#d14a52] text-white placeholder-[#FFD8A9] w-48 focus:w-56"
               />
               <button 
                 type="submit"
                 className="absolute right-2 top-1/2 transform -translate-y-1/2"
               >
-                <Search className={`w-5 h-5 ${darkMode ? "text-gray-300" : "text-[#FFD8A9]"}`} />
+                <Search className="w-5 h-5 text-[#FFD8A9]" />
               </button>
             </div>
           </form>
@@ -149,34 +124,21 @@ export default function Navbar() {
             />
             {userMenuOpen && (
               <div 
-                className={`absolute right-0 mt-2 w-40 ${dropdownBg} shadow-lg rounded-md p-2 space-y-2 border border-gray-200 dark:border-gray-700`}
+                className={`absolute right-0 mt-2 w-40 ${dropdownBg} shadow-lg rounded-md p-2 space-y-2 border border-gray-200`}
                 onMouseLeave={() => setUserMenuOpen(false)}
               >
                 <Link to="/profile" onClick={() => setUserMenuOpen(false)} className={`${hoverColor} block px-3 py-2 rounded transition-colors`}>Profile</Link>
                 <Link to="/login" onClick={() => setUserMenuOpen(false)} className={`${hoverColor} block px-3 py-2 rounded transition-colors`}>Login</Link>
                 <Link to="/register" onClick={() => setUserMenuOpen(false)} className={`${hoverColor} block px-3 py-2 rounded transition-colors`}>Register</Link>
               </div>
-            )}
-          </div>
-
-          {/* Dark Mode Toggle */}
-          <div 
-            onClick={() => setDarkMode(!darkMode)} 
-            className={`cursor-pointer p-1 rounded-full ${
-              darkMode ? "bg-yellow-400 text-gray-900" : "bg-gray-800 text-yellow-400"
-            }`}
-          >
-            {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-          </div>
+            )}          </div>
 
           {/* Hamburger */}
           <Menu className="w-6 h-6 cursor-pointer md:hidden" onClick={() => setMenuOpen(!menuOpen)} />
         </div>
-      </div>
-
-      {/* Mobile Search Bar */}
+      </div>      {/* Mobile Search Bar */}
       {showMobileSearch && (
-        <div className="md:hidden px-4 py-3 bg-[#8c1219] dark:bg-gray-800">
+        <div className="md:hidden px-4 py-3 bg-[#8c1219]">
           <form onSubmit={handleSearch} className="flex items-center">
             <div className="relative w-full">
               <input 
@@ -184,17 +146,13 @@ export default function Navbar() {
                 placeholder="Search products..." 
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className={`py-2 pl-3 pr-10 rounded-full outline-none w-full ${
-                  darkMode 
-                    ? "bg-gray-700 text-white placeholder-gray-400" 
-                    : "bg-[#d14a52] text-white placeholder-[#FFD8A9]"
-                }`}
+                className="py-2 pl-3 pr-10 rounded-full outline-none w-full bg-[#d14a52] text-white placeholder-[#FFD8A9]"
               />
               <button 
                 type="submit"
                 className="absolute right-2 top-1/2 transform -translate-y-1/2"
               >
-                <Search className={`w-5 h-5 ${darkMode ? "text-gray-300" : "text-[#FFD8A9]"}`} />
+                <Search className="w-5 h-5 text-[#FFD8A9]" />
               </button>
             </div>
           </form>
@@ -216,14 +174,10 @@ export default function Navbar() {
             <div className="relative">
               <div onClick={() => setCategoriesOpen(!categoriesOpen)} className={`flex items-center cursor-pointer ${hoverColor} transition-colors`}>
                 Categories {categoriesOpen ? <ChevronUp className="ml-1 w-4 h-4" /> : <ChevronDown className="ml-1 w-4 h-4" />}
-              </div>
-              {categoriesOpen && (
-                <div className={`p-4 rounded-md mt-2 space-y-2 ${
-                  darkMode ? "bg-gray-800" : "bg-[#d14a52]"
-                }`}>
-                  <Link to="/categories/fruits" onClick={() => setMenuOpen(false)} className="block hover:opacity-80 transition-opacity">Farmer's choice range</Link>
-                  <Link to="/categories/vegetables" onClick={() => setMenuOpen(false)} className="block hover:opacity-80 transition-opacity">Choice meats</Link>
-                  <Link to="/categories/bakery" onClick={() => setMenuOpen(false)} className="block hover:opacity-80 transition-opacity">Sultanmabi select</Link>
+              </div>              {categoriesOpen && (                <div className="p-4 rounded-md mt-2 space-y-2 bg-[#d14a52]">
+                  <Link to="/farmers-choice" onClick={() => setMenuOpen(false)} className="block hover:opacity-80 transition-opacity">Farmer's choice range</Link>
+                  <Link to="/choice-meats" onClick={() => setMenuOpen(false)} className="block hover:opacity-80 transition-opacity">Choice meats</Link>
+                  <Link to="/sultanmabi-select" onClick={() => setMenuOpen(false)} className="block hover:opacity-80 transition-opacity">Sultanmabi select</Link>
                 </div>
               )}
             </div>

@@ -9,11 +9,11 @@ const slides = [
     id: 1,
     brand: "sultanmabi",
     image: "/images/hero2.jpg",
-    headline: "Premium Halal Meat Products",
+    headline: "Quality Halal Meat Products",
     subtext: "Exceptional quality and taste for every occasion",
     cta: "Explore Products",
     link: "/products",
-    badge: "Premium Quality",
+    badge: "Top Quality",
     badgeColor: "#A31621",
     highlight: "🔥 New customer discount: 15% OFF first order",
     offer: "WELCOME",
@@ -27,7 +27,7 @@ const slides = [
     brand: "choicemeats",
     image: "/images/halal1.jpg",
     headline: "100% Halal Meats",
-    subtext: "Premium quality meats without pork",
+    subtext: "Quality meats without pork",
     cta: "Shop Halal",
     link: "choice-meats",
     badge: "Halal Certified",
@@ -60,7 +60,7 @@ const slides = [
     brand: "farmerschoice",
     image: "/images/grille2.jpg",
     headline: "All Meat Varieties",
-    subtext: "Including premium pork products",
+    subtext: "Including quality pork products",
     cta: "View Range",
     link: "farmers-choice",
     badge: "Kenya's Favorite",
@@ -148,7 +148,7 @@ const offerProducts = [
   },
   {
     id: 2,
-    name: "Premium Bacon",
+    name: "Bacon",
     price: "KSh 850",
     discount: "KSh 1,000",
     image: "/images/FCLBaconPacks/BackBacon1kg.png",
@@ -368,7 +368,7 @@ export default function Hero() {
               className="mr-4"
             >
               <img 
-                src="/images/sultanmabi-logo.png" 
+                src="/images/sultanpg.png" 
                 alt="Sultanmabi Logo" 
                 className="w-24 h-24 object-contain"
               />
@@ -447,9 +447,8 @@ export default function Hero() {
             style={{ 
               boxShadow: "0 20px 50px rgba(16, 37, 66, 0.15)"
             }}
-          >
-            {/* Slides Container */}
-            <div className="relative h-[500px] overflow-hidden">
+          >            {/* Slides Container */}
+            <div className="relative h-[350px] overflow-hidden">
               <AnimatePresence mode="wait" custom={direction}>
                 <motion.div
                   key={currentSlide}
@@ -459,55 +458,42 @@ export default function Hero() {
                   initial="hidden"
                   animate="visible"
                   exit="exit"
-                >
-                  {/* Background Image with Enhanced Gradient Overlay */}
+                >                  {/* Background Image with Simple Overlay */}
                   <div 
                     className="absolute inset-0 bg-cover bg-center"
                     style={{ 
                       backgroundImage: `url(${slides[currentSlide].image})`,
-                      filter: "brightness(0.9)"
+                      filter: "brightness(0.7)"
                     }}
                   >
                     <div 
-                      className="absolute inset-0"
-                      style={{ 
-                        background: `linear-gradient(90deg, ${slides[currentSlide].themeColor}99 0%, rgba(16, 37, 66, 0.4) 100%)` 
-                      }}
+                      className="absolute inset-0 bg-black bg-opacity-30"
                     />
-                  </div>
-
-                  {/* REDESIGNED SLIDE CONTENT */}
-                  <div className="absolute inset-0 flex flex-col justify-between p-4 md:p-8 text-white">
-                    {/* Top Section - Offer Badge */}
+                  </div>                  {/* REDESIGNED SLIDE CONTENT */}
+                  <div className="absolute inset-0 flex flex-col justify-between p-3 md:p-6 text-white">
+                    {/* Top Section - Simple Offer Badge */}
                     <div className="flex justify-end">
                       <motion.div 
-                        className="py-2 px-4 md:px-6 rounded-full font-bold text-base md:text-lg"
-                        style={{ 
-                          backgroundColor: slides[currentSlide].badgeColor,
-                          boxShadow: "0 5px 15px rgba(0,0,0,0.3)"
-                        }}
+                        className="py-1 px-3 md:px-4 rounded-full font-bold text-sm md:text-base bg-white bg-opacity-20 backdrop-blur-sm border border-white border-opacity-30"
                         initial={{ scale: 0 }}
                         animate={{ 
                           scale: 1,
-                          rotate: [0, 5, -5, 0],
                           transition: { 
-                            scale: { delay: 0.3, type: "spring" },
-                            rotate: { delay: 0.5, duration: 0.6 }
+                            scale: { delay: 0.3, type: "spring" }
                           }
                         }}
                       >
                         {slides[currentSlide].offer}
                       </motion.div>
-                    </div>
-                    
-                    {/* Center Content - Responsive Layout */}
+                    </div>                    
+                    {/* Center Content - Compact Layout */}
                     <div className="flex flex-col items-center text-center px-2">
                       {/* Brand Logo for First 3 Slides */}
                       {slides[currentSlide].brand === 'sultanmabi' || 
                       slides[currentSlide].brand === 'choicemeats' || 
                       slides[currentSlide].brand === 'farmerschoice' ? (
                         <motion.div 
-                          className="mb-4 md:mb-6"
+                          className="mb-2 md:mb-3"
                           initial={{ opacity: 0, scale: 0.8 }}
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{ delay: 0.3 }}
@@ -515,74 +501,72 @@ export default function Hero() {
                           <img 
                             src={slides[currentSlide].logo} 
                             alt={`${slides[currentSlide].brand} logo`}
-                            className="h-16 md:h-24 object-contain"
+                            className="h-12 md:h-16 object-contain"
                           />
                         </motion.div>
                       ) : (
                         <motion.div 
-                          className="mb-4 md:mb-6 bg-white/10 backdrop-blur-sm py-2 px-4 md:py-3 md:px-6 rounded-full"
+                          className="mb-2 md:mb-3 bg-white bg-opacity-20 backdrop-blur-sm py-1 px-3 md:py-2 md:px-4 rounded-full"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}
                         >
-                          <span className="font-bold text-base md:text-xl">
+                          <span className="font-bold text-sm md:text-lg">
                             {slides[currentSlide].badge}
                           </span>
                         </motion.div>
                       )}
                       
                       <motion.h2 
-                        className="text-2xl md:text-4xl lg:text-6xl font-bold mb-4 md:mb-6 max-w-3xl"
+                        className="text-xl md:text-3xl lg:text-4xl font-bold mb-2 md:mb-3 max-w-3xl"
                         variants={contentVariants}
                       >
                         {slides[currentSlide].headline}
                       </motion.h2>
                       
                       <motion.p 
-                        className="text-base md:text-xl mb-4 md:mb-8 max-w-2xl"
+                        className="text-sm md:text-lg mb-3 md:mb-4 max-w-2xl"
                         variants={contentVariants}
                       >
                         {slides[currentSlide].subtext}
-                      </motion.p>
-                      
+                      </motion.p>                      
                       {/* Product Offers for ChoiceMeats & FarmersChoice */}
                       {(slides[currentSlide].brand === 'choicemeats' || slides[currentSlide].brand === 'farmerschoice') && (
                         <motion.div 
-                          className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-4 md:mb-8 max-w-md"
+                          className="grid grid-cols-1 sm:grid-cols-2 gap-2 md:gap-3 mb-3 md:mb-4 max-w-md"
                           variants={contentVariants}
                         >
                           {slides[currentSlide].products.map((product, index) => (
                             <div 
                               key={index} 
-                              className="bg-white/20 backdrop-blur-sm rounded-lg p-2 md:p-4 border border-white/30"
+                              className="bg-white bg-opacity-20 backdrop-blur-sm rounded-lg p-2 md:p-3 border border-white border-opacity-30"
                             >
-                              <div className="flex items-center mb-2">
-                                <div className="bg-gray-200 border-2 border-dashed rounded-xl w-12 h-12 md:w-16 md:h-16" />
-                                <div className="ml-2 md:ml-3 text-left">
-                                  <h3 className="font-bold text-sm md:text-base">{product.name}</h3>
+                              <div className="flex items-center mb-1">
+                                <div className="bg-gray-200 border-2 border-dashed rounded-xl w-8 h-8 md:w-12 md:h-12" />
+                                <div className="ml-2 text-left">
+                                  <h3 className="font-bold text-xs md:text-sm">{product.name}</h3>
                                   <div className="flex items-center">
-                                    <span className="font-bold text-sm md:text-base">{product.price}</span>
+                                    <span className="font-bold text-xs md:text-sm">{product.price}</span>
                                     {product.discount && (
-                                      <span className="ml-1 md:ml-2 text-xs md:text-sm line-through opacity-80">
+                                      <span className="ml-1 text-xs line-through opacity-80">
                                         {product.discount}
                                       </span>
                                     )}
                                   </div>
                                 </div>
                               </div>
-                              <div className="bg-red-500 text-white text-xs font-bold py-1 px-2 rounded-full inline-block">
+                              <div className="bg-white bg-opacity-30 text-white text-xs font-bold py-1 px-2 rounded-full inline-block">
                                 {product.tag}
                               </div>
                             </div>
                           ))}
                         </motion.div>
-                      )}
-                      
+                      )}                      
                       <motion.div 
-                        className="text-base md:text-xl lg:text-2xl font-bold mb-4 md:mb-8 flex items-center animate-pulse"
+                        className="text-sm md:text-lg font-bold mb-3 md:mb-4 flex items-center animate-pulse"
                         variants={contentVariants}
                       >
                         <svg 
-                          className="w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 mr-1 md:mr-2" 
+                          className="w-4 h-4 md:w-5 md:h-5 mr-1" 
                           fill="currentColor" 
                           viewBox="0 0 20 20"
                         >
@@ -600,16 +584,11 @@ export default function Hero() {
                       >
                         <Link
                           to={slides[currentSlide].link}
-                          className="inline-flex items-center font-bold px-4 py-2 md:px-6 md:py-3 lg:px-8 lg:py-4 rounded-full text-base md:text-xl transition-all duration-300"
-                          style={{ 
-                            backgroundColor: slides[currentSlide].buttonColor, 
-                            color: "#FFFFFF",
-                            boxShadow: `0 5px 25px ${slides[currentSlide].buttonColor}80`
-                          }}
+                          className="inline-flex items-center font-bold px-4 py-2 md:px-6 md:py-3 rounded-full text-sm md:text-lg transition-all duration-300 bg-white text-gray-800 shadow-lg hover:shadow-xl"
                         >
                           {slides[currentSlide].cta}
                           <svg 
-                            className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6 ml-2 md:ml-3" 
+                            className="w-4 h-4 md:w-5 md:h-5 ml-2" 
                             fill="currentColor" 
                             viewBox="0 0 20 20"
                           >
@@ -621,16 +600,15 @@ export default function Hero() {
                           </svg>
                         </Link>
                       </motion.div>
-                    </div>
-                    
-                    {/* Bottom Section - Discount */}
+                    </div>                    
+                    {/* Bottom Section - Compact Discount */}
                     <motion.div 
-                      className="bg-black/30 py-2 px-4 md:py-4 md:px-8 rounded-full self-center"
+                      className="bg-white bg-opacity-20 backdrop-blur-sm py-1 px-3 md:py-2 md:px-4 rounded-full self-center border border-white border-opacity-30"
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.7 }}
                     >
-                      <span className="font-bold text-lg md:text-2xl">
+                      <span className="font-bold text-sm md:text-lg">
                         {slides[currentSlide].discount}
                       </span>
                     </motion.div>
@@ -638,8 +616,7 @@ export default function Hero() {
                 </motion.div>
               </AnimatePresence>
             </div>
-            
-            {/* Slide Indicators */}
+              {/* Slide Indicators */}
             <div className="absolute bottom-4 left-0 right-0 flex justify-center z-20">
               <div className="flex space-x-2">
                 {slides.map((_, index) => (
@@ -647,11 +624,10 @@ export default function Hero() {
                     key={index}
                     onClick={() => goToSlide(index)}
                     className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${
-                      index === currentSlide ? "scale-150" : "opacity-60"
+                      index === currentSlide 
+                        ? "scale-150 bg-white" 
+                        : "opacity-60 bg-white bg-opacity-50"
                     }`}
-                    style={{ 
-                      backgroundColor: index === currentSlide ? "#FFD700" : "#FFFFFF" 
-                    }}
                     aria-label={`Go to slide ${index + 1}`}
                   />
                 ))}
@@ -765,7 +741,7 @@ export default function Hero() {
           </div>
         </div>
         
-        {/* Premium Features Section */}
+        {/* Quality Features Section */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12">
           {[
             { 
